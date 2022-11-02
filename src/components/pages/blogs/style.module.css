@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+}
+
+.main {
+  padding: 24px;
+  border-right: 1px solid #c4c1b8;
+}
+
+.sider {
+  padding: 24px;
+}
+
+.list-item {
+  border-bottom: 1px solid #c4c1b8
+}

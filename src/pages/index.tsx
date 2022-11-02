@@ -1,29 +1,10 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import Home from '../components/pages/home'
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>{`Sheepeer's site`}</title>
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          {`Sheepeer's Site Here`}
-        </h1>
-
-        <Link href={'/blogs'}><button>Blogs</button></Link>
-        <Link href={'/gallery'}><button>Gallery</button></Link>
-      </main>
-
-      <footer className={styles.footer}>
-        all by Sheepeer
-      </footer>
-    </div>
+    <Home/>
   )
 }
 
-export default Home
+export default Index
