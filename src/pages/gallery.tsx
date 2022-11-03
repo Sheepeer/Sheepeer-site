@@ -1,8 +1,8 @@
+import GalleryPage from "../components/pages/gallery"
+
 const Gallery = () => {
   return (
-    <div>
-      Gallery
-    </div>
+    <GalleryPage />
   )
 }
 

@@ -6,6 +6,12 @@
   width: 100%;
   padding: 16px 32px;
   border-bottom: 1px solid #c4c1b8;
+  background-color: #e7e4d0;
+  z-index: 999999;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .menu {
@@ -15,4 +21,17 @@
   width: 240px;
   letter-spacing: 2px;
   color: #2e2e2c;
+}
+
+.menu-item {
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: #c77500;
+  transition: 0.3s;
+}
+
+.menu-item__active {
+  color: #c77500;
 }
