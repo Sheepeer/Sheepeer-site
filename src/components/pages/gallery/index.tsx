@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Container from '../../layout/container'
 import styles from './style.module.css'
 
-const Gallery: NextPage = () => {
+const GalleryPage: NextPage = () => {
   return (
     <Container pageTitle='Gallery'>
       Gallery
@@ -10,4 +10,4 @@ const Gallery: NextPage = () => {
   )
 }
 
-export default Gallery
+export default GalleryPage
