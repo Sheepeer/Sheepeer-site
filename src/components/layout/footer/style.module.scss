@@ -1,4 +1,26 @@
 .footer-root {
-  padding: 38px 42px;
+  display: flex;
+  padding: 42px 60px;
   background-color: #b5b29f;
+}
+
+.main {
+  width: 70%;
+}
+
+.contact {
+  width: 30%;
+}
+
+.board {
+  height: 80px;
+  padding: 24px;
+  background-color: #d0cdbb;
+  border-radius: 4px;
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
 }

@@ -1,0 +1,15 @@
+.root {
+  padding: 24px;
+}
+
+.title {
+
+}
+
+.info {
+  display: flex;
+}
+
+.time {
+  font-size: 12px;
+}
