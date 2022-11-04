@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Container from '../../layout/container'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 const GalleryPage: NextPage = () => {
   return (

@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { ReactNode } from "react"
 import Footer from "../footer"
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 interface Props {
   pageTitle: string

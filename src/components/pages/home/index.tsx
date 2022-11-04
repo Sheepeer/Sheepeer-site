@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { aloha } from '../../../utils/time'
 import Container from '../../layout/container'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 const Home: NextPage = () => {
   return (

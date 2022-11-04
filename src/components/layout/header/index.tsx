@@ -3,7 +3,7 @@ import classNames from "classnames"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 type Menu = Array<{ label: string, path: string }>
 const menu: Menu = [

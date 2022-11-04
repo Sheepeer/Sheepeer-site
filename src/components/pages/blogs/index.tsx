@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import Tag from '../../basic/tag'
 import Container from '../../layout/container'
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 type Blog = {
   id: string,
@@ -41,15 +41,15 @@ const list: Array<Blog> = [
 const ListItemLayout = ({ item }: { item: Blog }) => (
   <Link href={`/blog/${item.id}`}>
     <div className={styles['list-item']}>
-      <div className={styles['list-item-text']}>
-        <div className={styles['list-item-info']}>
+      <div className={styles['text']}>
+        <div className={styles['info']}>
           <Tag>{item.tag}</Tag>
           <div className={styles['date']}>{item.date}</div>
         </div>
         <div className={styles['title']}>{item.title}</div>
         <div className={styles['content']}>{item.content}</div>
       </div>
-      <div className={styles['list-item-img']}>
+      <div className={styles['img']}>
 
       </div>
     </div>
