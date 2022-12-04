@@ -3,14 +3,19 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import Tag from '../../basic/tag'
 import Container from '../../layout/container'
+import ForwardIcon from '@mui/icons-material/Forward';
 import styles from './style.module.scss'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import Space from '../../basic/space'
 
 type Blog = {
   id: string,
   tag: string,
   title: string,
-  content: string
+  content: string,
   date: string,
+  watcher_count: number
 }
 
 
@@ -20,21 +25,24 @@ const list: Array<Blog> = [
     tag: 'Node',
     title: '假装是一个标题1',
     content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-    date: '2022-01-01'
+    date: '2022-01-01',
+    watcher_count: 12
   },
   {
     id: 'qr34wrtrww',
     tag: '设计模式',
     title: '假装是一个标题2',
     content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-    date: '2022-01-01'
+    date: '2022-01-01',
+    watcher_count: 12
   },
   {
     id: 'qr34wrtr3r',
     tag: 'Javascript',
     title: '假装是一个标题3',
     content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-    date: '2022-01-01'
+    date: '2022-01-01',
+    watcher_count: 12
   },
 ]
 
@@ -48,6 +56,12 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
         </div>
         <div className={styles['title']}>{item.title}</div>
         <div className={styles['content']}>{item.content}</div>
+        <div className={styles['record']}>
+          <Space>
+            <VisibilityOutlinedIcon fontSize='small' />
+            <div className={styles['watcher-count']}>{item.watcher_count}</div>
+          </Space>
+        </div>
       </div>
       <div className={styles['img']}>
 

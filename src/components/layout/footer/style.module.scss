@@ -1,7 +1,9 @@
+@import "/styles/common.scss";
+
 .footer-root {
   display: flex;
   padding: 42px 60px;
-  background-color: #b5b29f;
+  background-color: $bg-dark-color;
 }
 
 .main {
@@ -15,7 +17,7 @@
 .board {
   height: 80px;
   padding: 24px;
-  background-color: #d0cdbb;
+  background-color: $bg-color;
   border-radius: 4px;
 }
 
