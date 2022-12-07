@@ -5,7 +5,7 @@ const BLOGS_DIR = '../../blogs'
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   fs.readdir(BLOGS_DIR, (err, files) => {
-
+    console.log('files:',files)
   })
 }
 
