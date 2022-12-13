@@ -2,6 +2,7 @@
 
 .root {
   display: flex;
+  padding-top: 73px;
 
   .menu {
     width: 20%;
@@ -19,10 +20,14 @@
         background-color: $bg-hover-color;
         color: $text-hover-color;
       }
+    }
 
-      &-active {
-        color: $text-hover-color;
-      }
+    .menu-item__active {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      color: $text-hover-color;
     }
   }
 

@@ -54,10 +54,7 @@ const BsContainer = ({ activeLabel, children }: Props) => {
           MENU_LIST.map(({ title, label }) => (
             <div
               key={label}
-              className={styles[classNames(
-                'menu-item',
-                { 'menu-item__active': label == active }
-              )]}
+              className={classNames(styles['menu-item'], {[styles['menu-item__active']]: label == active})}
               onClick={() => clickHandler(label)}
             >{title}</div>
           ))
