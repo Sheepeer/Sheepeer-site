@@ -1,0 +1,31 @@
+@import "/styles/common.scss";
+
+.root {
+  display: flex;
+
+  .menu {
+    width: 20%;
+    &-item {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $border-color;
+      }
+
+      &:hover {
+        background-color: $bg-hover-color;
+        color: $text-hover-color;
+      }
+    }
+    
+  }
+
+  .content {
+    width: 80%;
+    padding: 24px;
+    border-left: 1px solid $border-color;
+  }
+}
