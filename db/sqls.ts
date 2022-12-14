@@ -1,0 +1,1 @@
+export const GET_POSTS_SQL = 'select * from posts'
