@@ -1,5 +1,5 @@
-import BsContainer from "../../../components/layout/bs-container"
-import DashBoard from "../../../components/pages/backstage/dashboard"
+import BsContainer from "@/components/layout/bs-container"
+import DashBoard from "@/components/pages/backstage/dashboard"
 
 const Index = () => {
   return (

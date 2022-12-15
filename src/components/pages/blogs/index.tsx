@@ -1,15 +1,15 @@
 import { List, ListItem } from '@mui/material'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import Tag from '../../basic/tag'
-import Container from '../../layout/container'
+import Tag from '@/components/basic/tag'
+import Container from '@/components/layout/container'
 import ForwardIcon from '@mui/icons-material/Forward';
 import styles from './style.module.scss'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import Space from '../../basic/space'
-import fetchData from '../../../hooks/fetch'
-import useFetch from '../../../hooks/fetch'
+import Space from '@/components/basic/space'
+import fetchData from '@/hooks/fetch'
+import useFetch from '@/hooks/fetch'
 
 type Blog = {
   id: string,

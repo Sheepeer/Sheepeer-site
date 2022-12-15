@@ -1,5 +1,5 @@
-import Tag from "../../basic/tag"
-import Container from "../../layout/container"
+import Tag from "@/components/basic/tag"
+import Container from "@/components/layout/container"
 import styles from './style.module.css'
 
 const BlogPage = () => {

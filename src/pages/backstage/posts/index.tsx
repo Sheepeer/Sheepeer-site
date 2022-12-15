@@ -1,5 +1,5 @@
-import BsContainer from "../../../components/layout/bs-container"
-import Posts from "../../../components/pages/backstage/posts"
+import BsContainer from "@/components/layout/bs-container"
+import Posts from "@/components/pages/backstage/posts"
 
 const Index = () => {
   return (

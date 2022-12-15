@@ -1,8 +1,8 @@
 import { Button } from '@mui/material'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { aloha } from '../../../utils/time'
-import Container from '../../layout/container'
+import { aloha } from '@/utils/time'
+import Container from '@/components/layout/container'
 import styles from './style.module.scss'
 
 const Home: NextPage = () => {
