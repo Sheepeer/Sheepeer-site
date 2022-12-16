@@ -3,11 +3,13 @@ import { GET_POSTS_SQL } from './sqls'
 
 class Mysql {
   private connection
+  
   constructor() {
     this.connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      database: 'test'
+      password: 'Sheepeer0719',
+      database: 'sheepeer'
     })
   }
 
