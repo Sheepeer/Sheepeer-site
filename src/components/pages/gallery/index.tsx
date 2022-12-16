@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
 import Container from '../../layout/container'
 import styles from './style.module.scss'
+import Building from '../../layout/building'
 
 const GalleryPage: NextPage = () => {
   return (
     <Container pageTitle='Gallery'>
-      Gallery
+      <Building/>
     </Container>
   )
 }
