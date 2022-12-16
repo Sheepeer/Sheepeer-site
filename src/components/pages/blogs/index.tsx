@@ -74,7 +74,7 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 )
 
 const BlogsPage: NextPage = () => {
-  const res = useFetch('/api/blogs')
+  // const res = useFetch('/api/blogs')
 
   return (
     <Container pageTitle='Blogs'>

@@ -3,15 +3,17 @@ import classNames from "classnames"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import Space from "../../basic/space"
 import styles from './style.module.scss'
+import LanguageBtn from "./language-btn"
 
-type Menu = Array<{ label: string, path: string }>
-const menu: Menu = [
+type HeaderMenu = Array<{ label: string, path: string }>
+const menu: HeaderMenu = [
   { label: 'BLOGS', path: '/blogs' },
   { label: 'GALLERY', path: '/gallery' },
 ]
 
-const Menu = () => {
+const HeaderMenu = () => {
   const { pathname } = useRouter()
 
   return (
@@ -30,6 +32,17 @@ const Menu = () => {
   )
 }
 
+const I18N_MENU = [
+  {
+    label: '中文',
+    value: 'CN'
+  },
+  {
+    label: 'English',
+    value: 'EN'
+  }
+]
+
 const Header = () => {
 
   return (
@@ -42,10 +55,14 @@ const Header = () => {
           height={40}
           alt="Sheepeer's site" />
       </Link>
-      <Menu />
+      <HeaderMenu />
       <div>
-        <Button variant="contained" >Contact</Button>
+        <Space>
+          <LanguageBtn />
+          <Button variant="contained" >Contact</Button>
+        </Space>
       </div>
+
     </div>
   )
 }

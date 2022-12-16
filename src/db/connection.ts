@@ -3,10 +3,11 @@ import { GET_POSTS_SQL } from './sqls'
 
 class Mysql {
   private connection
-  
+
   constructor() {
     this.connection = mysql.createConnection({
-      host: 'localhost',
+      host: '43.143.198.224',
+      port: 3306,
       user: 'root',
       password: 'Sheepeer0719',
       database: 'sheepeer'
