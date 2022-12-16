@@ -5,8 +5,11 @@
 
   .main {
     width: 80%;
-    padding: 24px;
     border-right: 1px solid $border-color;
+
+    .list {
+      padding: 24px;
+    }
   }
 
   .sider {

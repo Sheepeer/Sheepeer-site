@@ -1,0 +1,23 @@
+@import "/styles/common.scss";
+
+.sub-nav {
+  display: flex;
+  padding: 12px 44px;
+  border-bottom: solid 1px $border-color;
+
+  .item {
+    font-size: 12px;
+    margin: 0 24px;
+    cursor: pointer;
+    transition: 0.7s;
+
+    &:hover {
+      color: $text-hover-color;
+      transition: 0.7s;
+    }
+  }
+
+  .item-active {
+    color: $text-hover-color;
+  }
+}

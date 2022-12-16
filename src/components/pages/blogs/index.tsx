@@ -10,6 +10,7 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import Space from '../../basic/space'
 import fetchData from '../../../hooks/fetch'
 import useFetch from '../../../hooks/fetch'
+import SubNav from './sub-nav'
 
 type Blog = {
   id: string,
@@ -79,7 +80,8 @@ const BlogsPage: NextPage = () => {
     <Container pageTitle='Blogs'>
       <div className={styles['root']}>
         <div className={styles['main']}>
-          <List>
+          <SubNav />
+          <List className={styles['list']}>
             {
               list.map((item: any) => (
                 <ListItem key={item.id}>
