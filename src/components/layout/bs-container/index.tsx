@@ -1,11 +1,6 @@
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import { ReactNode, useState } from 'react'
-import DashBoard from '../../pages/backstage/dashboard'
-import Pictures from '../../pages/backstage/pictures'
-import Posts from '../../pages/backstage/posts'
-import WorkSpace from '../../pages/backstage/workspace'
-
 import styles from './style.module.scss'
 
 type MenuList = Array<{
@@ -54,10 +49,7 @@ const BsContainer = ({ activeLabel, children }: Props) => {
           MENU_LIST.map(({ title, label }) => (
             <div
               key={label}
-              className={styles[classNames(
-                'menu-item',
-                { 'menu-item__active': label == active }
-              )]}
+              className={classNames(styles['menu-item'], {[styles['menu-item__active']]: label == active})}
               onClick={() => clickHandler(label)}
             >{title}</div>
           ))

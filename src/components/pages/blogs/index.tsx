@@ -1,8 +1,8 @@
 import { List, ListItem } from '@mui/material'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import Tag from '../../basic/tag'
-import Container from '../../layout/container'
+import Tag from '@/components/basic/tag'
+import Container from '@/components/layout/container'
 import ForwardIcon from '@mui/icons-material/Forward';
 import styles from './style.module.scss'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
