@@ -13,6 +13,7 @@ const Container = ({ pageTitle, children }: Props) => {
     <>
       <Head>
         <title>{pageTitle}</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       
       <div className={styles['container-root']}>
