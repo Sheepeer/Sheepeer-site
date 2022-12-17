@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "i18n": "i18next"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -14,6 +15,7 @@
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.11",
     "classnames": "^2.3.2",
+    "i18next-parser": "^7.1.0",
     "moment": "^2.29.4",
     "mysql2": "^2.3.3",
     "next": "12.3.1",

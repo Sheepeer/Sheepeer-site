@@ -7,9 +7,10 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import styles from './style.module.scss'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import Space from '@/components/basic/space'
-import fetchData from '@/hooks/fetch'
-import useFetch from '@/hooks/fetch'
+import Space from '../../basic/space'
+import fetchData from '../../../hooks/fetch'
+import useFetch from '../../../hooks/fetch'
+import SubNav from './sub-nav'
 
 type Blog = {
   id: string,
@@ -73,13 +74,14 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 )
 
 const BlogsPage: NextPage = () => {
-  const res = useFetch('/api/blogs')
+  // const res = useFetch('/api/blogs')
 
   return (
     <Container pageTitle='Blogs'>
       <div className={styles['root']}>
         <div className={styles['main']}>
-          <List>
+          <SubNav />
+          <List className={styles['list']}>
             {
               list.map((item: any) => (
                 <ListItem key={item.id}>
