@@ -1,9 +1,14 @@
 @import "/styles/common.scss";
 
 .sub-nav {
+  position: fixed;
+  width: 80%;
   display: flex;
   padding: 12px 44px;
   border-bottom: solid 1px $border-color;
+  border-right: solid 1px $border-color;
+  background: $bg-color;
+  z-index: 5;
 
   .item {
     font-size: 12px;

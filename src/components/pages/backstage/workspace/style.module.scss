@@ -1,5 +1,18 @@
 @import "/styles/common.scss";
 
 .root {
-  
+  .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .editor-wrapper {
+    margin-top: 12px;
+
+    .editor {
+      margin-top: 12px;
+      height: calc(100vh - 200px);
+    }
+  }
 }
