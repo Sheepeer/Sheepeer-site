@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 
 const useFetch = async (url: string) => {
   const [data, setData] = useState<Object>()
@@ -8,13 +8,12 @@ const useFetch = async (url: string) => {
     const res = await fetch(url)
     if (res.status === 200) {
       setData(res)
-    }else {
+    } else {
       setError(res)
     }
   } catch (error) {
-    setError({error})
+    setError({ error })
   }
-
 
   return [data, error]
 }
