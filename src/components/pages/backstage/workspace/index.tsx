@@ -31,18 +31,19 @@ const WorkSpace = () => {
   return (
     <div className={styles['root']}>
       <div className={styles['header-wrapper']}>
-        <Space>
-          <Button variant='text'>发布</Button>
-          <Button >存草稿</Button>
-        </Space>
-      </div>
-      <div className={styles['editor-wrapper']}>
         <div className={styles['title']}>
           <Input
             value={title}
             onChange={titleChangeHandler}
             placeholder='在此输入文章标题' />
         </div>
+        <Space>
+          <Button variant='text'>发布</Button>
+          <Button >存草稿</Button>
+        </Space>
+      </div>
+      <div className={styles['editor-wrapper']}>
+
         <MdEditor
           className={styles['editor']}
           style={{}}
