@@ -28,18 +28,15 @@ const MENU_LIST: MenuList = [
 ]
 
 interface Props {
-  activeLabel: string
   children: ReactNode
 }
 
-const BsContainer = ({ activeLabel, children }: Props) => {
+const BsContainer = ({ children }: Props) => {
   const router = useRouter()
-  console.log(router)
-
-  const [active, setActive] = useState(activeLabel)
+  const active = router.pathname.split('/')[2]
 
   const clickHandler = (label: string) => {
-    setActive(label)
+    router.push(`/backstage/${label}`)
   }
 
   return (
