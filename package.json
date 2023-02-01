@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.11",
+    "axios": "^1.2.6",
     "classnames": "^2.3.2",
     "i18next-parser": "^7.1.0",
     "markdown-it": "^13.0.1",

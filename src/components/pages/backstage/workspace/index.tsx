@@ -6,6 +6,8 @@ import Space from '@/components/basic/space';
 import { useState } from 'react';
 import Input from '@mui/material/Input';
 import styles from './style.module.scss'
+import axios from 'axios';
+import moment from 'moment';
 
 const mdParser = new MarkdownIt()
 
@@ -16,7 +18,8 @@ type Content = {
 
 const WorkSpace = () => {
   const [title, setTitle] = useState<string>()
-  const [content, setContent] = useState<Content>()
+  const [content, setContent] = useState<Content>({ text: '', html: '' })
+  const [tag, setTag] = useState<string>()
 
   /**
    * 这里要加上防抖
@@ -26,6 +29,27 @@ const WorkSpace = () => {
   }
   const contentChangeHandler = ({ html, text }: any) => {
     setContent({ html, text })
+  }
+
+  const publishPost = () => {
+    const currDate = moment().format('YYYY-MM-DD HH:mm')
+    axios
+      .post('/api/blogs/publish', {
+        title,
+        content: content.text,
+        content_html: content.html,
+        tag,
+        date: currDate
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(e => {
+
+      })
+  }
+  const savePostAsDraft = () => {
+
   }
 
   return (
@@ -38,8 +62,13 @@ const WorkSpace = () => {
             placeholder='在此输入文章标题' />
         </div>
         <Space>
-          <Button variant='text'>发布</Button>
-          <Button >存草稿</Button>
+          <Button
+            variant='text'
+            onClick={publishPost}
+          >发布</Button>
+          <Button
+            onClick={savePostAsDraft}
+          >存草稿</Button>
         </Space>
       </div>
       <div className={styles['editor-wrapper']}>
