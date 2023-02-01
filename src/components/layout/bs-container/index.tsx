@@ -22,21 +22,30 @@ const MENU_LIST: MenuList = [
     label: 'posts',
   },
   {
+    title: 'Drafts',
+    label: 'drafts'
+  },
+  {
     title: 'Pictures',
     label: 'pictures',
   }
 ]
 
 interface Props {
+  activeLabel: string
   children: ReactNode
 }
 
-const BsContainer = ({ children }: Props) => {
+const BsContainer = ({ activeLabel, children }: Props) => {
+
   const router = useRouter()
-  const active = router.pathname.split('/')[2]
+  const pathname = router.pathname.split('/')[2]
+
+  const [active, setActive] = useState(activeLabel)
 
   const clickHandler = (label: string) => {
-    router.push(`/backstage/${label}`)
+    setActive(label)
+    router.replace(`/backstage/${label}`)
   }
 
   return (
@@ -46,7 +55,7 @@ const BsContainer = ({ children }: Props) => {
           MENU_LIST.map(({ title, label }) => (
             <div
               key={label}
-              className={classNames(styles['menu-item'], {[styles['menu-item__active']]: label == active})}
+              className={classNames(styles['menu-item'], { [styles['menu-item__active']]: label == active })}
               onClick={() => clickHandler(label)}
             >{title}</div>
           ))
