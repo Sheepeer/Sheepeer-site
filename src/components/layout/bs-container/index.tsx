@@ -22,6 +22,10 @@ const MENU_LIST: MenuList = [
     label: 'posts',
   },
   {
+    title: 'Drafts',
+    label: 'drafts'
+  },
+  {
     title: 'Pictures',
     label: 'pictures',
   }
@@ -33,7 +37,7 @@ interface Props {
 }
 
 const BsContainer = ({ activeLabel, children }: Props) => {
-  
+
   const router = useRouter()
   const pathname = router.pathname.split('/')[2]
 
@@ -51,7 +55,7 @@ const BsContainer = ({ activeLabel, children }: Props) => {
           MENU_LIST.map(({ title, label }) => (
             <div
               key={label}
-              className={classNames(styles['menu-item'], {[styles['menu-item__active']]: label == active})}
+              className={classNames(styles['menu-item'], { [styles['menu-item__active']]: label == active })}
               onClick={() => clickHandler(label)}
             >{title}</div>
           ))
