@@ -1,8 +1,26 @@
+@import "/styles/common.scss";
+
 .tag {
   display: inline-block;
   padding: 2px 8px;
-  color: #b5b29f;
-  border: 1px solid #b5b29f;
+  color: $bg-dark-color;
+  border: 1px solid $bg-dark-color;
   border-radius: 4px;
   font-size: 12px;
+}
+
+.tag-clickable {
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: $text-hover-color;
+    border: 1px solid $text-hover-color;
+    transition: 0.3s;
+  }
+}
+
+.tag-choosed {
+  color: $text-hover-color;
+  border: 1px solid $text-hover-color;
 }

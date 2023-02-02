@@ -8,6 +8,9 @@ import Input from '@mui/material/Input';
 import styles from './style.module.scss'
 import axios from 'axios';
 import moment from 'moment';
+import { Dialog, DialogActions, DialogContent } from '@mui/material';
+import Tags from '@/components/basic/tags';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const mdParser = new MarkdownIt()
 
@@ -19,7 +22,9 @@ type Content = {
 const WorkSpace = () => {
   const [title, setTitle] = useState<string>()
   const [content, setContent] = useState<Content>({ text: '', html: '' })
-  const [tag, setTag] = useState<string>()
+  const [tag, setTag] = useState<string>('test')
+
+  const [open, setOpen] = useState(false)
 
   /**
    * 这里要加上防抖
@@ -64,7 +69,7 @@ const WorkSpace = () => {
         <Space>
           <Button
             variant='text'
-            onClick={publishPost}
+            onClick={() => setOpen(true)}
           >发布</Button>
           <Button
             onClick={savePostAsDraft}
@@ -72,7 +77,6 @@ const WorkSpace = () => {
         </Space>
       </div>
       <div className={styles['editor-wrapper']}>
-
         <MdEditor
           className={styles['editor']}
           style={{}}
@@ -80,6 +84,27 @@ const WorkSpace = () => {
           renderHTML={text => mdParser.render(text)}
           onChange={contentChangeHandler} />
       </div>
+
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <DialogTitle>
+          选择一个标签：
+        </DialogTitle>
+        <DialogContent className={styles['dialog-wrapper']}>
+          <Tags
+            tagList={['tag1', 'tag2', 'tag3']}
+            onChoose={(value) => setTag(value)}
+            choosed={tag}
+            className={styles['tags-wrapper']}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button variant='contained' onClick={publishPost}>发布</Button>
+          <Button variant='outlined' onClick={() => setOpen(false)}>取消</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }
