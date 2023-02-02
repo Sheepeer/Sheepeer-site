@@ -13,6 +13,7 @@ import useFetch from '../../../hooks/fetch'
 import SubNav from './sub-nav'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import moment from 'moment'
 
 type Blog = {
   id: string,
@@ -29,7 +30,7 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
       <div className={styles['text']}>
         <div className={styles['info']}>
           <Tag>{item.tag}</Tag>
-          <div className={styles['date']}>{item.date}</div>
+          <div className={styles['date']}>{moment((+item.date)*1000).format('YYYY-MM-DD HH:mm')}</div>
         </div>
         <div className={styles['title']}>{item.title}</div>
         <div className={styles['content']}>{item.content}</div>
