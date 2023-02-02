@@ -1,5 +1,5 @@
 import mysql from 'mysql2'
-import { ADD_POST, ADD_POST_SQL, GET_POSTS_SQL, sqlTemplate } from './sqls'
+import { ADD_POST, GET_POSTS_SQL, sqlTemplate } from './sqls'
 
 export interface Post {
   title: string,
@@ -22,16 +22,19 @@ class Mysql {
     })
   }
 
-  public getPosts = () => {
-    let res: { result: any } = { result: null }
-    this.connection.query(
-      GET_POSTS_SQL,
-      function (err, result, fields) {
-        console.log(err, result, fields)
-        res.result = result
-      }
-    )
-    return res
+  public getPosts = async () => {
+    return new Promise<{result: any}>((resolve, reject) => {
+      this.connection.query(
+        GET_POSTS_SQL,
+        function (err, result, fields) {
+          if (!err) {
+            resolve({result: result})
+          }else {
+            reject({result: null})
+          }
+        }
+      )
+    })
   }
 
   public addPost = (values: Post) => {

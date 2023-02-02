@@ -1,21 +1,9 @@
-import { Post } from "./connection"
-
 export const GET_POSTS_SQL = `select * from posts`
-export const ADD_POST_SQL = ({
-  title,
-  content,
-  content_html,
-  tag,
-  date
-}: Post) => `
-  INSERT INTO posts ( title, content, content_html, tag, date )
-  VALUES
-  ( ${title}, ${content}, ${content_html}, ${tag}, ${date} );
-`
+
 export const ADD_POST = `
 INSERT INTO posts ( title, content, content_html, tag, date )
   VALUES
-  ( %title%, %content%, %content_html%, %tag%, %date% );
+  ( '%title%', '%content%', '%content_html%', '%tag%', %date% );
 `
 export const GET_TAGS_SQL = (tag?: string) => `
   SELECT tag FROM posts ${tag && `WHERE tag = ${tag}`}

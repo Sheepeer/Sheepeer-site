@@ -37,7 +37,7 @@ const WorkSpace = () => {
   }
 
   const publishPost = () => {
-    const currDate = moment().format('YYYY-MM-DD HH:mm')
+    const currDate = moment().unix()
     axios
       .post('/api/blogs/publish', {
         title,
@@ -47,7 +47,9 @@ const WorkSpace = () => {
         date: currDate
       })
       .then(res => {
-        console.log(res)
+        if(res.data.msg === 'success') {
+          
+        }
       })
       .catch(e => {
 

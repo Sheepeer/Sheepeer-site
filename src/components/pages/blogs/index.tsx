@@ -11,6 +11,8 @@ import Space from '../../basic/space'
 import fetchData from '../../../hooks/fetch'
 import useFetch from '../../../hooks/fetch'
 import SubNav from './sub-nav'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 type Blog = {
   id: string,
@@ -20,34 +22,6 @@ type Blog = {
   date: string,
   watcher_count: number
 }
-
-
-const list: Array<Blog> = [
-  {
-    id: 'qr34wrtrwr',
-    tag: 'Node',
-    title: '假装是一个标题1',
-    content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-    date: '2022-01-01',
-    watcher_count: 12
-  },
-  {
-    id: 'qr34wrtrww',
-    tag: '设计模式',
-    title: '假装是一个标题2',
-    content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-    date: '2022-01-01',
-    watcher_count: 12
-  },
-  {
-    id: 'qr34wrtr3r',
-    tag: 'Javascript',
-    title: '假装是一个标题3',
-    content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-    date: '2022-01-01',
-    watcher_count: 12
-  },
-]
 
 const ListItemLayout = ({ item }: { item: Blog }) => (
   <Link href={`/blog/${item.id}`}>
@@ -75,6 +49,23 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 
 const BlogsPage: NextPage = () => {
   // const res = useFetch('/api/blogs')
+  const [blogList, setBlogList] = useState<Array<Blog>>([])
+
+  const getPosts = () => {
+    axios.get('/api/blogs/all')
+      .then(res => {
+        if(res.data.result) {
+          setBlogList(res.data.result)
+        }
+      })
+      .catch(e => {
+        console.error(e)
+      })
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
 
   return (
     <Container pageTitle='Blogs'>
@@ -83,8 +74,8 @@ const BlogsPage: NextPage = () => {
           <SubNav />
           <List className={styles['list']}>
             {
-              list.map((item: any) => (
-                <ListItem key={item.id}>
+              blogList.map((item: any) => (
+                <ListItem key={item.title}>
                   <ListItemLayout item={item} />
                 </ListItem>
               ))
