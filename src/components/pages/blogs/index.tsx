@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 import moment from 'moment'
 import Skeleton from '@/components/basic/skeleton'
 
-type Blog = {
+export type Blog = {
   id: string,
   tag: string,
   title: string,

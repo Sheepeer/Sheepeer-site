@@ -1,7 +1,10 @@
 @import "/styles/common.scss";
 
 .skeleton {
-  .skeleton-item:not(:first-child){
+  .skeleton-item__list:not(:first-child){
     margin-top: 36px;
+  }
+  .skeleton-item__singlelist:not(:first-child){
+    margin-top: 24px;
   }
 }

@@ -17,7 +17,7 @@ const render = (type: Type, count: number) => {
     case 'list':
       for (let i = 0; i < count; i++) {
         resNode.push(
-          <div className={styles['skeleton-item']}>
+          <div className={styles['skeleton-item__list']}>
             <_Skeleton width={'70%'} height={36} />
             <_Skeleton height={24} />
             <_Skeleton height={24} />
@@ -26,11 +26,13 @@ const render = (type: Type, count: number) => {
       }
       break
     case 'single-list':
-      resNode.push(
-        <div className={styles['skeleton-item']}>
-          <_Skeleton height={36} />
-        </div>
-      )
+      for (let i = 0; i < count; i++) {
+        resNode.push(
+          <div className={styles['skeleton-item__singlelist']}>
+            <_Skeleton height={36} />
+          </div>
+        )
+      }
       break
   }
 
