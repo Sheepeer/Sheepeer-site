@@ -48,7 +48,7 @@ const WorkSpace = () => {
       })
       .then(res => {
         if(res.data.msg === 'success') {
-          
+          setOpen(false)
         }
       })
       .catch(e => {

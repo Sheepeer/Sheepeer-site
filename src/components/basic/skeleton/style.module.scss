@@ -1,0 +1,7 @@
+@import "/styles/common.scss";
+
+.skeleton {
+  .skeleton-item:not(:first-child){
+    margin-top: 36px;
+  }
+}
