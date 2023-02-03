@@ -20,6 +20,8 @@ type Content = {
 }
 
 const WorkSpace = () => {
+  const [tagList, setTagList] = useState<Array<string>>([])
+
   const [title, setTitle] = useState<string>()
   const [content, setContent] = useState<Content>({ text: '', html: '' })
   const [tag, setTag] = useState<string>('test')
@@ -47,7 +49,7 @@ const WorkSpace = () => {
         date: currDate
       })
       .then(res => {
-        if(res.data.msg === 'success') {
+        if (res.data.msg === 'success') {
           setOpen(false)
         }
       })
@@ -57,6 +59,20 @@ const WorkSpace = () => {
   }
   const savePostAsDraft = () => {
 
+  }
+
+  const getTags = () => {
+    axios.get('/api/tags')
+      .then(res => {
+        if (res.data.result) {
+          const _tagList: string[] = []
+          res.data.result.forEach((item: { id: number, name: string }) => {
+            _tagList.push(item.name)
+          });
+          setTagList(_tagList)
+        }
+      })
+      .catch(e => console.error(e))
   }
 
   return (
@@ -71,7 +87,10 @@ const WorkSpace = () => {
         <Space>
           <Button
             variant='text'
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setOpen(true)
+              getTags()
+            }}
           >发布</Button>
           <Button
             onClick={savePostAsDraft}
@@ -96,7 +115,7 @@ const WorkSpace = () => {
         </DialogTitle>
         <DialogContent className={styles['dialog-wrapper']}>
           <Tags
-            tagList={['tag1', 'tag2', 'tag3']}
+            tagList={tagList}
             onChoose={(value) => setTag(value)}
             choosed={tag}
             className={styles['tags-wrapper']}

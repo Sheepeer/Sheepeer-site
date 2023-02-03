@@ -6,9 +6,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const mysql = new Mysql()
     try {
       const result = await mysql.getPosts()
-      res.status(200).json(result)
+      if (!!result.result) {
+        res.status(200).json(result)
+      }
+      res.status(500).json({ msg: 'error' })
     } catch (e) {
-      res.status(500).json({ err: e })
+      res.status(500).json({ msg: e })
     }
   }
 }
