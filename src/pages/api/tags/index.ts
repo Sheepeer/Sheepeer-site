@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const tag = req.body
     try {
-      const result = await mysql.addTag(tag)
+      const result = await mysql.addTag(tag.name)
       if (result.msg === 'success') {
         res.status(200).json(result)
       } else {

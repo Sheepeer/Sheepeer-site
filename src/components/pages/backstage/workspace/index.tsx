@@ -51,10 +51,11 @@ const WorkSpace = () => {
       .then(res => {
         if (res.data.msg === 'success') {
           setOpen(false)
+          alert('已成功发布')
         }
       })
       .catch(e => {
-
+        alert('发布失败')
       })
   }
   const savePostAsDraft = () => {

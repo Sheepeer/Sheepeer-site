@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import styles from './style.module.scss'
 
 interface Props {
-  children: string
+  children: string 
   onClick?: (value: string) => void
   isChoosed?: boolean
 }
