@@ -39,7 +39,7 @@ const WorkSpace = () => {
   }
 
   const publishPost = () => {
-    const currDate = moment().unix()
+    const currDate = moment().valueOf()
     axios
       .post('/api/blogs/publish', {
         title,

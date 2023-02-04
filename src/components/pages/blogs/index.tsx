@@ -21,6 +21,7 @@ export type Blog = {
   tag: string,
   title: string,
   content: string,
+  content_html: string,
   date: string,
   watcher_count: number
 }
@@ -31,7 +32,7 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
       <div className={styles['text']}>
         <div className={styles['info']}>
           <Tag>{item.tag}</Tag>
-          <div className={styles['date']}>{moment((+item.date) * 1000).format('YYYY-MM-DD HH:mm')}</div>
+          <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
         </div>
         <div className={styles['title']}>{item.title}</div>
         <div className={styles['content']}>{item.content}</div>
