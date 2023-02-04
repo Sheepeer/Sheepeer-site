@@ -14,8 +14,9 @@ import SubNav from './sub-nav'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import moment from 'moment'
+import Skeleton from '@/components/basic/skeleton'
 
-type Blog = {
+export type Blog = {
   id: string,
   tag: string,
   title: string,
@@ -30,7 +31,7 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
       <div className={styles['text']}>
         <div className={styles['info']}>
           <Tag>{item.tag}</Tag>
-          <div className={styles['date']}>{moment((+item.date)*1000).format('YYYY-MM-DD HH:mm')}</div>
+          <div className={styles['date']}>{moment((+item.date) * 1000).format('YYYY-MM-DD HH:mm')}</div>
         </div>
         <div className={styles['title']}>{item.title}</div>
         <div className={styles['content']}>{item.content}</div>
@@ -55,7 +56,7 @@ const BlogsPage: NextPage = () => {
   const getPosts = () => {
     axios.get('/api/blogs/all')
       .then(res => {
-        if(res.data.result) {
+        if (res.data.result) {
           setBlogList(res.data.result)
         }
       })
@@ -73,15 +74,21 @@ const BlogsPage: NextPage = () => {
       <div className={styles['root']}>
         <div className={styles['main']}>
           <SubNav />
-          <List className={styles['list']}>
-            {
-              blogList.map((item: any) => (
-                <ListItem key={item.title}>
-                  <ListItemLayout item={item} />
-                </ListItem>
-              ))
-            }
-          </List>
+          {
+            blogList.length === 0
+              ? <div className={styles['skeleton']}>
+                <Skeleton type='list' count={3}/>
+              </div>
+              : <List className={styles['list']}>
+                {
+                  blogList.map((item: any) => (
+                    <ListItem key={item.title}>
+                      <ListItemLayout item={item} />
+                    </ListItem>
+                  ))
+                }
+              </List>
+          }
         </div>
         <div className={styles['sider']}>
           aaa

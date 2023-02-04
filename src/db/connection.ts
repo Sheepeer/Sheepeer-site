@@ -1,5 +1,5 @@
 import mysql from 'mysql2'
-import { ADD_POST, GET_POSTS_SQL, sqlTemplate } from './sqls'
+import { ADD_POST_SQL, ADD_TAG_SQL, GET_ALL_POSTS_SQL, GET_POST_SQL, GET_TAGS_SQL, sqlTemplate } from './sqls'
 
 export interface Post {
   title: string,
@@ -8,6 +8,7 @@ export interface Post {
   tag: string,
   date: number
 }
+
 
 class Mysql {
   private connection
@@ -22,15 +23,33 @@ class Mysql {
     })
   }
 
-  public getPosts = async () => {
-    return new Promise<{result: any}>((resolve, reject) => {
+  // posts
+  public getPosts = () => {
+    return new Promise<{ result: any }>((resolve, reject) => {
       this.connection.query(
-        GET_POSTS_SQL,
-        function (err, result, fields) {
-          if (!err) {
-            resolve({result: result})
-          }else {
-            reject({result: null})
+        GET_ALL_POSTS_SQL,
+        function (err, result) {
+          if (err) {
+            reject({ result: null })
+          } else {
+            resolve({ result: result })
+          }
+        }
+      )
+    })
+  }
+
+  public getPost = (id: number) => {
+    console.log('id -',id)
+    return new Promise<{ result: any }>((resolve, reject) => {
+      this.connection.query(
+        sqlTemplate(GET_POST_SQL, id),
+        function (err, result) {
+          // console.log(err,result)
+          if (err) {
+            reject({ result: null })
+          } else {
+            resolve({ result: result })
           }
         }
       )
@@ -38,13 +57,50 @@ class Mysql {
   }
 
   public addPost = (values: Post) => {
-    this.connection.execute(
-      // ADD_POST_SQL(values),
-      sqlTemplate(ADD_POST, values.title, values.content, values.content_html, values.tag, values.date),
-      function (err, result, fields) {
-        console.log(err, result, fields)
-      }
-    )
+    return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
+      this.connection.execute(
+        sqlTemplate(ADD_POST_SQL, values.title, values.content, values.content_html, values.tag, values.date),
+        function (err, result, fields) {
+          console.log(err,result)
+          if (err) {
+            reject({ msg: 'error' })
+          } else {
+            resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  // tags
+  public getTags = () => {
+    return new Promise<{ result: any }>((resolve, reject) => {
+      this.connection.query(
+        GET_TAGS_SQL,
+        function (err, result) {
+          if (err) {
+            reject({ result: null })
+          } else {
+            resolve({ result: result })
+          }
+        }
+      )
+    })
+  }
+
+  public addTag = (value: string) => {
+    return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
+      this.connection.execute(
+        sqlTemplate(ADD_TAG_SQL, value),
+        function (err, result) {
+          if (err) {
+            resolve({ msg: 'error' })
+          } else {
+            resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
   }
 }
 

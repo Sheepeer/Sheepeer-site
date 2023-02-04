@@ -8,8 +8,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const mysql = new Mysql()
     try {
-      mysql.addPost(post)
-      res.status(200).json({ msg: 'success' })
+      const result = await mysql.addPost(post)
+      if (result.msg === 'success') {
+        res.status(200).json({ msg: 'success' })
+      } else {
+        res.status(500).json({ msg: 'error' })
+      }
     } catch (e) {
       res.status(500).json({ msg: e })
     }

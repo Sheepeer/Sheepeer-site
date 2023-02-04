@@ -1,12 +1,19 @@
-export const GET_POSTS_SQL = `select * from posts`
+const GET_ALL_POSTS_SQL = `select * from posts`
 
-export const ADD_POST = `
-INSERT INTO posts ( title, content, content_html, tag, date )
+const GET_POST_SQL = `select * from posts where id = %id%`
+
+const ADD_POST_SQL = `
+  INSERT INTO posts ( title, content, content_html, tag, date )
   VALUES
   ( '%title%', '%content%', '%content_html%', '%tag%', %date% );
 `
-export const GET_TAGS_SQL = (tag?: string) => `
-  SELECT tag FROM posts ${tag && `WHERE tag = ${tag}`}
+//  const GET_TAGS_SQL = (tag?: string) => `
+//   SELECT tag FROM posts ${tag && `WHERE tag = ${tag}`}
+// `
+const GET_TAGS_SQL = `select * from tags`
+
+const ADD_TAG_SQL = `
+  INSERT INTO tags (name) values ('%name%')
 `
 
 const sqlTemplate = (sql: string, ...values: any[]) => {
@@ -23,10 +30,14 @@ const sqlTemplate = (sql: string, ...values: any[]) => {
       res.push(values[(i - 1) / 2])
     }
   }
-  console.log(res.join(''))
   return res.join('')
 }
 
 export {
+  GET_ALL_POSTS_SQL,
+  GET_POST_SQL,
+  ADD_POST_SQL,
+  GET_TAGS_SQL,
+  ADD_TAG_SQL,
   sqlTemplate
 }
