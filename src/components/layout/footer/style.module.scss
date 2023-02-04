@@ -2,23 +2,26 @@
 
 .footer-root {
   display: flex;
+  justify-content: space-between;
   padding: 42px 60px;
   background-color: $bg-dark-color;
 }
 
 .main {
-  width: 70%;
+  // width: 70%;
 }
 
 .contact {
-  width: 30%;
+  // width: 30%;
 }
 
 .board {
-  height: 80px;
-  padding: 24px;
-  background-color: $bg-color;
+  // padding: 24px;
+  // background-color: $bg-color;
   border-radius: 4px;
+  .wechat {
+    border-radius: 4px;
+  }
 }
 
 .social {
