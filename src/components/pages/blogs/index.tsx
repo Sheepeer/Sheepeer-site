@@ -15,6 +15,9 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import moment from 'moment'
 import Skeleton from '@/components/basic/skeleton'
+import useSWR from 'swr'
+import fetcher from '@/utils/fetcher'
+import { useRouter } from 'next/router'
 
 export type Blog = {
   id: string,
@@ -51,24 +54,13 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 )
 
 const BlogsPage: NextPage = () => {
-  // const res = useFetch('/api/blogs')
-  const [blogList, setBlogList] = useState<Array<Blog>>([])
+  const router = useRouter()
+  const { tag } = router.query
 
-  const getPosts = () => {
-    axios.get('/api/blogs/all')
-      .then(res => {
-        if (res.data.result) {
-          setBlogList(res.data.result)
-        }
-      })
-      .catch(e => {
-        console.error(e)
-      })
-  }
-
-  useEffect(() => {
-    getPosts()
-  }, [])
+  const { data, error } = useSWR(`/api/blogs/all`, url => fetcher(url, {
+    tag: tag
+  }))
+  const { result: blogList = [] } = data ?? {}
 
   return (
     <Container pageTitle='Blogs'>
@@ -76,9 +68,9 @@ const BlogsPage: NextPage = () => {
         <div className={styles['main']}>
           <SubNav />
           {
-            blogList.length === 0
+            !data && !error
               ? <div className={styles['skeleton']}>
-                <Skeleton type='list' count={3}/>
+                <Skeleton type='list' count={3} />
               </div>
               : <List className={styles['list']}>
                 {

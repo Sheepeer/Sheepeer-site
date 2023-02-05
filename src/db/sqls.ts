@@ -1,4 +1,7 @@
-const GET_ALL_POSTS_SQL = `select * from posts`
+const GET_ALL_POSTS_SQL = (tag?: string) => `
+  select * from posts 
+  ${tag && `where tag = ?`}
+`
 
 const GET_POST_SQL = `select * from posts where id = ?`
 

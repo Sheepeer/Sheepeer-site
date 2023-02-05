@@ -3,9 +3,11 @@ import Mysql from 'src/db/connection'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
+    const { tag = '' } = req.query
+
     const mysql = new Mysql()
     try {
-      const result = await mysql.getPosts()
+      const result = await mysql.getPosts(tag as string)
       if (!!result.result) {
         res.status(200).json(result)
       }

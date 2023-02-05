@@ -24,10 +24,11 @@ class Mysql {
   }
 
   // posts
-  public getPosts = () => {
+  public getPosts = (tag?: string) => {
     return new Promise<{ result: any }>((resolve, reject) => {
       this.connection.query(
-        GET_ALL_POSTS_SQL,
+        GET_ALL_POSTS_SQL(tag),
+        [tag],
         function (err, result) {
           if (err) {
             reject({ result: null })
