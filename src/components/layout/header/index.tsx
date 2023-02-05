@@ -8,7 +8,7 @@ import styles from './style.module.scss'
 import LanguageBtn from "./language-btn"
 
 type HeaderMenu = Array<{ label: string, path: string }>
-const menu: HeaderMenu = [
+export const MENU: HeaderMenu = [
   { label: 'BLOGS', path: '/blogs' },
   { label: 'GALLERY', path: '/gallery' },
 ]
@@ -19,7 +19,7 @@ const HeaderMenu = () => {
   return (
     <div className={styles['menu']}>
       {
-        menu.map(({ label, path }) => (
+        MENU.map(({ label, path }) => (
           <Link key={label} href={path}>
             <div className={classNames(
               styles['menu-item'],
