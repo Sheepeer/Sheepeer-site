@@ -8,7 +8,7 @@ const SubNav = () => {
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
 
-  const { data } = useSWR<{ result: Array<string> }>('/api/tags', fetcher)
+  const { data } = useSWR<{ result: Array<string> }>({ url: '/api/tags' }, fetcher)
   const { result = [] } = data ?? {}
 
   const clickHandler = (tag: string) => {

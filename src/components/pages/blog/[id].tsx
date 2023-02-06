@@ -1,31 +1,22 @@
 import Tag from "@/components/basic/tag"
 import Container from "@/components/layout/container"
-import { useEffect, useState } from "react"
-import useDidMount from "@/hooks/useDidMount"
-import axios from "axios"
+import { useEffect } from "react"
 import { useRouter } from "next/router"
-import { Blog } from "../blogs"
 import moment from "moment"
+import fetcher from "@/utils/fetcher"
+import useSWR from 'swr'
 import styles from './style.module.scss'
+import { Blog } from "../blogs"
 
 const BlogPage = () => {
   const route = useRouter()
   const id = route.query.id
 
-  const [blog, setBlog] = useState<Blog>()
-
-  const getBlog = ()=>{
-    axios.get(`/api/blogs/searchById?id=${id}`)
-    .then(res => {
-      setBlog(res.data.result[0])
-    })
-  }
-
-  useEffect(()=>{
-    if(id) {
-      getBlog()
-    }
-  }, [id])
+  const {data,error} = useSWR({
+    url: '/api/blogs/searchById',
+    query: {id}
+  }, fetcher)
+  const {result:blog = {}} = data || {}
 
   useEffect(() =>{
     if(blog?.content_html ){
