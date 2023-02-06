@@ -4,8 +4,8 @@ import Mysql from 'src/db/connection'
 import { authOptions } from '../auth/[...nextauth]'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getServerSession(req, res, authOptions)
-  if (session) {
+  // const session = await getServerSession(req, res, authOptions)
+  // if (session) {
     const post = req.body
 
     if (req.method === 'POST') {
@@ -21,9 +21,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(500).json({ msg: e })
       }
     }
-  } else {
-    res.status(401).json({msg: 'U\'r not login'})
-  }
+  // } else {
+  //   res.status(401).json({msg: 'U\'r not login'})
+  // }
 
 }
 
