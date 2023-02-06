@@ -7,14 +7,19 @@
     width: 80%;
     border-right: 1px solid $border-color;
 
-    .skeleton {
-      margin-top: 24px;
-      padding: 48px;
-    }
+    .main-content {
+      width: 100%;
+      margin-top: 40px;
 
-    .list {
-      margin-top: 24px;
-      padding: 24px;
+      .skeleton {
+        padding: 24px;
+      }
+
+      .empty {
+        padding: 36px;
+        text-align: center;
+        color: $text-color;
+      }
     }
   }
 

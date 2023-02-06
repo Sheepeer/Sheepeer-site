@@ -18,6 +18,7 @@ import Skeleton from '@/components/basic/skeleton'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 export type Blog = {
   id: string,
@@ -56,10 +57,12 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 const BlogsPage: NextPage = () => {
   const router = useRouter()
   const { tag } = router.query
+  console.log(tag)
 
-  const { data, error } = useSWR(`/api/blogs/all`, url => fetcher(url, {
-    tag: tag
-  }))
+  const { data, error, isLoading } = useSWR({
+    url: '/api/blogs/all',
+    query: { tag }
+  }, fetcher)
   const { result: blogList = [] } = data ?? {}
 
   return (
@@ -67,21 +70,31 @@ const BlogsPage: NextPage = () => {
       <div className={styles['root']}>
         <div className={styles['main']}>
           <SubNav />
-          {
-            !data && !error
-              ? <div className={styles['skeleton']}>
-                <Skeleton type='list' count={3} />
-              </div>
-              : <List className={styles['list']}>
-                {
-                  blogList.map((item: any) => (
-                    <ListItem key={item.title}>
-                      <ListItemLayout item={item} />
-                    </ListItem>
-                  ))
-                }
-              </List>
-          }
+          <div className={styles['main-content']}>
+            {
+              // !data && !error
+              isLoading
+                ? <div className={styles['skeleton']}>
+                  <Skeleton type='list' count={3} />
+                </div>
+                : (
+                  blogList.length === 0
+                    ? <div className={styles['empty']}>
+                      <Image src={'/empty.svg'} alt='empty' width={30} height={30} />
+                      <div>No data here</div>
+                    </div>
+                    : <List className={styles['list']}>
+                      {
+                        blogList.map((item: any) => (
+                          <ListItem key={item.title}>
+                            <ListItemLayout item={item} />
+                          </ListItem>
+                        ))
+                      }
+                    </List>
+                )
+            }
+          </div>
         </div>
         <div className={styles['sider']}>
           aaa

@@ -5,7 +5,6 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 
 const SubNav = () => {
-  // fetch tags
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
 
