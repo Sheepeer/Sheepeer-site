@@ -66,11 +66,7 @@ const WorkSpace = () => {
     axios.get('/api/tags')
       .then(res => {
         if (res.data.result) {
-          const _tagList: string[] = []
-          res.data.result.forEach((item: { id: number, name: string }) => {
-            _tagList.push(item.name)
-          });
-          setTagList(_tagList)
+          setTagList(res.data.result)
         }
       })
       .catch(e => console.error(e))

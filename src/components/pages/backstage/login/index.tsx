@@ -1,18 +1,35 @@
-import { Button, Input } from '@mui/material'
+import { Alert, Button, Input } from '@mui/material'
 import Image from "next/image"
 import styles from './style.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import { useSession, signIn } from 'next-auth/react'
 
 const Login = () => {
+  const {data:session} = useSession()
   const router = useRouter()
 
   const [pwd, setPwd] = useState('')
+  const [msg, setMsg] = useState('')
 
   const login = () => {
-    console.log(pwd)
-    router.replace('/backstage')
+    // axios.post('/api/auth/login', { pwd })
+    //   .then(res => {
+    //     if (res.data.result === 'success') {
+    //       router.replace('/backstage')
+    //     } else {
+    //       setMsg(res.data.result)
+    //     }
+    //   })
+    signIn()
   }
+
+  useEffect(() => {
+    if(session) {
+      router.replace('/backstage')
+    }
+  }, [session])
 
   return (
     <div className={styles['root']}>
@@ -28,6 +45,11 @@ const Login = () => {
           <div className={styles['tip']}>Only I can enter the space</div>
         </div>
         <div className={styles['form']}>
+          <Alert
+            severity='error'
+            className={styles['alert-msg']}
+            style={!!msg ? {} : { display: 'none' }}
+          >{msg}</Alert>
           <Input
             placeholder='请输入密码'
             type='password'

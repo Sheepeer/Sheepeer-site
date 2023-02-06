@@ -19,7 +19,6 @@ interface Props {
 }
 
 const Tags = ({ tagList, onChoose, choosed, showAdd = false, max = 15, className }: Props) => {
-
   const [addTagName, setAddTagName] = useState<string>('')
   const [_tagList, setTagList] = useState<string[]>([])
 

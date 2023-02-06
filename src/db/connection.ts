@@ -46,7 +46,6 @@ class Mysql {
         GET_POST_SQL,
         [id],
         function (err, result) {
-          // console.log(err,result)
           if (err) {
             reject({ result: null })
           } else {
@@ -64,7 +63,6 @@ class Mysql {
         ADD_POST_SQL,
         [title, content, content_html, tag, date],
         function (err, result, fields) {
-          console.log(err, result)
           if (err) {
             reject({ msg: 'error' })
           } else {

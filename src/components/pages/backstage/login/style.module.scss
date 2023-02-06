@@ -32,6 +32,14 @@
       flex-direction: column;
       justify-content: space-between;
       height: 100px;
+      position: relative;
+
+      .alert-msg {
+        position: absolute;
+        top: -60px;
+        left: 0;
+        width: 100%;
+      }
     }
 
     .btn {

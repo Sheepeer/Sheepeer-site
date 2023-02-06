@@ -4,16 +4,21 @@ import '@/styles/globals.scss'
 import { ThemeProvider } from '@mui/material'
 import theme from '@/theme/theme'
 import { useRouter } from 'next/router'
+import { SessionProvider } from 'next-auth/react'
+import { Session } from 'next-auth'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) {
+
   const router = useRouter()
   const pathname = router.pathname
-  
+
   return (
-    <ThemeProvider theme={theme}>
-      {pathname !== '/backstage/login' && <Header />}
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <SessionProvider session={session}>
+      <ThemeProvider theme={theme}>
+        {pathname !== '/backstage/login' && <Header />}
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </SessionProvider>
   )
 }
 

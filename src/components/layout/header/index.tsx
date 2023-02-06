@@ -56,13 +56,9 @@ const Header = () => {
           alt="Sheepeer's site" />
       </Link>
       <HeaderMenu />
-      <div>
-        <Space>
-          <LanguageBtn />
-          <Button variant="contained" >Contact</Button>
-        </Space>
-      </div>
-
+      <Space>
+        <LanguageBtn />
+      </Space>
     </div>
   )
 }
