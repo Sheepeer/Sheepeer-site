@@ -51,7 +51,7 @@ const Posts = () => {
           </div>
           : <List className={styles['list']}>
             {
-              blogList.map((item: any) => (
+              blogList.reverse().map((item: any) => (
                 <ListItem key={item.id} className={styles['list-item-wrapper']}>
                   <ListItemLayout item={item} />
                 </ListItem>

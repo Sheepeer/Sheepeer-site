@@ -3,16 +3,10 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import Tag from '@/components/basic/tag'
 import Container from '@/components/layout/container'
-import ForwardIcon from '@mui/icons-material/Forward';
 import styles from './style.module.scss'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import Space from '../../basic/space'
-import fetchData from '../../../hooks/fetch'
-import useFetch from '../../../hooks/fetch'
 import SubNav from './sub-nav'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
 import moment from 'moment'
 import Skeleton from '@/components/basic/skeleton'
 import useSWR from 'swr'
@@ -57,9 +51,8 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 const BlogsPage: NextPage = () => {
   const router = useRouter()
   const { tag } = router.query
-  console.log(tag)
 
-  const { data, error, isLoading } = useSWR({
+  const { data, error } = useSWR({
     url: '/api/blogs/all',
     query: { tag }
   }, fetcher)
@@ -72,13 +65,12 @@ const BlogsPage: NextPage = () => {
           <SubNav />
           <div className={styles['main-content']}>
             {
-              // !data && !error
-              isLoading
+              !data && !error
                 ? <div className={styles['skeleton']}>
                   <Skeleton type='list' count={3} />
                 </div>
                 : (
-                  blogList.length === 0
+                  blogList.reverse().length === 0
                     ? <div className={styles['empty']}>
                       <Image src={'/empty.svg'} alt='empty' width={30} height={30} />
                       <div>No data here</div>
