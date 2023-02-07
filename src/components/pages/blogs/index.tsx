@@ -70,7 +70,7 @@ const BlogsPage: NextPage = () => {
                   <Skeleton type='list' count={3} />
                 </div>
                 : (
-                  blogList.reverse().length === 0
+                  blogList.length === 0
                     ? <div className={styles['empty']}>
                       <Image src={'/empty.svg'} alt='empty' width={30} height={30} />
                       <div>No data here</div>
