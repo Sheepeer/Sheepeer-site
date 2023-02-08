@@ -5,11 +5,9 @@ import { authOptions } from "../auth/[...nextauth]";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
-  const mysql = new Mysql()
-
   if (req.method === 'GET') {
     try {
-      const result = await mysql.getTags()
+      const result = await Mysql.getTags()
       console.log(result)
       if (!!result.result) {
         const _result: string[] = []

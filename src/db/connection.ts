@@ -1,5 +1,6 @@
 import mysql from 'mysql2'
 import { ADD_POST_SQL, ADD_TAG_SQL, GET_ALL_POSTS_SQL, GET_POST_SQL, GET_TAGS_SQL } from './sqls'
+import connectMysql from './connect'
 
 export interface Post {
   title: string,
@@ -9,24 +10,14 @@ export interface Post {
   date: number
 }
 
+const connection = connectMysql()
 
 class Mysql {
-  private connection
-
-  constructor() {
-    this.connection = mysql.createConnection({
-      host: '43.143.198.224',
-      port: 3306,
-      user: 'root',
-      password: 'Sheepeer0719',
-      database: 'sheepeer'
-    })
-  }
 
   // posts
-  public getPosts = (tag?: string) => {
+  static getPosts = (tag?: string) => {
     return new Promise<{ result: any }>((resolve, reject) => {
-      this.connection.query(
+      connection.query(
         GET_ALL_POSTS_SQL(tag),
         [tag],
         function (err, result) {
@@ -40,9 +31,9 @@ class Mysql {
     })
   }
 
-  public getPost = (id: number) => {
+  static getPost = (id: number) => {
     return new Promise<{ result: any }>((resolve, reject) => {
-      this.connection.query(
+      connection.query(
         GET_POST_SQL,
         [id],
         function (err, result) {
@@ -56,10 +47,10 @@ class Mysql {
     })
   }
 
-  public addPost = (values: Post) => {
+  static addPost = (values: Post) => {
     const { title, content, content_html, tag, date } = values
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
-      this.connection.execute(
+      connection.execute(
         ADD_POST_SQL,
         [title, content, content_html, tag, date],
         function (err, result, fields) {
@@ -74,9 +65,9 @@ class Mysql {
   }
 
   // tags
-  public getTags = () => {
+  static getTags = () => {
     return new Promise<{ result: any }>((resolve, reject) => {
-      this.connection.query(
+      connection.query(
         GET_TAGS_SQL,
         function (err, result) {
           if (err) {
@@ -89,9 +80,9 @@ class Mysql {
     })
   }
 
-  public addTag = (value: string) => {
+  static addTag = (value: string) => {
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
-      this.connection.execute(
+      connection.execute(
         ADD_TAG_SQL,
         [value],
         function (err, result) {
