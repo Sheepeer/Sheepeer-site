@@ -37,8 +37,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       } catch (e) {
         res.status(500).json({ msg: 'error' })
       }
-    }else {
-      res.status(401).json({msg: 'U\'re not login'})
+    } else {
+      res.status(401).json({ msg: 'U\'re not login' })
     }
 
   }

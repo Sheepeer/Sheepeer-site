@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const result = await Mysql.getPosts(tag as string)
       if (result.errno === 0) {
         res.status(200).json(result)
-      }else{
+      } else {
         res.status(500).json(result)
       }
     } catch (e) {
