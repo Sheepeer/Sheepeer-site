@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useSession, signIn } from 'next-auth/react'
 
 const Login = () => {
-  const {data:session} = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
 
   const [pwd, setPwd] = useState('')
@@ -26,7 +26,7 @@ const Login = () => {
   }
 
   useEffect(() => {
-    if(session) {
+    if (session) {
       router.replace('/backstage')
     }
   }, [session])
