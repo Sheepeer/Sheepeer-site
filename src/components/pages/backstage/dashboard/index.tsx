@@ -21,7 +21,7 @@ const DashBoard = () => {
           <AnalysisCard title='访问量' account={9} />
         </Grid2>
         <Grid2 xs={4}>
-          <AnalysisCard title='文章总数' account={result.posts_sum} />
+          <AnalysisCard title='文章总数' account={result?.posts_sum ?? 0} />
         </Grid2>
 
         <Grid2 xs={12}>
