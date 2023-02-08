@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 import { ReactNode } from 'react'
 import classNames from 'classnames'
 
-type Type = 'list' | 'single-list'
+type Type = 'list' | 'single-list' | 'analysis'
 
 interface Props {
   type: Type
@@ -34,6 +34,13 @@ const render = (type: Type, count: number) => {
         )
       }
       break
+    case 'analysis':
+      resNode.push(
+        <div className={styles['skeleton-item__analysis']}>
+          <_Skeleton width={60} height={24} />
+          <_Skeleton width={80} height={40} />
+        </div>
+      )
   }
 
   return resNode
