@@ -127,13 +127,14 @@ const WorkSpace = () => {
         </div>
         <Space>
           <Button
-            variant='text'
+            variant='contained'
             onClick={() => {
               setOpen(true)
               getTags()
             }}
           >发布</Button>
           <Button
+            variant='outlined'
             onClick={savePostAsDraft}
           >存草稿</Button>
         </Space>

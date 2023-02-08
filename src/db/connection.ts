@@ -54,7 +54,7 @@ class Mysql {
       connection.execute(
         ADD_POST_SQL,
         [title, content, content_html, tag, date],
-        function (err, result, fields) {
+        function (err, result) {
           if (err) {
             reject({ msg: 'error' })
           } else {
