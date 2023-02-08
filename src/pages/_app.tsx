@@ -12,6 +12,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ s
   const router = useRouter()
   const pathname = router.pathname
 
+  console.log('session in SessionProvider:',session)
+
   return (
     <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
