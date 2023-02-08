@@ -1,4 +1,4 @@
-import BlogPage from "@/components/pages/blog/[id]"
+import BlogPage from "@/components/pages/blog"
 
 const Blog = () => {
   return (

@@ -28,7 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (session) {
       const tag = req.body
       try {
-        const result = await mysql.addTag(tag.name)
+        const result = await Mysql.addTag(tag.name)
         if (result.msg === 'success') {
           res.status(200).json(result)
         } else {

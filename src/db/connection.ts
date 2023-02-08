@@ -1,5 +1,5 @@
 import mysql from 'mysql2'
-import { ADD_POST_SQL, ADD_TAG_SQL, GET_ALL_POSTS_SQL, GET_POST_SQL, GET_TAGS_SQL } from './sqls'
+import { ADD_POST_SQL, ADD_TAG_SQL, GET_ALL_POSTS_SQL, GET_POST_SQL, GET_TAGS_SQL, MOD_POST_SQL } from './sqls'
 import connectMysql from './connect'
 
 export interface Post {
@@ -7,7 +7,8 @@ export interface Post {
   content: string,
   content_html: string
   tag: string,
-  date: number
+  date: number,
+  id?: number
 }
 
 const connection = connectMysql()
@@ -54,6 +55,23 @@ class Mysql {
         ADD_POST_SQL,
         [title, content, content_html, tag, date],
         function (err, result, fields) {
+          if (err) {
+            reject({ msg: 'error' })
+          } else {
+            resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  static modPost = (values: Post) => {
+    const { id, title, content, content_html, tag, date } = values
+    return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
+      connection.execute(
+        MOD_POST_SQL,
+        [ title, content, content_html, tag, date,id],
+        function (err, result) {
           if (err) {
             reject({ msg: 'error' })
           } else {

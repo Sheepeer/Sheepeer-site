@@ -52,9 +52,11 @@ const Posts = () => {
           : <List className={styles['list']}>
             {
               blogList.map((item: any) => (
-                <ListItem key={item.id} className={styles['list-item-wrapper']}>
-                  <ListItemLayout item={item} />
-                </ListItem>
+                <Link href={`/backstage/workspace?id=${item.id}`} key={item.id}>
+                  <ListItem className={styles['list-item-wrapper']}>
+                    <ListItemLayout item={item} />
+                  </ListItem>
+                </Link>
               ))
             }
           </List>

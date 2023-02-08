@@ -11,6 +11,11 @@ const ADD_POST_SQL = `
   ( ?, ?, ?, ?, ? );
 `
 
+const MOD_POST_SQL = `
+  UPDATE posts SET title=?, content=?, content_html=?, tag=?, date=?
+  WHERE id=?
+`
+
 const GET_TAGS_SQL = `select * from tags`
 
 const ADD_TAG_SQL = `
@@ -21,6 +26,7 @@ export {
   GET_ALL_POSTS_SQL,
   GET_POST_SQL,
   ADD_POST_SQL,
+  MOD_POST_SQL,
   GET_TAGS_SQL,
   ADD_TAG_SQL,
 }

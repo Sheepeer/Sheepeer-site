@@ -9,17 +9,17 @@ import styles from './style.module.scss'
 import { Blog } from "../blogs"
 
 const BlogPage = () => {
-  const route = useRouter()
-  const id = route.query.id
+  const router = useRouter()
+  const id = router.query.id
 
-  const {data,error} = useSWR({
+  const { data, error } = useSWR({
     url: '/api/blogs/searchById',
-    query: {id}
+    query: { id }
   }, fetcher)
-  const {result:blog = {}} = data || {}
+  const { result: blog = {} } = data ?? {}
 
-  useEffect(() =>{
-    if(blog?.content_html ){
+  useEffect(() => {
+    if (blog?.content_html) {
       document.getElementById('content')!.innerHTML = blog.content_html
     }
   }, [blog])
