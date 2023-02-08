@@ -1,3 +1,4 @@
+
 const GET_ALL_POSTS_SQL = (tag?: string) => `
   select * from posts 
   ${tag && `where tag = ?`}
