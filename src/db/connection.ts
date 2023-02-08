@@ -1,5 +1,12 @@
-import mysql from 'mysql2'
-import { ADD_POST_SQL, ADD_TAG_SQL, GET_ALL_POSTS_SQL, GET_POST_SQL, GET_TAGS_SQL, MOD_POST_SQL } from './sqls'
+import {
+  ADD_POST_SQL,
+  ADD_TAG_SQL,
+  GET_ALL_POSTS_SQL,
+  GET_POST_SQL,
+  GET_TAGS_SQL,
+  MOD_POST_SQL,
+  GET_POSTS_SUM_SQL
+} from './sqls'
 import connectMysql from './connect'
 
 export interface Post {
@@ -112,6 +119,22 @@ class Mysql {
             resolve({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  static getPostsSum = () => {
+    return new Promise<{ result: any }>((resolve, reject) => {
+      connection.query(
+        GET_POSTS_SUM_SQL,
+        function (err, result) {
+          console.log(err, result)
+          if (err) {
+            reject({ result: null })
+          } else {
+            resolve({ result: result })
           }
         }
       )
