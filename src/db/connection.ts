@@ -17,18 +17,22 @@ class Mysql {
 
   // posts
   static getPosts = (tag?: string) => {
-    return new Promise<{ result: any }>((resolve, reject) => {
-      connection.query(
-        GET_ALL_POSTS_SQL(tag),
-        [tag],
-        function (err, result) {
-          if (err) {
-            reject({ result: null })
-          } else {
-            resolve({ result: result })
+    return new Promise<{ result: any, errno: 0 | 1 }>((resolve, reject) => {
+      try {
+        connection.query(
+          GET_ALL_POSTS_SQL(tag),
+          [tag],
+          function (err, result) {
+            if (err) {
+              reject({ result: err, errno: 1 })
+            } else {
+              resolve({ result: result, errno: 0 })
+            }
           }
-        }
-      )
+        )
+      } catch (e) {
+        reject({ result: e, errno: 1 })
+      }
     })
   }
 
@@ -70,7 +74,7 @@ class Mysql {
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
       connection.execute(
         MOD_POST_SQL,
-        [ title, content, content_html, tag, date,id],
+        [title, content, content_html, tag, date, id],
         function (err, result) {
           if (err) {
             reject({ msg: 'error' })
