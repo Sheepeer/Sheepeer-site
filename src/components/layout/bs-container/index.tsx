@@ -38,8 +38,8 @@ interface Props {
 }
 
 const BsContainer = ({ activeLabel, children }: Props) => {
-  const userInfo = localStorage.getItem('USER_INFO')
-  console.log('userInfo in ls:', userInfo)
+  // const userInfo = window.localStorage.getItem('USER_INFO')
+  // console.log('userInfo in ls:', userInfo)
 
   const router = useRouter()
   const pathname = router.pathname.split('/')[2]

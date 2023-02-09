@@ -8,7 +8,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
       const result = await Mysql.getTags()
-      console.log(result)
       if (!!result.result) {
         const _result: string[] = []
         result.result.forEach((item: { name: string, id: number }) => {
