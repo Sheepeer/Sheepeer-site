@@ -31,6 +31,7 @@ const WorkSpace = () => {
     query: { id }
   }, fetcher)
   const { result: blog = {} } = data ?? {}
+  const blogStr = JSON.stringify(blog)
 
   const [tagList, setTagList] = useState<Array<string>>([])
 
@@ -47,7 +48,7 @@ const WorkSpace = () => {
       html: blog.content_html
     })
     setTag(blog.tag)
-  }, [blog])
+  }, [blogStr])
 
   /**
    * 这里要加上防抖

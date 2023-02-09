@@ -130,7 +130,6 @@ class Mysql {
       connection.query(
         GET_POSTS_SUM_SQL,
         function (err, result) {
-          console.log(err, result)
           if (err) {
             reject({ result: null })
           } else {

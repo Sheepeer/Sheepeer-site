@@ -17,6 +17,7 @@ const Login = () => {
   useEffect(() => {
     console.log('session after login:', session)
     if (session) {
+      localStorage.setItem('USER_INFO', JSON.stringify(session))
       router.replace('/backstage')
     }
   }, [session])

@@ -28,7 +28,7 @@ const render = (type: Type, count: number) => {
     case 'single-list':
       for (let i = 0; i < count; i++) {
         resNode.push(
-          <div className={styles['skeleton-item__singlelist']}>
+          <div className={styles['skeleton-item__singlelist']} key={i}>
             <_Skeleton height={36} />
           </div>
         )
