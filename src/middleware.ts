@@ -4,7 +4,7 @@ import { NextApiRequest } from 'next'
 
 export async function middleware(req: NextRequest) {
   console.log('enter middleware')
-  // //获取token
+  //获取token
   // const session = await getToken({
   //   req,
   //   secret: process.env.SECRET,

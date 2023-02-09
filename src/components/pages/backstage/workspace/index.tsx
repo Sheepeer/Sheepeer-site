@@ -37,17 +37,19 @@ const WorkSpace = () => {
 
   const [title, setTitle] = useState<string>()
   const [content, setContent] = useState<Content>({ text: '', html: '' })
-  const [tag, setTag] = useState<string>('test')
+  const [tag, setTag] = useState<string>('')
 
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    setTitle(blog.title)
-    setContent({
-      text: blog.content,
-      html: blog.content_html
-    })
-    setTag(blog.tag)
+    if (blog && JSON.stringify(blog) !== '{}') {
+      setTitle(blog.title)
+      setContent({
+        text: blog.content,
+        html: blog.content_html
+      })
+      setTag(blog.tag)
+    }
   }, [blogStr])
 
   /**
@@ -60,7 +62,19 @@ const WorkSpace = () => {
     setContent({ html, text })
   }
 
-  const publishPost = () => {
+  const publishPost = (isDraft: 0 | 1) => {
+    if (!title) {
+      alert('请填写标题')
+      return
+    }
+    if (!content) {
+      alert('请填写内容')
+      return
+    }
+    if (!tag) {
+      alert('请选择标签')
+      return
+    }
     const currDate = moment().valueOf()
     if (id) {
       // modify post
@@ -70,16 +84,17 @@ const WorkSpace = () => {
         content: content.text,
         content_html: content.html,
         tag,
-        date: currDate
+        date: currDate,
+        isDraft
       })
         .then(res => {
           if (res.data.msg === 'success') {
             setOpen(false)
-            alert('已成功发布')
+            alert(isDraft ? '已存入草稿' : '已成功发布')
           }
         })
         .catch(e => {
-          alert('发布失败')
+          alert(isDraft ? '草稿保存失败' : '发布失败')
         })
     } else {
       // add post
@@ -89,23 +104,22 @@ const WorkSpace = () => {
           content: content.text,
           content_html: content.html,
           tag,
-          date: currDate
+          date: currDate,
+          isDraft
         })
         .then(res => {
           if (res.data.msg === 'success') {
             setOpen(false)
-            alert('已成功发布')
+            alert(isDraft ? '已存入草稿' : '已成功发布')
           }
         })
         .catch(e => {
-          alert('发布失败')
+          alert(isDraft ? '草稿保存失败' : '发布失败')
         })
     }
 
   }
-  const savePostAsDraft = () => {
 
-  }
 
   const getTags = () => {
     axios.get('/api/tags')
@@ -126,19 +140,13 @@ const WorkSpace = () => {
             onChange={titleChangeHandler}
             placeholder='在此输入文章标题' />
         </div>
-        <Space>
           <Button
             variant='contained'
             onClick={() => {
               setOpen(true)
               getTags()
             }}
-          >发布</Button>
-          <Button
-            variant='outlined'
-            onClick={savePostAsDraft}
-          >存草稿</Button>
-        </Space>
+          >完成</Button>
       </div>
       <div className={styles['editor-wrapper']}>
         <MdEditor
@@ -165,7 +173,8 @@ const WorkSpace = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button variant='contained' onClick={publishPost}>发布</Button>
+          <Button variant='contained' onClick={() => publishPost(0)}>发布</Button>
+          <Button variant='contained' onClick={() => publishPost(1)}>存草稿</Button>
           <Button variant='outlined' onClick={() => setOpen(false)}>取消</Button>
         </DialogActions>
       </Dialog>

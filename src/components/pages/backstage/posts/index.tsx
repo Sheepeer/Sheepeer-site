@@ -7,6 +7,8 @@ import moment from 'moment'
 import Skeleton from '@/components/basic/skeleton'
 import { List, ListItem } from '@mui/material'
 import Tag from '@/components/basic/tag'
+import useSWR from 'swr'
+import fetcher from '@/utils/fetcher'
 
 const ListItemLayout = ({ item }: { item: Blog }) => (
   <Link href={`/backstage/workspace?id=${item.id}`}>
@@ -24,28 +26,15 @@ const ListItemLayout = ({ item }: { item: Blog }) => (
 
 const Posts = () => {
 
-  const [blogList, setBlogList] = useState<Array<Blog>>([])
-
-  const getPosts = () => {
-    axios.get('/api/blogs/all')
-      .then(res => {
-        if (res.data.result) {
-          setBlogList(res.data.result)
-        }
-      })
-      .catch(e => {
-        console.error(e)
-      })
-  }
-
-  useEffect(() => {
-    getPosts()
-  }, [])
+  const { data, error } = useSWR({
+    url: '/api/blogs/all',
+  }, fetcher)
+  const { result: blogList = [] } = data ?? {}
 
   return (
     <div className={styles['root']}>
       {
-        blogList.length === 0
+        !data && !error
           ? <div>
             <Skeleton type='single-list' count={3} />
           </div>

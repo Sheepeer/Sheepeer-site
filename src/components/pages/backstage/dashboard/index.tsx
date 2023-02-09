@@ -6,10 +6,10 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 
 const DashBoard = () => {
-  const { data = {}, error } = useSWR({
+  const { data, error } = useSWR({
     url: '/api/analysis'
   }, fetcher)
-  const { result } = data
+  const { result } = data ?? {}
 
   return (
     <div className={styles['root']}>

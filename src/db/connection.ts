@@ -8,6 +8,7 @@ import {
   GET_POSTS_SUM_SQL
 } from './sqls'
 import connectMysql from './connect'
+import { GET_ALL_DRAFTS_SQL } from './sqls/post'
 
 export interface Post {
   title: string,
@@ -15,6 +16,7 @@ export interface Post {
   content_html: string
   tag: string,
   date: number,
+  isDraft: 0 | 1
   id?: number
 }
 
@@ -29,6 +31,25 @@ class Mysql {
         connection.query(
           GET_ALL_POSTS_SQL(tag),
           [tag],
+          function (err, result) {
+            if (err) {
+              reject({ result: err, errno: 1 })
+            } else {
+              resolve({ result: result, errno: 0 })
+            }
+          }
+        )
+      } catch (e) {
+        reject({ result: e, errno: 1 })
+      }
+    })
+  }
+
+  static getDrafts = () => {
+    return new Promise<{ result: any, errno: 0 | 1 }>((resolve, reject) => {
+      try {
+        connection.query(
+          GET_ALL_DRAFTS_SQL,
           function (err, result) {
             if (err) {
               reject({ result: err, errno: 1 })
@@ -60,11 +81,11 @@ class Mysql {
   }
 
   static addPost = (values: Post) => {
-    const { title, content, content_html, tag, date } = values
+    const { title, content, content_html, tag, date, isDraft } = values
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
       connection.execute(
         ADD_POST_SQL,
-        [title, content, content_html, tag, date],
+        [title, content, content_html, tag, date, isDraft],
         function (err, result) {
           if (err) {
             reject({ msg: 'error' })
@@ -77,11 +98,11 @@ class Mysql {
   }
 
   static modPost = (values: Post) => {
-    const { id, title, content, content_html, tag, date } = values
+    const { id, title, content, content_html, tag, date, isDraft } = values
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
       connection.execute(
         MOD_POST_SQL,
-        [title, content, content_html, tag, date, id],
+        [title, content, content_html, tag, date, isDraft, id],
         function (err, result) {
           if (err) {
             reject({ msg: 'error' })
