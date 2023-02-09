@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 import { ReactNode } from 'react'
 import classNames from 'classnames'
 
-type Type = 'list' | 'single-list' | 'analysis'
+type Type = 'list' | 'single-list' | 'analysis' | 'post'
 
 interface Props {
   type: Type
@@ -41,6 +41,23 @@ const render = (type: Type, count: number) => {
           <_Skeleton width={80} height={40} />
         </div>
       )
+      break
+    case 'post':
+      resNode.push(
+        < div className={styles['skeleton-item__post']} >
+          <_Skeleton width={'70%'} height={40} />
+          <_Skeleton width={'30%'} height={20} />
+          <_Skeleton height={24} style={{ marginTop: '36px' }} />
+          <_Skeleton height={24} />
+          <_Skeleton height={24} />
+          <_Skeleton width={'20%'} height={24} />
+          <_Skeleton height={24} style={{ marginTop: '36px' }} />
+          <_Skeleton height={24} />
+          <_Skeleton height={24} />
+          <_Skeleton width={'20%'} height={24} />
+        </div >
+      )
+      break
   }
 
   return resNode

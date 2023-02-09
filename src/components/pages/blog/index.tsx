@@ -6,7 +6,7 @@ import moment from "moment"
 import fetcher from "@/utils/fetcher"
 import useSWR from 'swr'
 import styles from './style.module.scss'
-import { Blog } from "../blogs"
+import Skeleton from "@/components/basic/skeleton"
 
 const BlogPage = () => {
   const router = useRouter()
@@ -27,15 +27,21 @@ const BlogPage = () => {
   return (
     <Container pageTitle={"a blog"}>
       <div className={styles['root']}>
-        <div className={styles['title']}>{blog?.title}</div>
-        <div className={styles['info']}>
-          <Tag>{blog?.tag ?? '-'}</Tag>
-          <div className={styles['time']}>{blog?.date && moment(+blog.date).format('YYYY-MM-DD HH:mm')}</div>
-        </div>
+        {
+          !data && !error
+            ? <Skeleton type="post" />
+            : <>
+              <div className={styles['title']}>{blog?.title}</div>
+              <div className={styles['info']}>
+                <Tag>{blog?.tag ?? '-'}</Tag>
+                <div className={styles['time']}>{blog?.date && moment(+blog.date).format('YYYY-MM-DD HH:mm')}</div>
+              </div>
 
-        <div className={styles['content']} id='content'>
-          {blog?.content_html}
-        </div>
+              <div className={styles['content']} id='content'>
+                {blog?.content_html}
+              </div>
+            </>
+        }
       </div>
     </Container>
   )
