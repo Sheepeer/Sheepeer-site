@@ -9,6 +9,7 @@ import { List, ListItem } from '@mui/material'
 import Tag from '@/components/basic/tag'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
+import Space from '@/components/basic/space'
 
 const ListItemLayout = ({ item, deletePost }: { item: Blog, deletePost: (id: number) => void }) => (
   <div className={styles['list-item']}>
@@ -19,7 +20,7 @@ const ListItemLayout = ({ item, deletePost }: { item: Blog, deletePost: (id: num
       </div>
       <div className={styles['title']}>{item.title}</div>
     </div>
-    <div className={styles['actions']}>
+    <Space className={styles['actions']}>
       <div
         className={styles['edit']}
         onClick={() => window.location.href = `/backstage/workspace?id=${item.id}`}
@@ -28,7 +29,7 @@ const ListItemLayout = ({ item, deletePost }: { item: Blog, deletePost: (id: num
         className={styles['delete']}
         onClick={() => deletePost(parseInt(item.id))}
       >Delete</div>
-    </div>
+    </Space>
   </div>
 )
 
