@@ -1,7 +1,5 @@
 @import "/styles/common.scss";
 
-.root {}
-
 .list {
   .list-item-wrapper:not(:last-child) {
     border-bottom: 1px solid $border-color;
