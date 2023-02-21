@@ -93,7 +93,7 @@ const BlogsPage: NextPage = () => {
                 )
             }
             <Pagination
-              count={10}
+              count={blogList.length}
               variant='outlined'
               onChange={changePage}
               className={styles['pagination']}

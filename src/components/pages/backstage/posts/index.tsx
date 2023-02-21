@@ -10,26 +10,47 @@ import Tag from '@/components/basic/tag'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 
-const ListItemLayout = ({ item }: { item: Blog }) => (
-  <Link href={`/backstage/workspace?id=${item.id}`}>
-    <div className={styles['list-item']}>
-      <div className={styles['text']}>
-        <div className={styles['info']}>
-          <Tag>{item.tag}</Tag>
-          <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
-        </div>
-        <div className={styles['title']}>{item.title}</div>
+const ListItemLayout = ({ item, deletePost }: { item: Blog, deletePost: (id: number) => void }) => (
+  <div className={styles['list-item']}>
+    <div className={styles['text']}>
+      <div className={styles['info']}>
+        <Tag>{item.tag}</Tag>
+        <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
       </div>
+      <div className={styles['title']}>{item.title}</div>
     </div>
-  </Link>
+    <div className={styles['actions']}>
+      <div
+        className={styles['edit']}
+        onClick={() => window.location.href = `/backstage/workspace?id=${item.id}`}
+      >Edit</div>
+      <div
+        className={styles['delete']}
+        onClick={() => deletePost(parseInt(item.id))}
+      >Delete</div>
+    </div>
+  </div>
 )
 
 const Posts = () => {
 
-  const { data, error } = useSWR({
+  const { data, error, mutate } = useSWR({
     url: '/api/blogs/all',
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
+
+  const deletePost = (id: number) => {
+    axios.delete(`/api/blogs/delete?id=${id}`)
+      .then(res => {
+        if (res.data && res.data.msg === 'success') {
+          alert('删除成功')
+          mutate()
+        } else {
+          alert('删除失败')
+        }
+      })
+      .catch(e => alert('删除异常'))
+  }
 
   return (
     <div className={styles['root']}>
@@ -43,7 +64,7 @@ const Posts = () => {
               blogList.map((item: any) => (
                 <Link href={`/backstage/workspace?id=${item.id}`} key={item.id}>
                   <ListItem className={styles['list-item-wrapper']}>
-                    <ListItemLayout item={item} />
+                    <ListItemLayout item={item} deletePost={deletePost} />
                   </ListItem>
                 </Link>
               ))
