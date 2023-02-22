@@ -50,7 +50,7 @@ const Header = () => {
       <Link href={'/'}>
         <Image
           className={styles['logo']}
-          src={'/logo-1.png'}
+          src={'/logo-final.jpg'}
           width={40}
           height={40}
           alt="Sheepeer's site" />

@@ -1,10 +1,33 @@
+// common colors
+$blue:#588c7e;
+$blue-lighter:#789c8a;
+$blue-lighter-er: #babca2;
+
+$green: #acbc8a;
+$green-lighter: #bcc595;
+$green-lighter-er:#ddd8ab;
+
+$yellow: #ecd189;
+$yellow-lighter: #f0d794;
+$yellow-lighter-er:#f7e4aa;
+
+$orange: #e99469;
+$orange-lighter: #eda376;
+$orange-lighter-er:#f6c193;
+
+$red: #bc5952;
+$red-lighter: #c97062;
+$red-lighter-er:#e4a082;
+
+// other
 $text-color: #2e2e2c;
-$text-hover-color: #c77500;
+$text-hover-color: $blue;
 $sub-text-color: #888885;
 
-$bg-color: #e7e4d0;
-$bg-hover-color: #fffeed66;
-$bg-dark-color: #b5b29f;
+$bg-color: #ffffff;
+$bg-hover-color: $blue-lighter-er;
+$bg-dark-color: $blue-lighter-er;
 
-$border-color: #c4c1b8;
+$border-color: #c8c8c8;
+
 

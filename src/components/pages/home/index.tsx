@@ -1,6 +1,7 @@
 import { Button } from '@mui/material'
 import type { NextPage } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { aloha } from '@/utils/time'
 import Container from '@/components/layout/container'
 import styles from './style.module.scss'
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
             <Link href={'/gallery'}><Button variant="outlined">Gallery</Button></Link>
           </div>
         </div>
+        <div className={styles['img-wrapper']}/>
       </div>
     </Container>
   )

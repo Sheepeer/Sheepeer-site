@@ -54,19 +54,19 @@
       }
 
       .edit {
-        background-color: rgb(133, 236, 110);
+        background-color: $green;
 
         &:hover {
-          background-color: rgb(148, 235, 129);
+          background-color: $green-lighter;
         }
       }
 
       .delete {
         margin-left: 6px;
-        background-color: rgb(236, 120, 110);
+        background-color: $red;
 
         &:hover {
-          background-color: rgb(238, 141, 132);
+          background-color: $red-lighter;
         }
       }
     }
