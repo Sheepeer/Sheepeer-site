@@ -1,4 +1,4 @@
-import { List, ListItem } from '@mui/material'
+import { List, ListItem, Pagination } from '@mui/material'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Tag from '@/components/basic/tag'
@@ -13,6 +13,8 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+
+const PAGE_SIZE = 3
 
 export type Blog = {
   id: string,
@@ -58,6 +60,10 @@ const BlogsPage: NextPage = () => {
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
 
+  const changePage = (e: any, page: number) => {
+    console.log(page)
+  }
+
   return (
     <Container pageTitle='Blogs'>
       <div className={styles['root']}>
@@ -86,6 +92,12 @@ const BlogsPage: NextPage = () => {
                     </List>
                 )
             }
+            <Pagination
+              count={blogList.length}
+              variant='outlined'
+              onChange={changePage}
+              className={styles['pagination']}
+            />
           </div>
         </div>
         <div className={styles['sider']}>

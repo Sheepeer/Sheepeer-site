@@ -8,7 +8,7 @@ import {
   GET_POSTS_SUM_SQL
 } from './sqls'
 import connectMysql from './connect'
-import { GET_ALL_DRAFTS_SQL } from './sqls/post'
+import { DEL_POST_SQL, GET_ALL_DRAFTS_SQL } from './sqls/post'
 
 export interface Post {
   title: string,
@@ -103,6 +103,22 @@ class Mysql {
       connection.execute(
         MOD_POST_SQL,
         [title, content, content_html, tag, date, isDraft, id],
+        function (err, result) {
+          if (err) {
+            reject({ msg: 'error' })
+          } else {
+            resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  static delPost = (id: number) => {
+    return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
+      connection.execute(
+        DEL_POST_SQL,
+        [id],
         function (err, result) {
           if (err) {
             reject({ msg: 'error' })

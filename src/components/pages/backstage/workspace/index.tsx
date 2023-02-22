@@ -131,6 +131,17 @@ const WorkSpace = () => {
       .catch(e => console.error(e))
   }
 
+  const onImageUpload = (file: any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = data => {
+        console.log(data)
+        resolve(data.target?.result)
+      }
+      reader.readAsDataURL(file)
+    })
+  }
+
   return (
     <div className={styles['root']}>
       <div className={styles['header-wrapper']}>
@@ -140,21 +151,22 @@ const WorkSpace = () => {
             onChange={titleChangeHandler}
             placeholder='在此输入文章标题' />
         </div>
-          <Button
-            variant='contained'
-            onClick={() => {
-              setOpen(true)
-              getTags()
-            }}
-          >完成</Button>
+        <Button
+          variant='contained'
+          onClick={() => {
+            setOpen(true)
+            getTags()
+          }}
+        >完成</Button>
       </div>
       <div className={styles['editor-wrapper']}>
         <MdEditor
           className={styles['editor']}
-          style={{}}
           value={content?.text}
           renderHTML={text => mdParser.render(text)}
-          onChange={contentChangeHandler} />
+          onChange={contentChangeHandler}
+          onImageUpload={onImageUpload}
+        />
       </div>
 
       <Dialog
