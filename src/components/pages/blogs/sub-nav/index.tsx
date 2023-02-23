@@ -3,12 +3,13 @@ import styles from './style.module.scss'
 import classNames from 'classnames'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
+import { TagProps } from '@/components/basic/tag'
 
 const SubNav = () => {
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
 
-  const { data } = useSWR<{ result: Array<string> }>({ url: '/api/tags' }, fetcher)
+  const { data } = useSWR<{ result: Array<TagProps> }>({ url: '/api/tags' }, fetcher)
   const { result = [] } = data ?? {}
 
   const clickHandler = (tag: string) => {
@@ -20,13 +21,13 @@ const SubNav = () => {
   return (
     <div className={styles['sub-nav']}>
       {
-        result.map(item => (
+        result.map(({ id, name, color }) => (
           <div
-            className={classNames(styles['item'], { [styles['item-active']]: item === currTag })}
-            onClick={() => clickHandler(item)}
-            key={item}
+            className={classNames(styles['item'], { [styles['item-active']]: name === currTag })}
+            onClick={() => clickHandler(name)}
+            key={id}
           >
-            {item}
+            {name}
           </div>
         ))
       }

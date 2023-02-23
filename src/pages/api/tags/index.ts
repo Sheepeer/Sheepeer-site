@@ -9,11 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const result = await Mysql.getTags()
       if (!!result.result) {
-        const _result: string[] = []
-        result.result.forEach((item: { name: string, id: number }) => {
-          _result.push(item.name)
-        });
-        res.status(200).json({ result: _result })
+        res.status(200).json({ result: result.result })
       } else {
         res.status(500).json({ msg: 'error' })
       }

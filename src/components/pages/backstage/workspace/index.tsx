@@ -14,6 +14,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useRouter } from 'next/router';
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher';
+import { TagProps } from '@/components/basic/tag';
 
 const mdParser = new MarkdownIt()
 
@@ -33,7 +34,7 @@ const WorkSpace = () => {
   const { result: blog = {} } = data ?? {}
   const blogStr = JSON.stringify(blog)
 
-  const [tagList, setTagList] = useState<Array<string>>([])
+  const [tagList, setTagList] = useState<Array<TagProps>>([])
 
   const [title, setTitle] = useState<string>()
   const [content, setContent] = useState<Content>({ text: '', html: '' })
