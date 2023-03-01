@@ -1,3 +1,5 @@
+@import "/styles/common.scss";
+
 .main {
   min-height: calc(100vh - 78px);
   padding: 4rem 0;
@@ -14,12 +16,18 @@
   width: 50%;
   min-height: calc(100vh - 200px);
   background: url('/sheep.jpg') no-repeat center center;
-  background-size: 100%;
+  background-size: 70%;
 }
 
 .title {
-  font-size: 24px;
-  color: #2e2e2c;
+  font-size: 28px;
+  font-weight: 600;
+  color: $text-color;
+  span{
+    padding-left: 6px;
+    font-size: 38px;
+    color: $orange;
+  }
 }
 
 .title div {

@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <div className={styles['text-wrapper']}>
           <div className={styles.title}>
             <div>{`Hi! ${aloha()}`}</div>
-            <div>{`Here is Sheepeer's Space`}</div>
+            <div>Here is <span>{` Sheepeer's space`}</span></div>
           </div>
 
           <div className={styles['btns']}>
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
             <Link href={'/gallery'}><Button variant="outlined">Gallery</Button></Link>
           </div>
         </div>
-        <div className={styles['img-wrapper']}/>
+        <div className={styles['img-wrapper']} />
       </div>
     </Container>
   )
