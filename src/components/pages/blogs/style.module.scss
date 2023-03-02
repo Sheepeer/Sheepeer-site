@@ -8,8 +8,8 @@
     border-right: 1px solid $border-color;
 
     .main-content {
-      width: 100%;
       margin-top: 40px;
+      padding: 12px 60px;
 
       .skeleton {
         padding: 24px;
@@ -28,8 +28,10 @@
   }
 
   .sider {
-    /* position: fixed; */
+    position: fixed;
+    top: 74px;
+    right: 0;
     width: 20%;
-    padding: 24px;
+    padding: 38px 24px;
   }
 }

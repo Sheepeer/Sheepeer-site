@@ -9,9 +9,9 @@ import styles from './style.module.scss'
 const Home: NextPage = () => {
   return (
     <Container pageTitle={`Sheepeer's site`}>
-      <div className={styles.main}>
+      <div className={styles['main']}>
         <div className={styles['text-wrapper']}>
-          <div className={styles.title}>
+          <div className={styles['title']}>
             <div>{`Hi! ${aloha()}`}</div>
             <div>Here is <span>{` Sheepeer's space`}</span></div>
           </div>
