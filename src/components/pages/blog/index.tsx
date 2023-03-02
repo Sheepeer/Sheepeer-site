@@ -33,7 +33,7 @@ const BlogPage = () => {
             : <>
               <div className={styles['title']}>{blog?.title}</div>
               <div className={styles['info']}>
-                <Tag>{blog?.tag ?? '-'}</Tag>
+                <Tag color="blue">{blog?.tag ?? '-'}</Tag>
                 <div className={styles['time']}>{blog?.date && moment(+blog.date).format('YYYY-MM-DD HH:mm')}</div>
               </div>
 

@@ -27,11 +27,9 @@ export type Blog = {
   watcher_count: number
 }
 
-
-
 const BlogsPage: NextPage = () => {
   const router = useRouter()
-  const { tag } = router.query
+  const { tag, page = 0 } = router.query
 
   const { data, error } = useSWR({
     url: '/api/blogs/all',
@@ -50,7 +48,7 @@ const BlogsPage: NextPage = () => {
           <SubNav />
           <div className={styles['main-content']}>
             <List
-              dataList={blogList}
+              dataList={blogList.slice()}
               type='list'
               loading={!data && !error}
             />
