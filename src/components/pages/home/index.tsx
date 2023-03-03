@@ -18,8 +18,18 @@ const Home: NextPage = () => {
           </div>
 
           <div className={styles['btns']}>
-            <Link href={'/blogs'}><Button variant="contained" className={styles['btn']}>Blogs</Button></Link>
-            <Link href={'/gallery'}><Button variant="contained" className={styles['btn']}>Gallery</Button></Link>
+            <Link href={'/blogs'}>
+              <Button
+                variant="contained"
+                size='large'
+                className={styles['btn']}>Blogs</Button>
+            </Link>
+            <Link href={'/gallery'}>
+              <Button
+                variant="contained"
+                size='large'
+                className={styles['btn']}>Gallery</Button>
+            </Link>
           </div>
         </div>
         <div className={styles['img-wrapper']} />
