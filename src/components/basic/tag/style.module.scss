@@ -2,41 +2,31 @@
 
 .tag {
   display: inline-block;
-  padding: 2px 8px;
-  color: $blue;
-  border: 1px solid $blue-lighter;
-  background: $blue-lighter-er-er;
-  border-radius: 4px;
+  padding: 3px 12px;
+  color: #fff;
+  background: $blue;
+  border-radius: 11px;
   font-size: 12px;
 }
 
 .tag-blue {
-color: $blue;
-border-color: $blue-lighter;
-background-color: $blue-lighter-er;
+  background-color: $blue;
 }
 
 .tag-green {
-  color: $green;
-  border-color: $green-lighter;
-  background-color: $green-lighter-er;
+  background-color: $green;
 }
 
-.tag-orange{
-  color: $orange;
-  border-color: $orange-lighter;
-  background-color: $orange-lighter-er;
+.tag-orange {
+  background-color: $orange;
 }
 
-.tag-yellow{
-  color: $yellow;
-  border-color: $yellow-lighter;
-  background-color: $yellow-lighter-er;
+.tag-yellow {
+  background-color: $yellow;
 }
-.tag-red{
-  color: $red;
-  border-color: $red-lighter;
-  background-color: $red-lighter-er;
+
+.tag-red {
+  background-color: $red;
 }
 
 .tag-clickable {
@@ -45,12 +35,10 @@ background-color: $blue-lighter-er;
 
   &:hover {
     color: $blue-lighter;
-    border: 1px solid $blue-lighter;
     transition: 0.3s;
   }
 }
 
 .tag-choosed {
   color: $text-hover-color;
-  border: 1px solid $text-hover-color;
 }

@@ -25,6 +25,7 @@
 }
 
 .menu-item {
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -34,5 +35,16 @@
 }
 
 .menu-item__active {
+  position: relative;
   color: $blue;
+  &::after{
+    content: '';
+    position: absolute;
+    left: 40%;
+    bottom: -10px;
+    height: 3px;
+    width: 12px;
+    border-radius: 1.5px;
+    background: $blue;
+  }
 }
