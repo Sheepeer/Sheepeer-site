@@ -32,10 +32,60 @@
     top: 74px;
     right: 0;
     width: 20%;
+    min-height: calc(100vh - 74px);
     padding: 38px 24px;
 
-    .tags{
+    .tags {
       margin-top: 24px;
+    }
+
+    .series {
+      position: relative;
+      margin-top: 24px;
+      padding: 24px 12px 12px 12px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+
+      &::before {
+        content: 'Series';
+        padding: 0 6px;
+        position: absolute;
+        top: -12px;
+        left: 12px;
+        background-color: #fff;
+      }
+    }
+
+    .series-item {
+      font-size: 13px;
+      line-height: 24px;
+    }
+
+    .profile {
+      // border: 1px solid $border-color;
+      // border-radius: 4px;
+      padding: 0 12px;
+      text-align: center;
+
+      .avator {
+        width: 50px;
+        height: 50px;
+      }
+
+      .summary {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .summary-item {
+        .account {
+          font-size: 26px;
+        }
+
+        .title {
+          font-size: 12px;
+        }
+      }
     }
   }
 }

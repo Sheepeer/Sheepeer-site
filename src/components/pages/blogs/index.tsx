@@ -1,4 +1,4 @@
-import { Pagination, TextField } from '@mui/material'
+import { Divider, Pagination, TextField } from '@mui/material'
 import type { NextPage } from 'next'
 import Container from '@/components/layout/container'
 import styles from './style.module.scss'
@@ -8,6 +8,8 @@ import fetcher from '@/utils/fetcher'
 import { useRouter } from 'next/router'
 import List from '@/components/basic/list'
 import Tags from '@/components/basic/tags'
+import Image from 'next/image'
+import Space from '@/components/basic/space'
 
 const PAGE_SIZE = 3
 
@@ -60,15 +62,42 @@ const BlogsPage: NextPage = () => {
           </div>
         </div>
         <div className={styles['sider']}>
-          <TextField
+          {/* <TextField
             size='small'
             variant='outlined'
-            placeholder='search post about ...' />
-          <Tags
+            placeholder='search post about ...'
+          /> */}
+          <div className={styles['profile']}>
+            <Space>
+              <Image
+                src={'/logo-final.jpg'}
+                alt='avator'
+                height={50}
+                width={50}
+              />
+              <div>Sheepeer</div>
+            </Space>
+            <Divider style={{margin: '12px 0'}} />
+            <div className={styles['summary']}>
+              <div className={styles['summary-item']}>
+                <div className={styles['account']}>9</div>
+                <div className={styles['title']}>访问量</div>
+              </div>
+              <div className={styles['summary-item']}>
+                <div className={styles['account']}>11</div>
+                <div className={styles['title']}>浏览量</div>
+              </div>
+              <div className={styles['summary-item']}>
+                <div className={styles['account']}>7</div>
+                <div className={styles['title']}>文章数</div>
+              </div>
+            </div>
+          </div>
+          {/* <Tags
             className={styles['tags']}
             tagList={tagList}
             onChoose={value => router.push({ query: { tag: value } })} choosed={''}
-          />
+          /> */}
         </div>
       </div>
     </Container>
