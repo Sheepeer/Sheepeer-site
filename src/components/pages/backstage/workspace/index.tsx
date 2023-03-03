@@ -136,7 +136,6 @@ const WorkSpace = () => {
     return new Promise((resolve, reject) => {
       axios.post(`${location.protocol}//${location.hostname}:36677/upload`)
         .then(res => {
-          console.log(res)
           if (res.data && res.data.success === true) {
             resolve(res.data.result[0])
           }
@@ -186,6 +185,7 @@ const WorkSpace = () => {
             onChoose={(value) => setTag(value)}
             choosed={tag}
             className={styles['tags-wrapper']}
+            showAdd={true}
           />
         </DialogContent>
         <DialogActions>

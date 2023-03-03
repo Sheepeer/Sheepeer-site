@@ -7,6 +7,7 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { useRouter } from 'next/router'
 import List from '@/components/basic/list'
+import Tags from '@/components/basic/tags'
 
 const PAGE_SIZE = 3
 
@@ -29,6 +30,11 @@ const BlogsPage: NextPage = () => {
     query: { tag }
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
+
+  const { data: tagsData, error: tagsError } = useSWR({
+    url: '/api/tags'
+  }, fetcher)
+  const { result: tagList = [] } = tagsData ?? {}
 
   const changePage = (e: any, page: number) => {
     console.log(page)
@@ -58,7 +64,11 @@ const BlogsPage: NextPage = () => {
             size='small'
             variant='outlined'
             placeholder='search post about ...' />
-          aaa
+          <Tags
+            className={styles['tags']}
+            tagList={tagList}
+            onChoose={value => router.push({ query: { tag: value } })} choosed={''}
+          />
         </div>
       </div>
     </Container>

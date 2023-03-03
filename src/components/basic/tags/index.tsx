@@ -56,17 +56,21 @@ const Tags = ({ tagList, onChoose, choosed, showAdd = false, max = 15, className
           >{name}</Tag>
         ))
       }
-      <div className={styles['tag-add']}>
-        <div>
-          <AddIcon fontSize='small' />
-          <span>add tag</span>
-          <Input
-            size='small'
-            value={addTagName}
-            onChange={(e) => setAddTagName(e.target.value)}
-            onBlur={addTag} />
-        </div>
-      </div>
+      {
+        showAdd && (
+          <div className={styles['tag-add']}>
+            <div>
+              <AddIcon fontSize='small' />
+              <span>add tag</span>
+              <Input
+                size='small'
+                value={addTagName}
+                onChange={(e) => setAddTagName(e.target.value)}
+                onBlur={addTag} />
+            </div>
+          </div>
+        )
+      }
 
 
     </div>
