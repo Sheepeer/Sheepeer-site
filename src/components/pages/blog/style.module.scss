@@ -1,5 +1,7 @@
+@import "styles/common.scss";
+
 .root {
-  width: 70%;
+  max-width: 900px;
   margin: 0 auto;
   padding: 36px 0;
 
@@ -20,5 +22,30 @@
 
   .content {
     margin-top: 48px;
+
+    img{
+      width: 100%;
+      padding: 16px 40px;
+    }
+
+    code {
+      margin: 0 2px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      color: $blue;
+      background-color: $blue-lighter-er-er;
+    }
+
+    pre {
+      margin: 0 24px;
+      padding: 12px 16px;
+      border-radius: 4px;
+      background-color: $blue-lighter-er-er;
+      code {
+        margin: initial;
+        padding: initial;
+        background-color: initial;
+      }
+    }
   }
 }

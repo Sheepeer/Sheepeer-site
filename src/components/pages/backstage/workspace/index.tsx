@@ -134,12 +134,14 @@ const WorkSpace = () => {
 
   const onImageUpload = (file: any) => {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onload = data => {
-        console.log(data)
-        resolve(data.target?.result)
-      }
-      reader.readAsDataURL(file)
+      axios.post(`${location.protocol}//${location.hostname}:36677/upload`)
+        .then(res => {
+          console.log(res)
+          if (res.data && res.data.success === true) {
+            resolve(res.data.result[0])
+          }
+        })
+        .catch(e => reject(e))
     })
   }
 
@@ -165,6 +167,7 @@ const WorkSpace = () => {
           className={styles['editor']}
           value={content?.text}
           renderHTML={text => mdParser.render(text)}
+          shortcuts={true}
           onChange={contentChangeHandler}
           onImageUpload={onImageUpload}
         />
