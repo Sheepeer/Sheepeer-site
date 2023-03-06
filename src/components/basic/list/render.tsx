@@ -8,6 +8,7 @@ import Link from "next/link"
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material"
 import { useState } from "react"
 import DialogContent from "@mui/material/DialogContent"
+import Str2Dom from "../str2dom"
 
 const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: number) => void }) => {
   const [open, setOpen] = useState(false)
@@ -78,7 +79,9 @@ const ListItem = ({ item }: { item: Blog }) => (
         </div>
       </div>
       <div className={styles['img']}>
-
+        <Str2Dom
+          str={item.content_html.match(/<img [^>]*>/)?.[0] ?? ''}
+          domId={`imgId-${item.id}`} />
       </div>
     </div>
   </Link>

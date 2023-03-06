@@ -134,8 +134,10 @@
     .img {
       margin-left: 24px;
       width: 180px;
-      background-color: $green-lighter;
+      height: 150px;
+      background-color: $blue-lighter-er-er;
       border-radius: 4px;
+      overflow: hidden;
     }
   }
 }
