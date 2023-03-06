@@ -15,7 +15,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ s
   return (
     <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
-        {pathname !== '/backstage/login' && <Header />}
+        {(
+          pathname !== '/backstage/login' &&
+          pathname !== '/gallery'
+        ) && <Header />}
         <Component {...pageProps} />
       </ThemeProvider>
     </SessionProvider>
