@@ -11,9 +11,14 @@ const Str2Dom = ({ str, domId }: Props) => {
     domRef.current = document.getElementById(domId)
     if (domRef.current) {
       domRef.current.innerHTML = str
+      const img = document.getElementById(domId)?.firstChild
+      if (img) {
+        (img as any).style.height = '150px';
+        (img as any).style.width = '180px'
+      }
     }
   }, [str, domId])
-  console.log(domRef)
+
   return (
     <div id={domId}></div>
   )

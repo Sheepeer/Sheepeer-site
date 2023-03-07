@@ -25,7 +25,7 @@ const BlogPage = () => {
   }, [blog])
 
   return (
-    <Container pageTitle={"a blog"}>
+    <Container pageTitle={blog?.title}>
       <div className={styles['root']}>
         {
           !data && !error
