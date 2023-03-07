@@ -10,6 +10,7 @@ import List from '@/components/basic/list'
 import Tags from '@/components/basic/tags'
 import Image from 'next/image'
 import Space from '@/components/basic/space'
+import { TagColor } from '@/components/basic/tag'
 
 const PAGE_SIZE = 3
 
@@ -20,7 +21,8 @@ export type Blog = {
   content: string,
   content_html: string,
   date: string,
-  watcher_count: number
+  watcher_count: number,
+  color: TagColor
 }
 
 const BlogsPage: NextPage = () => {

@@ -17,7 +17,7 @@ const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: num
     <div className={styles['single-list-item']}>
       <div className={styles['text']}>
         <div className={styles['info']}>
-          <Tag color="blue">{item.tag}</Tag>
+          <Tag color={item.color}>{item.tag}</Tag>
           <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
         </div>
         <div className={styles['title']}>{item.title}</div>
@@ -66,7 +66,7 @@ const ListItem = ({ item }: { item: Blog }) => (
     <div className={styles['complex-list-item']}>
       <div className={styles['text']}>
         <div className={styles['info']}>
-          <Tag color="blue">{item.tag}</Tag>
+          <Tag color={item.color}>{item.tag}</Tag>
           <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
         </div>
         <div className={styles['title']}>{item.title}</div>
