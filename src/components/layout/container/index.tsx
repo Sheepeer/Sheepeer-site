@@ -15,14 +15,14 @@ const Container = ({ pageTitle, children }: Props) => {
         <title>{pageTitle}</title>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      
+
       <div className={styles['container-root']}>
-        <div>
+        <div className={styles['main']}>
           {children}
         </div>
-
-        <Footer />
       </div>
+      
+      <Footer />
     </>
   )
 }

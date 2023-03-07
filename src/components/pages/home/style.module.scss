@@ -1,14 +1,24 @@
 @import "/styles/common.scss";
 
 .main {
+  position: relative;
   min-height: calc(100vh - 78px);
   // padding: 48px 60px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background: radial-gradient(circle at 60px 320px,
-      $orange-lighter-er 5%,
-      #fff 20%);
+
+  &::before {
+    content: '';
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center,
+        $orange-lighter-er 5%,
+        transparent 60%);
+    position: absolute;
+    bottom: -100px;
+    left: -180px;
+  }
 }
 
 .text-wrapper {
@@ -21,27 +31,29 @@
   min-height: calc(100vh - 200px);
   background: url('/sheep.jpg') no-repeat center center;
   background-size: 100%;
-  &::before{
+
+  &::before {
     content: '';
     height: 100px;
     width: 100px;
     background: radial-gradient(circle at center,
-      $yellow-lighter-er 5%,
-      transparent 60%);
-      position: absolute;
-      bottom: -20px;
-      left: -120px;
+        $yellow-lighter-er 5%,
+        transparent 60%);
+    position: absolute;
+    bottom: -20px;
+    left: -120px;
   }
-  &::after{
+
+  &::after {
     content: '';
     height: 240px;
     width: 240px;
     background: radial-gradient(circle at center,
-      $yellow-lighter-er 5%,
-      transparent 60%);
-      position: absolute;
-      top: -120px;
-      right: -120px;
+        $yellow-lighter-er 5%,
+        transparent 60%);
+    position: absolute;
+    top: -120px;
+    right: -120px;
   }
 }
 
@@ -72,7 +84,8 @@
   justify-content: space-between;
   width: 260px;
   margin-top: 32px;
-  .btn{
+
+  .btn {
     width: 110px;
     border-radius: 21px;
   }

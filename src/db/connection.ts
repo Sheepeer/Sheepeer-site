@@ -88,6 +88,7 @@ class Mysql {
         [title, content, content_html, tag, date, isDraft],
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
@@ -153,6 +154,7 @@ class Mysql {
         [value],
         function (err, result) {
           if (err) {
+            console.error(err)
             resolve({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
