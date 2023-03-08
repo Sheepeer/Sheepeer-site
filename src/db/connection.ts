@@ -71,6 +71,7 @@ class Mysql {
         [id],
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ result: null })
           } else {
             resolve({ result: result })

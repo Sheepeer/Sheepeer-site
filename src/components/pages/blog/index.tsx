@@ -17,6 +17,7 @@ const BlogPage = () => {
     query: { id }
   }, fetcher)
   const { result: blog = {} } = data ?? {}
+  const {title, tag, color, date, content, content_html} = blog
 
   useEffect(() => {
     if (blog?.content_html) {
@@ -25,20 +26,20 @@ const BlogPage = () => {
   }, [blog])
 
   return (
-    <Container pageTitle={blog?.title}>
+    <Container pageTitle={title}>
       <div className={styles['root']}>
         {
           !data && !error
             ? <Skeleton type="post" />
             : <>
-              <div className={styles['title']}>{blog?.title}</div>
+              <div className={styles['title']}>{title}</div>
               <div className={styles['info']}>
-                <Tag color="blue">{blog?.tag ?? '-'}</Tag>
-                <div className={styles['time']}>{blog?.date && moment(+blog.date).format('YYYY-MM-DD HH:mm')}</div>
+                <Tag color={color}>{tag}</Tag>
+                <div className={styles['time']}>{date && moment(+date).format('YYYY-MM-DD HH:mm')}</div>
               </div>
 
               <div className={styles['content']} id='content'>
-                {blog?.content_html}
+                {content_html}
               </div>
             </>
         }
