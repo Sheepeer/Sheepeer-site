@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
-import styles from './style.module.scss'
 import classNames from 'classnames'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { TagProps } from '@/components/basic/tag'
+import styles from './style.module.scss'
 
 const SubNav = () => {
   const router = useRouter()

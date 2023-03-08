@@ -1,53 +1,79 @@
 @import "/styles/common.scss";
 
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  width: 100%;
-  padding: 0 60px;
-  height: 74px;
-  border-bottom: 1px solid $border-color;
-  background-color: rgba(255,255,255,0.5);
-  backdrop-filter: blur(12px);
-  z-index: 1;
-}
-
-.logo {
-  cursor: pointer;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 240px;
-  letter-spacing: 2px;
-}
-
-.menu-item {
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.menu-item:hover {
-  color: $blue;
-  transition: 0.3s;
-}
-
-.menu-item__active {
   position: relative;
-  color: $blue;
+  z-index: 1;
 
-  &::after {
-    content: '';
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // position: fixed;
+    width: 100%;
+    padding: 0 60px;
+    height: 74px;
+    border-bottom: 1px solid $border-color;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 240px;
+    letter-spacing: 2px;
+  }
+
+  .menu-item {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .menu-item:hover {
+    color: $blue;
+    transition: 0.3s;
+  }
+
+  .menu-item__active {
+    position: relative;
+    color: $blue;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 40%;
+      bottom: -10px;
+      height: 3px;
+      width: 12px;
+      border-radius: 1.5px;
+      background: $blue;
+    }
+  }
+
+  .suffix {
     position: absolute;
-    left: 40%;
-    bottom: -10px;
-    height: 3px;
-    width: 12px;
-    border-radius: 1.5px;
-    background: $blue;
+    bottom: -16px;
+    right: 40px;
+    display: inline-block;
+    height: 16px;
+    padding: 0 8px;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    border-radius: 0 0 4px 4px;
+    color: $text-color;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #fff;
+  }
+
+  .icon {
+    width: 14px;
+    height: 16px;
   }
 }

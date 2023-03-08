@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ s
         {(
           pathname !== '/backstage/login' &&
           pathname !== '/gallery'
-        ) && <Header />}
+        ) && <Header style={{position: 'sticky', top: 0}} />}
         <Component {...pageProps} />
       </ThemeProvider>
     </SessionProvider>

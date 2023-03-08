@@ -73,7 +73,7 @@ const ListItem = ({ item }: { item: Blog }) => (
         <div className={styles['content']}>{item.content}</div>
         <div className={styles['record']}>
           <Space>
-            <VisibilityOutlinedIcon fontSize='small' />
+            <VisibilityOutlinedIcon className={styles['icon']} />
             <div className={styles['watcher-count']}>{item.watcher_count}</div>
           </Space>
         </div>
