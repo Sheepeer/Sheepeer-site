@@ -14,7 +14,7 @@ const SubNav = () => {
 
   const clickHandler = (tag: string) => {
     router.push({
-      query: { tag }
+      query: { ...router.query, tag }
     })
   }
 
