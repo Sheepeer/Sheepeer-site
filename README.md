@@ -6,6 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - [ ] Auto save drafts
 - [ ] i18n
 - [ ] radar
+- [ ] SEO
 
 
 ## Getting Started
