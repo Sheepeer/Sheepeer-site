@@ -40,13 +40,13 @@ const BlogsPage: NextPage = () => {
   }
 
   return (
-    <Container pageTitle='Blogs'>
+    <Container pageTitle={`Blogs${!!tag && (' - ' + tag)}`}>
       <div className={styles['root']}>
         <div className={styles['main']}>
           <SubNav />
           <div className={styles['main-content']}>
             <List
-              dataList={blogList.slice((+page - 1)*PAGE_SIZE, (+page)*PAGE_SIZE)}
+              dataList={blogList.slice((+page - 1) * PAGE_SIZE, (+page) * PAGE_SIZE)}
               type='list'
               loading={!data && !error}
             />

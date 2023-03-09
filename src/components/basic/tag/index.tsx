@@ -16,7 +16,7 @@ interface Props {
 
 const Tag = ({ children, color, onClick, isChoosed = false }: Props) => {
   return (
-    <div
+    <p
       className={classNames(
         styles['tag'],
         styles[`tag-${color}`],
@@ -24,7 +24,7 @@ const Tag = ({ children, color, onClick, isChoosed = false }: Props) => {
         { [styles['tag-choosed']]: isChoosed }
       )}
       onClick={() => onClick?.(children)}
-    >{children}</div>
+    >{children}</p>
   )
 }
 

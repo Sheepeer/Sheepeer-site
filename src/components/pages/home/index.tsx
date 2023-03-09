@@ -14,7 +14,7 @@ const Home: NextPage = () => {
           <div className={styles['title']}>
             <div>{`Hi! ${aloha()}`}</div>
             <div>Here is <span>{` Sheepeer's site`}</span></div>
-            <div className={styles['sub-title']}>{`A space to store my notes and inspirations`}</div>
+            <p className={styles['sub-title']}>{`A space to store my notes and inspirations`}</p>
           </div>
 
           <div className={styles['btns']}>

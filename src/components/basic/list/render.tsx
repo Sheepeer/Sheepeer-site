@@ -20,7 +20,7 @@ const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: num
           <Tag color={item.color}>{item.tag}</Tag>
           <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
         </div>
-        <div className={styles['title']}>{item.title}</div>
+        <p className={styles['title']}>{item.title}</p>
       </div>
       <Space className={styles['actions']}>
         <div
@@ -69,8 +69,8 @@ const ListItem = ({ item }: { item: Blog }) => (
           <Tag color={item.color}>{item.tag}</Tag>
           <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
         </div>
-        <div className={styles['title']}>{item.title}</div>
-        <div className={styles['content']}>{item.content}</div>
+        <p className={styles['title']}>{item.title}</p>
+        <p className={styles['content']}>{item.content}</p>
         <div className={styles['record']}>
           <Space>
             <VisibilityOutlinedIcon className={styles['icon']} />
