@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Mysql from 'src/db/connection'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log("====", process.env.MYSQL_HOST, process.env.MYSQL_PORT)
   if (req.method === 'GET') {
     const { flag = 'posts', tag = '' } = req.query
 
