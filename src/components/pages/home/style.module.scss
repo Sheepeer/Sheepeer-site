@@ -1,22 +1,78 @@
+@import "/styles/common.scss";
+
 .main {
+  position: relative;
   min-height: calc(100vh - 78px);
-  padding: 4rem 0;
-  flex: 1;
+  // padding: 48px 60px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
-  background: url('/bg.png') no-repeat center center;
-  background-size: 80%;
+  align-items: center;
+  justify-content: space-evenly;
+
+  &::before {
+    content: '';
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center,
+        $orange-lighter-er 5%,
+        transparent 60%);
+    position: absolute;
+    bottom: -100px;
+    left: -180px;
+  }
 }
 
 .text-wrapper {
-  margin-left: 10%;
+  width: 30%;
+}
+
+.img-wrapper {
+  position: relative;
+  width: 30%;
+  min-height: calc(100vh - 200px);
+  background: url('/sheep.jpg') no-repeat center center;
+  background-size: 100%;
+
+  &::before {
+    content: '';
+    height: 100px;
+    width: 100px;
+    background: radial-gradient(circle at center,
+        $yellow-lighter-er 5%,
+        transparent 60%);
+    position: absolute;
+    bottom: -20px;
+    left: -120px;
+  }
+
+  &::after {
+    content: '';
+    height: 240px;
+    width: 240px;
+    background: radial-gradient(circle at center,
+        $yellow-lighter-er 5%,
+        transparent 60%);
+    position: absolute;
+    top: -120px;
+    right: -120px;
+  }
 }
 
 .title {
-  font-size: 24px;
-  color: #2e2e2c;
+  font-size: 28px;
+  font-weight: 600;
+  color: $text-color;
+
+  span {
+    padding-left: 6px;
+    font-size: 38px;
+    color: $orange;
+  }
+
+  .sub-title {
+    font-weight: 400;
+    font-size: 16px;
+    color: $sub-text-color;
+  }
 }
 
 .title div {
@@ -26,6 +82,11 @@
 .btns {
   display: flex;
   justify-content: space-between;
-  width: 240px;
+  width: 260px;
   margin-top: 32px;
+
+  .btn {
+    width: 110px;
+    border-radius: 21px;
+  }
 }

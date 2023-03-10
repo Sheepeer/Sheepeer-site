@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import { ReactNode, useState } from 'react'
 import styles from './style.module.scss'
+import { useSession } from 'next-auth/react'
 
 type MenuList = Array<{
   title: string,
@@ -37,6 +38,8 @@ interface Props {
 }
 
 const BsContainer = ({ activeLabel, children }: Props) => {
+  // const userInfo = window.localStorage.getItem('USER_INFO')
+  // console.log('userInfo in ls:', userInfo)
 
   const router = useRouter()
   const pathname = router.pathname.split('/')[2]

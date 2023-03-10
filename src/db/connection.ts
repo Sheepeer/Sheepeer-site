@@ -1,52 +1,79 @@
-import mysql from 'mysql2'
-import { ADD_POST_SQL, ADD_TAG_SQL, GET_ALL_POSTS_SQL, GET_POST_SQL, GET_TAGS_SQL } from './sqls'
+import {
+  ADD_POST_SQL,
+  ADD_TAG_SQL,
+  GET_ALL_POSTS_SQL,
+  GET_POST_SQL,
+  GET_TAGS_SQL,
+  MOD_POST_SQL,
+  GET_POSTS_SUM_SQL
+} from './sqls'
+import connectMysql from './connect'
+import { DEL_POST_SQL, GET_ALL_DRAFTS_SQL } from './sqls/post'
 
 export interface Post {
   title: string,
   content: string,
   content_html: string
   tag: string,
-  date: number
+  date: number,
+  isDraft: 0 | 1
+  id?: number
 }
 
+const connection = connectMysql()
 
 class Mysql {
-  private connection
-
-  constructor() {
-    this.connection = mysql.createConnection({
-      host: '43.143.198.224',
-      port: 3306,
-      user: 'root',
-      password: 'Sheepeer0719',
-      database: 'sheepeer'
-    })
-  }
 
   // posts
-  public getPosts = (tag?: string) => {
-    return new Promise<{ result: any }>((resolve, reject) => {
-      this.connection.query(
-        GET_ALL_POSTS_SQL(tag),
-        [tag],
-        function (err, result) {
-          if (err) {
-            reject({ result: null })
-          } else {
-            resolve({ result: result })
+  static getPosts = (tag?: string) => {
+    return new Promise<{ result: any, errno: 0 | 1 }>((resolve, reject) => {
+      try {
+        connection.query(
+          GET_ALL_POSTS_SQL(tag),
+          [tag],
+          function (err, result) {
+            if (err) {
+              console.error(err)
+              reject({ result: err, errno: 1 })
+            } else {
+              resolve({ result: result, errno: 0 })
+            }
           }
-        }
-      )
+        )
+      } catch (e) {
+        reject({ result: e, errno: 1 })
+      }
     })
   }
 
-  public getPost = (id: number) => {
+  static getDrafts = () => {
+    return new Promise<{ result: any, errno: 0 | 1 }>((resolve, reject) => {
+      try {
+        connection.query(
+          GET_ALL_DRAFTS_SQL,
+          function (err, result) {
+            if (err) {
+              console.error(err)
+              reject({ result: err, errno: 1 })
+            } else {
+              resolve({ result: result, errno: 0 })
+            }
+          }
+        )
+      } catch (e) {
+        reject({ result: e, errno: 1 })
+      }
+    })
+  }
+
+  static getPost = (id: number) => {
     return new Promise<{ result: any }>((resolve, reject) => {
-      this.connection.query(
+      connection.query(
         GET_POST_SQL,
         [id],
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ result: null })
           } else {
             resolve({ result: result })
@@ -56,14 +83,50 @@ class Mysql {
     })
   }
 
-  public addPost = (values: Post) => {
-    const { title, content, content_html, tag, date } = values
+  static addPost = (values: Post) => {
+    const { title, content, content_html, tag, date, isDraft } = values
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
-      this.connection.execute(
+      connection.execute(
         ADD_POST_SQL,
-        [title, content, content_html, tag, date],
-        function (err, result, fields) {
+        [title, content, content_html, tag, date, isDraft],
+        function (err, result) {
           if (err) {
+            console.error(err)
+            reject({ msg: 'error' })
+          } else {
+            resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  static modPost = (values: Post) => {
+    const { id, title, content, content_html, tag, date, isDraft } = values
+    return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
+      connection.execute(
+        MOD_POST_SQL,
+        [title, content, content_html, tag, date, isDraft, id],
+        function (err, result) {
+          if (err) {
+            console.error(err)
+            reject({ msg: 'error' })
+          } else {
+            resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  static delPost = (id: number) => {
+    return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
+      connection.execute(
+        DEL_POST_SQL,
+        [id],
+        function (err, result) {
+          if (err) {
+            console.error(err)
             reject({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
@@ -74,12 +137,13 @@ class Mysql {
   }
 
   // tags
-  public getTags = () => {
+  static getTags = () => {
     return new Promise<{ result: any }>((resolve, reject) => {
-      this.connection.query(
+      connection.query(
         GET_TAGS_SQL,
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ result: null })
           } else {
             resolve({ result: result })
@@ -89,16 +153,33 @@ class Mysql {
     })
   }
 
-  public addTag = (value: string) => {
+  static addTag = (value: string) => {
     return new Promise<{ msg: 'success' | 'error' }>((resolve, reject) => {
-      this.connection.execute(
+      connection.execute(
         ADD_TAG_SQL,
         [value],
         function (err, result) {
           if (err) {
+            console.error(err)
             resolve({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
+          }
+        }
+      )
+    })
+  }
+
+  static getPostsSum = () => {
+    return new Promise<{ result: any }>((resolve, reject) => {
+      connection.query(
+        GET_POSTS_SUM_SQL,
+        function (err, result) {
+          if (err) {
+            console.error(err)
+            reject({ result: null })
+          } else {
+            resolve({ result: result })
           }
         }
       )

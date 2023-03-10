@@ -1,0 +1,146 @@
+@import "/styles/common.scss";
+
+.list {
+  .list-item-wrapper:not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+
+  .single-list-item {
+    position: relative;
+    width: 100%;
+    padding: 12px 24px;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    overflow: hidden;
+    // cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $bg-hover-color;
+      border-radius: 4px;
+    }
+
+    .text {
+      flex: 1;
+
+      .info {
+        display: flex;
+        align-items: center;
+
+        .date {
+          margin-left: 12px;
+          font-size: 12px;
+          color: $sub-text-color;
+        }
+      }
+
+      .title {
+        margin-top: 6px;
+        margin-bottom: 0;
+      }
+    }
+
+    .actions {
+      .edit {
+        padding: 3px;
+        fill: $green;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $green-lighter-er;
+        }
+      }
+
+      .delete {
+        padding: 3px;
+        margin-left: 12px;
+        fill: $red;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $red-lighter-er;
+        }
+      }
+    }
+  }
+
+  .complex-list-item {
+    position: relative;
+    width: 100%;
+    padding: 24px;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    overflow: hidden;
+
+    &:hover {
+      background-color: $bg-hover-color;
+      border-radius: 4px;
+
+      &::before {
+        position: absolute;
+        content: '→';
+        top: 34px;
+        left: -16px;
+      }
+    }
+
+    .text {
+      flex: 1;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+
+      .date {
+        margin-left: 12px;
+        font-size: 12px;
+        color: $sub-text-color;
+      }
+    }
+
+    .title {
+      margin: 12px 0;
+    }
+
+    .content {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
+
+    .record {
+      display: flex;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: $sub-text-color;
+    }
+
+    .img {
+      margin-left: 24px;
+      width: 180px;
+      height: 150px;
+      background-color: $blue-lighter-er-er;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .icon {
+      height: 16px;
+      width: 16px;
+      fill: $sub-text-color;
+    }
+  }
+}

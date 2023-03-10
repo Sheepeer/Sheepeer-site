@@ -1,21 +1,22 @@
-$border-color: #c4c1b8;
-$bg-color: #e7e4d0;
+@import "/styles/common.scss";
 
 html,
 body {
   padding: 0px;
   margin: 0px;
+  // min-width: 1240px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #e7e4d0;
-  }
+  background-color: #ffffff;
+}
 
 a {
-  color: inherit;
+  color: $blue;
   text-decoration: none;
 }
 
 * {
+  color: $text-color;
   box-sizing: border-box;
 }
 
@@ -23,6 +24,7 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;

@@ -1,3 +1,8 @@
 .space {
   display: flex;
+  align-items: center;
+
+  &>*:not(:first-child) {
+    margin-left: 12px;
+  }
 }

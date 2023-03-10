@@ -1,11 +1,12 @@
+import useDidMount from "@/hooks/useDidMount"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 
 const Home = () => {
   const router = useRouter()
-  useEffect(() => {
+  useDidMount(() => {
     router.replace('/backstage/dashboard')
-  }, [])
+  })
 
   return (
     <></>

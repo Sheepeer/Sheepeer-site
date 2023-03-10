@@ -1,13 +1,26 @@
+import useDidMount from '@/hooks/useDidMount'
 import type { NextPage } from 'next'
-import Container from '@/components/layout/container'
+import Head from 'next/head'
+import { buildGallery } from './hall/build'
 import styles from './style.module.scss'
-import Building from '../../layout/building'
+import Link from 'next/link'
+import { Button } from '@mui/material'
 
 const GalleryPage: NextPage = () => {
+
+  useDidMount(() => {
+    buildGallery()
+  })
+
   return (
-    <Container pageTitle='Gallery'>
-      <Building/>
-    </Container>
+    <>
+      <Head>
+        <title>Gallery</title>
+      </Head>
+      <Link href={'/'}>
+        <Button variant='contained' className={styles['btn-back']}>Back</Button>
+      </Link>
+    </>
   )
 }
 

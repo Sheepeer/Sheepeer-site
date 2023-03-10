@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: $blue-lighter-er-er;
 
   .login-card {
     display: flex;
@@ -27,23 +28,8 @@
       color: rgb(190, 190, 190);
     }
 
-    .form {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100px;
-      position: relative;
-
-      .alert-msg {
-        position: absolute;
-        top: -60px;
-        left: 0;
-        width: 100%;
-      }
-    }
-
     .btn {
-      margin-top: 24px;
+      width: 100%;
     }
   }
 }

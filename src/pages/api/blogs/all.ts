@@ -3,15 +3,20 @@ import Mysql from 'src/db/connection'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
-    const { tag = '' } = req.query
+    const { flag = 'posts', tag = '' } = req.query
 
-    const mysql = new Mysql()
     try {
-      const result = await mysql.getPosts(tag as string)
-      if (!!result.result) {
-        res.status(200).json(result)
+      let result: { result: any, errno: 0 | 1 } = { result: [], errno: 1 }
+      if (flag === 'drafts') {
+        result = await Mysql.getDrafts()
+      } else {
+        result = await Mysql.getPosts(tag as string)
       }
-      res.status(500).json({ msg: 'error' })
+      if (result.errno === 0) {
+        res.status(200).json(result)
+      } else {
+        res.status(500).json(result)
+      }
     } catch (e) {
       res.status(500).json({ msg: e })
     }

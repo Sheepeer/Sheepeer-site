@@ -1,18 +1,17 @@
-import { List, ListItem } from '@mui/material'
+import { Divider, Pagination, TextField } from '@mui/material'
 import type { NextPage } from 'next'
-import Link from 'next/link'
-import Tag from '@/components/basic/tag'
 import Container from '@/components/layout/container'
 import styles from './style.module.scss'
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import Space from '../../basic/space'
 import SubNav from './sub-nav'
-import moment from 'moment'
-import Skeleton from '@/components/basic/skeleton'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { useRouter } from 'next/router'
+import List from '@/components/basic/list'
 import Image from 'next/image'
+import Space from '@/components/basic/space'
+import { TagColor } from '@/components/basic/tag'
+
+const PAGE_SIZE = 7
 
 export type Blog = {
   id: string,
@@ -21,36 +20,13 @@ export type Blog = {
   content: string,
   content_html: string,
   date: string,
-  watcher_count: number
+  watcher_count: number,
+  color: TagColor
 }
-
-const ListItemLayout = ({ item }: { item: Blog }) => (
-  <Link href={`/blog/${item.id}`}>
-    <div className={styles['list-item']}>
-      <div className={styles['text']}>
-        <div className={styles['info']}>
-          <Tag>{item.tag}</Tag>
-          <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
-        </div>
-        <div className={styles['title']}>{item.title}</div>
-        <div className={styles['content']}>{item.content}</div>
-        <div className={styles['record']}>
-          <Space>
-            <VisibilityOutlinedIcon fontSize='small' />
-            <div className={styles['watcher-count']}>{item.watcher_count}</div>
-          </Space>
-        </div>
-      </div>
-      <div className={styles['img']}>
-
-      </div>
-    </div>
-  </Link>
-)
 
 const BlogsPage: NextPage = () => {
   const router = useRouter()
-  const { tag } = router.query
+  const { tag, page = 1 } = router.query
 
   const { data, error } = useSWR({
     url: '/api/blogs/all',
@@ -58,38 +34,62 @@ const BlogsPage: NextPage = () => {
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
 
+  const changePage = (e: any, page: number) => {
+    console.log(page)
+    router.push({ query: { ...router.query, page } })
+  }
+
   return (
-    <Container pageTitle='Blogs'>
+    <Container pageTitle={`Blogs${!!tag ? (' - ' + tag) : ''}`}>
       <div className={styles['root']}>
         <div className={styles['main']}>
           <SubNav />
           <div className={styles['main-content']}>
-            {
-              !data && !error
-                ? <div className={styles['skeleton']}>
-                  <Skeleton type='list' count={3} />
-                </div>
-                : (
-                  blogList.length === 0
-                    ? <div className={styles['empty']}>
-                      <Image src={'/empty.svg'} alt='empty' width={30} height={30} />
-                      <div>No data here</div>
-                    </div>
-                    : <List className={styles['list']}>
-                      {
-                        blogList.map((item: any) => (
-                          <ListItem key={item.title}>
-                            <ListItemLayout item={item} />
-                          </ListItem>
-                        ))
-                      }
-                    </List>
-                )
-            }
+            <List
+              dataList={blogList.slice((+page - 1) * PAGE_SIZE, (+page) * PAGE_SIZE)}
+              type='list'
+              loading={!data && !error}
+            />
+            <Pagination
+              count={Math.ceil(blogList.length / PAGE_SIZE)}
+              variant='outlined'
+              onChange={changePage}
+              className={styles['pagination']}
+            />
           </div>
         </div>
         <div className={styles['sider']}>
-          aaa
+          {/* <TextField
+            size='small'
+            variant='outlined'
+            placeholder='search post about ...'
+          /> */}
+          <div className={styles['profile']}>
+            <Space>
+              <Image
+                src={'/logo-final.jpg'}
+                alt='avator'
+                height={50}
+                width={50}
+              />
+              <div>Sheepeer</div>
+            </Space>
+            <Divider style={{ margin: '12px 0' }} />
+            <div className={styles['summary']}>
+              <div className={styles['summary-item']}>
+                <div className={styles['account']}>9</div>
+                <div className={styles['title']}>访问量</div>
+              </div>
+              <div className={styles['summary-item']}>
+                <div className={styles['account']}>11</div>
+                <div className={styles['title']}>浏览量</div>
+              </div>
+              <div className={styles['summary-item']}>
+                <div className={styles['account']}>7</div>
+                <div className={styles['title']}>文章数</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Container>
