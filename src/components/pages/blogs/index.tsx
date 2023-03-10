@@ -40,7 +40,7 @@ const BlogsPage: NextPage = () => {
   }
 
   return (
-    <Container pageTitle={`Blogs${!!tag && (' - ' + tag)}`}>
+    <Container pageTitle={`Blogs${!!tag ? (' - ' + tag) : ''}`}>
       <div className={styles['root']}>
         <div className={styles['main']}>
           <SubNav />

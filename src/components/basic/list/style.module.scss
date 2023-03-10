@@ -39,34 +39,31 @@
 
       .title {
         margin-top: 6px;
+        margin-bottom: 0;
       }
     }
 
     .actions {
-
-      &>div {
-        height: 48px;
-        width: 70px;
-        line-height: 48px;
-        text-align: center;
+      .edit {
+        padding: 3px;
+        fill: $green;
         border-radius: 4px;
         cursor: pointer;
-      }
-
-      .edit {
-        background-color: $green;
 
         &:hover {
-          background-color: $green-lighter;
+          background-color: $green-lighter-er;
         }
       }
 
       .delete {
-        margin-left: 6px;
-        background-color: $red;
+        padding: 3px;
+        margin-left: 12px;
+        fill: $red;
+        border-radius: 4px;
+        cursor: pointer;
 
         &:hover {
-          background-color: $red-lighter;
+          background-color: $red-lighter-er;
         }
       }
     }

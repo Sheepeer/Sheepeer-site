@@ -5,10 +5,11 @@ import Space from "../space"
 import styles from './style.module.scss'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Link from "next/link"
-import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material"
+import { Button, Dialog, DialogActions } from "@mui/material"
 import { useState } from "react"
 import DialogContent from "@mui/material/DialogContent"
 import Str2Dom from "../str2dom"
+import { Edit, Delete } from '@mui/icons-material';
 
 const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: number) => void }) => {
   const [open, setOpen] = useState(false)
@@ -23,14 +24,14 @@ const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: num
         <p className={styles['title']}>{item.title}</p>
       </div>
       <Space className={styles['actions']}>
-        <div
+        <Edit
           className={styles['edit']}
           onClick={() => window.location.href = `/backstage/workspace?id=${item.id}`}
-        >Edit</div>
-        <div
+        />
+        <Delete
           className={styles['delete']}
           onClick={() => setOpen(true)}
-        >Delete</div>
+        />
       </Space>
 
       <Dialog
