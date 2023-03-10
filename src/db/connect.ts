@@ -3,6 +3,7 @@ import mysql from 'mysql2'
 let _mysql: mysql.Connection
 
 const connectMysql = () => {
+  console.log(process.env.MYSQL_HOST)
   if (!_mysql) {
     _mysql = mysql.createConnection({
       host: process.env.MYSQL_HOST,
