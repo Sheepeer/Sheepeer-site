@@ -1,12 +1,14 @@
 @import "/styles/common.scss";
 
 .root {
-  height: 100vh;
+  height: calc(100vh - 74px);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .content {
-    margin: 0 auto;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: $red;
   }
