@@ -4,8 +4,8 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { TagProps } from '@/components/basic/tag'
 import styles from './style.module.scss'
-// import MyContext from 'src/context'
-// import { useContext } from 'react'
+import MyContext from 'src/context'
+import { useContext } from 'react'
 
 interface Props {
   style?: object
@@ -13,7 +13,7 @@ interface Props {
 
 const SubNav = () => {
 
-  // const { isHeaderHidden } = useContext(MyContext)
+  const { isHeaderHidden } = useContext(MyContext)
 
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
@@ -30,7 +30,7 @@ const SubNav = () => {
   return (
     <div
       className={styles['sub-nav']}
-    // style={{ position: 'sticky', top: isHeaderHidden ? '0px' : '74px' }}
+      style={{ position: 'sticky', top: isHeaderHidden ? '0px' : '74px' }}
     >
       {
         result.map(({ id, name, color }) => (
