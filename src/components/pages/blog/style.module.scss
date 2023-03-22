@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 1440px) {
   .root {
-    width: 80%;
+    width: 62.5%;
     margin: 0 auto;
     padding: 36px 0;
   }
@@ -33,10 +33,15 @@
 
 .content {
   margin-top: 48px;
+  font-size: 14px;
+  line-height: 1.5;
 
   img{
+    display: block;
     width: 100%;
-    padding: 16px 40px;
+    margin: 16px auto;
+    border: 2px solid $border-color;
+    border-radius: 4px;
   }
 
   code {
@@ -56,6 +61,30 @@
       margin: initial;
       padding: initial;
       background-color: initial;
+    }
+  }
+
+  ol {
+    li {
+      padding-left: 6px;
+      &::marker{
+        color: $orange;
+      }
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+    }
+  }
+
+  ul {
+    li {
+      padding-left: 6px;
+      &::marker{
+        color: $orange;
+      }
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
     }
   }
 }
