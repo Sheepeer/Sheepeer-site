@@ -53,8 +53,9 @@ const Header = ({ style = {} }: Props) => {
   // const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
 
   // const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
+  const [suffix, setSuffix] = useState<'↑' | '↓'>('↑')
 
-  // const clickSuffixHandler = () => {
+  const clickSuffixHandler = () => {
   // if (isHeaderHidden === false) {
   //   setIsHeaderHidden(true)
   //   setSuffix(<KeyboardArrowDown className={styles['icon']} />)
@@ -62,7 +63,7 @@ const Header = ({ style = {} }: Props) => {
   //   setIsHeaderHidden(false)
   //   setSuffix(<KeyboardArrowUp className={styles['icon']} />)
   // }
-  // }
+  }
 
   return (
     <div className={styles['root']} style={style}>
@@ -89,13 +90,14 @@ const Header = ({ style = {} }: Props) => {
           </Space>
         </div>
       </div>
-
-      {/* <div
+      
+      {/* 把suffix打开 api就会报504 为什么？？？ */}
+      <div
         className={styles['suffix']}
         onClick={clickSuffixHandler}
       >
         {suffix}
-      </div> */}
+      </div>
     </div>
   )
 }
