@@ -1,0 +1,14 @@
+@import "/styles/common.scss";
+
+.empty-wrapper {
+  display: block;
+  margin: 12px;
+  padding: 36px 0;
+  text-align: center;
+  background-color: $blue-lighter-er-er;
+  border-radius: 4px;
+}
+
+.empty-icon {
+  font-size: 32px;
+}

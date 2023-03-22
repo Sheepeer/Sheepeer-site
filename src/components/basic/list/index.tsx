@@ -3,6 +3,7 @@ import { List as _List, ListItem } from '@mui/material'
 import Skeleton from '../skeleton'
 import renderListItem from './render'
 import styles from './style.module.scss'
+import Empty from '../empty'
 
 interface Props {
   dataList: Array<Blog>
@@ -15,7 +16,9 @@ const List = ({ dataList, type, loading, deletePost }: Props) => {
   return (
     loading
       ? <Skeleton type={type} count={3} />
-      : <_List className={styles['list']}>
+      : (
+        dataList.length > 0
+        ? <_List className={styles['list']}>
         {
           dataList.map(item => (
             <ListItem key={item.id}>
@@ -24,6 +27,8 @@ const List = ({ dataList, type, loading, deletePost }: Props) => {
           ))
         }
       </_List>
+      : <Empty/>
+      )
   )
 }
 
