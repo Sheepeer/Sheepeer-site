@@ -57,13 +57,13 @@ const Header = ({ style = {} }: Props) => {
   const [suffix, setSuffix] = useState(true)
 
   const clickSuffixHandler = () => {
-  // if (isHeaderHidden === false) {
-  //   setIsHeaderHidden(true)
-  //   setSuffix(<KeyboardArrowDown className={styles['icon']} />)
-  // } else {
-  //   setIsHeaderHidden(false)
-  //   setSuffix(<KeyboardArrowUp className={styles['icon']} />)
-  // }
+    // if (isHeaderHidden === false) {
+    //   setIsHeaderHidden(true)
+    //   setSuffix(<KeyboardArrowDown className={styles['icon']} />)
+    // } else {
+    //   setIsHeaderHidden(false)
+    //   setSuffix(<KeyboardArrowUp className={styles['icon']} />)
+    // }
   }
 
   return (
@@ -91,13 +91,14 @@ const Header = ({ style = {} }: Props) => {
           </Space>
         </div>
       </div>
-      
+
       {/* 把suffix打开 api就会报504 为什么？？？ */}
       <div
         className={styles['suffix']}
         onClick={clickSuffixHandler}
       >
-        {suffix ? <KeyboardArrowDown className={styles['icon']} /> : <KeyboardArrowUp className={styles['icon']} />}
+        {/* {suffix ? <KeyboardArrowDown className={styles['icon']} /> : <KeyboardArrowUp className={styles['icon']} />} */}
+        {JSON.stringify(suffix)}
       </div>
     </div>
   )
