@@ -52,27 +52,27 @@ interface Props {
 const Header = ({ style = {} }: Props) => {
   // const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
 
-  const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
+  // const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
 
-  const clickSuffixHandler = () => {
-    // if (isHeaderHidden === false) {
-    //   setIsHeaderHidden(true)
-    //   setSuffix(<KeyboardArrowDown className={styles['icon']} />)
-    // } else {
-    //   setIsHeaderHidden(false)
-    //   setSuffix(<KeyboardArrowUp className={styles['icon']} />)
-    // }
-  }
+  // const clickSuffixHandler = () => {
+  // if (isHeaderHidden === false) {
+  //   setIsHeaderHidden(true)
+  //   setSuffix(<KeyboardArrowDown className={styles['icon']} />)
+  // } else {
+  //   setIsHeaderHidden(false)
+  //   setSuffix(<KeyboardArrowUp className={styles['icon']} />)
+  // }
+  // }
 
   return (
     <div className={styles['root']} style={style}>
       <div
         className={styles['header-wrapper']}
-        // style={isHeaderHidden ? { height: 0, border: 'none' } : {}}
+      // style={isHeaderHidden ? { height: 0, border: 'none' } : {}}
       >
         <div
           className={styles['header']}
-          // style={{ visibility: isHeaderHidden ? 'hidden' : 'visible' }}
+        // style={{ visibility: isHeaderHidden ? 'hidden' : 'visible' }}
         >
           <Link href={'/'}>
             <Image
@@ -90,12 +90,12 @@ const Header = ({ style = {} }: Props) => {
         </div>
       </div>
 
-      <div
+      {/* <div
         className={styles['suffix']}
         onClick={clickSuffixHandler}
       >
         {suffix}
-      </div>
+      </div> */}
     </div>
   )
 }
