@@ -5,10 +5,11 @@ import Space from "../space"
 import styles from './style.module.scss'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Link from "next/link"
-import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material"
+import { Button, Dialog, DialogActions } from "@mui/material"
 import { useState } from "react"
 import DialogContent from "@mui/material/DialogContent"
 import Str2Dom from "../str2dom"
+import { Edit, Delete } from '@mui/icons-material';
 
 const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: number) => void }) => {
   const [open, setOpen] = useState(false)
@@ -20,17 +21,17 @@ const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: num
           <Tag color={item.color}>{item.tag}</Tag>
           <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
         </div>
-        <div className={styles['title']}>{item.title}</div>
+        <p className={styles['title']}>{item.title}</p>
       </div>
       <Space className={styles['actions']}>
-        <div
+        <Edit
           className={styles['edit']}
           onClick={() => window.location.href = `/backstage/workspace?id=${item.id}`}
-        >Edit</div>
-        <div
+        />
+        <Delete
           className={styles['delete']}
           onClick={() => setOpen(true)}
-        >Delete</div>
+        />
       </Space>
 
       <Dialog
@@ -61,31 +62,37 @@ const SingleListItem = ({ item, deletePost }: { item: Blog, deletePost: (id: num
   )
 }
 
-const ListItem = ({ item }: { item: Blog }) => (
-  <Link href={`/blog/${item.id}`}>
-    <div className={styles['complex-list-item']}>
-      <div className={styles['text']}>
-        <div className={styles['info']}>
-          <Tag color={item.color}>{item.tag}</Tag>
-          <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
+const ListItem = ({ item }: { item: Blog }) => {
+  const imgSrc = item.content_html.match(/<img [^>]*>/)?.[0]
+  return (
+    <Link href={`/blog/${item.id}`}>
+      <div className={styles['complex-list-item']}>
+        <div className={styles['text']}>
+          <div className={styles['info']}>
+            <Tag color={item.color}>{item.tag}</Tag>
+            <div className={styles['date']}>{moment((+item.date)).format('YYYY-MM-DD HH:mm')}</div>
+          </div>
+          <p className={styles['title']}>{item.title}</p>
+          <p className={styles['content']}>{item.content}</p>
+          <div className={styles['record']}>
+            <Space>
+              <VisibilityOutlinedIcon className={styles['icon']} />
+              <div className={styles['watcher-count']}>{item.watcher_count}</div>
+            </Space>
+          </div>
         </div>
-        <div className={styles['title']}>{item.title}</div>
-        <div className={styles['content']}>{item.content}</div>
-        <div className={styles['record']}>
-          <Space>
-            <VisibilityOutlinedIcon fontSize='small' />
-            <div className={styles['watcher-count']}>{item.watcher_count}</div>
-          </Space>
-        </div>
+        {
+          imgSrc &&
+          <div className={styles['img']}>
+            <Str2Dom
+              str={imgSrc}
+              domId={`imgId-${item.id}`} />
+          </div>
+        }
       </div>
-      <div className={styles['img']}>
-        <Str2Dom
-          str={item.content_html.match(/<img [^>]*>/)?.[0] ?? ''}
-          domId={`imgId-${item.id}`} />
-      </div>
-    </div>
-  </Link>
-)
+    </Link>
+  )
+}
 
 const renderListItem = (
   type: 'list' | 'single-list',

@@ -33,6 +33,7 @@ class Mysql {
           [tag],
           function (err, result) {
             if (err) {
+              console.error(err)
               reject({ result: err, errno: 1 })
             } else {
               resolve({ result: result, errno: 0 })
@@ -52,6 +53,7 @@ class Mysql {
           GET_ALL_DRAFTS_SQL,
           function (err, result) {
             if (err) {
+              console.error(err)
               reject({ result: err, errno: 1 })
             } else {
               resolve({ result: result, errno: 0 })
@@ -107,6 +109,7 @@ class Mysql {
         [title, content, content_html, tag, date, isDraft, id],
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
@@ -123,6 +126,7 @@ class Mysql {
         [id],
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ msg: 'error' })
           } else {
             resolve({ msg: 'success' })
@@ -139,6 +143,7 @@ class Mysql {
         GET_TAGS_SQL,
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ result: null })
           } else {
             resolve({ result: result })
@@ -171,6 +176,7 @@ class Mysql {
         GET_POSTS_SUM_SQL,
         function (err, result) {
           if (err) {
+            console.error(err)
             reject({ result: null })
           } else {
             resolve({ result: result })
