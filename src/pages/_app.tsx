@@ -19,19 +19,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ s
   return (
     <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
-        {/* {(
+        {(
           pathname !== '/backstage/login' &&
           pathname !== '/gallery'
         ) && <Header style={{ position: 'sticky', top: 0 }} />}
-        <Component {...pageProps} /> */}
+        <Component {...pageProps} />
 
-        <HeaderContextProvider>
+        {/* <HeaderContextProvider>
           {(
             pathname !== '/backstage/login' &&
             pathname !== '/gallery'
           ) && <Header style={{ position: 'sticky', top: 0 }} />}
           <Component {...pageProps} />
-        </HeaderContextProvider>
+        </HeaderContextProvider> */}
       </ThemeProvider>
     </SessionProvider>
   )

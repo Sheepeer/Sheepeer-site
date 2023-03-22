@@ -29,7 +29,11 @@ const SubNav = () => {
   return (
     <div
       className={styles['sub-nav']}
-      // style={{ position: 'sticky', top: isHeaderHidden ? '0px' : '74px' }}
+      style={{
+        position: 'sticky',
+        //  top: isHeaderHidden ? '0px' : '74px' 
+        top: '74px'
+      }}
     >
       {
         result.map(({ id, name, color }) => (
