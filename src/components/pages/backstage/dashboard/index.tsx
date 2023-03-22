@@ -18,7 +18,7 @@ const DashBoard = () => {
 
 
   return (
-    !!session
+    !!session && session.user?.email === process.env.GITHUB_EMAIL
       ? (
         <div className={styles['root']}>
           <Grid2 container spacing={2}>
