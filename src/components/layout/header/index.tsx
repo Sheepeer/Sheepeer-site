@@ -53,7 +53,8 @@ const Header = ({ style = {} }: Props) => {
   // const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
 
   // const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
-  const [suffix, setSuffix] = useState<'↑' | '↓'>('↑')
+  // true: up
+  const [suffix, setSuffix] = useState(true)
 
   const clickSuffixHandler = () => {
   // if (isHeaderHidden === false) {
@@ -96,7 +97,7 @@ const Header = ({ style = {} }: Props) => {
         className={styles['suffix']}
         onClick={clickSuffixHandler}
       >
-        {suffix}
+        {suffix ? <KeyboardArrowDown className={styles['icon']} /> : <KeyboardArrowUp className={styles['icon']} />}
       </div>
     </div>
   )
