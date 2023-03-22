@@ -23,6 +23,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ s
           pathname !== '/backstage/login' &&
           pathname !== '/gallery'
         ) && <Header style={{ position: 'sticky', top: 0 }} />}
+        <Component {...pageProps} />
         {/* <MyContext.Provider value={{
           isHeaderHidden, setIsHeaderHidden
         }}>
