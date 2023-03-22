@@ -32,7 +32,7 @@ const BlogPage = () => {
           !data && !error
             ? <Skeleton type="post" />
             : <>
-              <div className={styles['title']}>{title}</div>
+              <h1 className={styles['title']}>{title}</h1>
               <div className={styles['info']}>
                 <Tag color={color}>{tag}</Tag>
                 <div className={styles['time']}>{date && moment(+date).format('YYYY-MM-DD HH:mm')}</div>
