@@ -12,7 +12,7 @@ interface Props {
 
 const SubNav = () => {
 
-  const {isHeaderHidden} = useHeaderContent()
+  // const {isHeaderHidden} = useHeaderContent()
 
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
@@ -29,7 +29,7 @@ const SubNav = () => {
   return (
     <div
       className={styles['sub-nav']}
-      style={{ position: 'sticky', top: isHeaderHidden ? '0px' : '74px' }}
+      // style={{ position: 'sticky', top: isHeaderHidden ? '0px' : '74px' }}
     >
       {
         result.map(({ id, name, color }) => (
