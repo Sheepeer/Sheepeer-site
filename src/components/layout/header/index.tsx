@@ -1,4 +1,3 @@
-import { Button } from "@mui/material"
 import classNames from "classnames"
 import Image from "next/image"
 import Link from "next/link"
@@ -6,9 +5,9 @@ import { useRouter } from "next/router"
 import Space from "../../basic/space"
 import styles from './style.module.scss'
 import LanguageBtn from "./language-btn"
-import { ReactNode, useState, useContext } from "react"
+import { ReactNode, useState } from "react"
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
-import MyContext from "src/context"
+import { useHeaderContent } from "src/context/headerContent"
 
 type HeaderMenu = Array<{ label: string, path: string }>
 export const MENU: HeaderMenu = [
@@ -51,7 +50,7 @@ interface Props {
 }
 
 const Header = ({ style = {} }: Props) => {
-  const { isHeaderHidden, setIsHeaderHidden } = useContext(MyContext)
+  const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
 
   const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
 

@@ -4,8 +4,7 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { TagProps } from '@/components/basic/tag'
 import styles from './style.module.scss'
-import MyContext from 'src/context'
-import { useContext } from 'react'
+import { useHeaderContent } from 'src/context/headerContent'
 
 interface Props {
   style?: object
@@ -13,7 +12,7 @@ interface Props {
 
 const SubNav = () => {
 
-  const { isHeaderHidden } = useContext(MyContext)
+  const {isHeaderHidden} = useHeaderContent()
 
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
