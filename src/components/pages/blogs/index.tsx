@@ -7,12 +7,11 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import { useRouter } from 'next/router'
 import List from '@/components/basic/list'
-import Tags from '@/components/basic/tags'
 import Image from 'next/image'
 import Space from '@/components/basic/space'
 import { TagColor } from '@/components/basic/tag'
 
-const PAGE_SIZE = 3
+const PAGE_SIZE = 7
 
 export type Blog = {
   id: string,
@@ -27,7 +26,7 @@ export type Blog = {
 
 const BlogsPage: NextPage = () => {
   const router = useRouter()
-  const { tag, page = 0 } = router.query
+  const { tag, page = 1 } = router.query
 
   const { data, error } = useSWR({
     url: '/api/blogs/all',
@@ -35,28 +34,24 @@ const BlogsPage: NextPage = () => {
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
 
-  const { data: tagsData, error: tagsError } = useSWR({
-    url: '/api/tags'
-  }, fetcher)
-  const { result: tagList = [] } = tagsData ?? {}
-
   const changePage = (e: any, page: number) => {
     console.log(page)
+    router.push({ query: { ...router.query, page } })
   }
 
   return (
-    <Container pageTitle='Blogs'>
+    <Container pageTitle={`Blogs${!!tag ? (' - ' + tag) : ''}`}>
       <div className={styles['root']}>
         <div className={styles['main']}>
           <SubNav />
           <div className={styles['main-content']}>
             <List
-              dataList={blogList.slice()}
+              dataList={blogList.slice((+page - 1) * PAGE_SIZE, (+page) * PAGE_SIZE)}
               type='list'
               loading={!data && !error}
             />
             <Pagination
-              count={blogList.length}
+              count={Math.ceil(blogList.length / PAGE_SIZE)}
               variant='outlined'
               onChange={changePage}
               className={styles['pagination']}
@@ -79,7 +74,7 @@ const BlogsPage: NextPage = () => {
               />
               <div>Sheepeer</div>
             </Space>
-            <Divider style={{margin: '12px 0'}} />
+            <Divider style={{ margin: '12px 0' }} />
             <div className={styles['summary']}>
               <div className={styles['summary-item']}>
                 <div className={styles['account']}>9</div>
@@ -95,11 +90,6 @@ const BlogsPage: NextPage = () => {
               </div>
             </div>
           </div>
-          {/* <Tags
-            className={styles['tags']}
-            tagList={tagList}
-            onChoose={value => router.push({ query: { tag: value } })} choosed={''}
-          /> */}
         </div>
       </div>
     </Container>
