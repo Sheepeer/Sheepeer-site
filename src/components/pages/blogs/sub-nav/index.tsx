@@ -12,7 +12,7 @@ interface Props {
 
 const SubNav = () => {
 
-  // const {isHeaderHidden} = useHeaderContent()
+  const {isHeaderHidden} = useHeaderContent()
 
   const router = useRouter()
   const currTag = router.query?.tag ?? ''
@@ -31,8 +31,8 @@ const SubNav = () => {
       className={styles['sub-nav']}
       style={{
         position: 'sticky',
-        //  top: isHeaderHidden ? '0px' : '74px' 
-        top: '74px'
+         top: isHeaderHidden ? '0px' : '74px' 
+        // top: '74px'
       }}
     >
       {
