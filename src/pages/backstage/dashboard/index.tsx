@@ -6,7 +6,11 @@ import { useSession } from "next-auth/react"
 const Index = () => {
 
   const { data: session } = useSession()
-  console.log(session?.user?.email, process.env.GITHUB_EMAIL)
+  console.log(
+    session?.user?.email,
+     process.env.GITHUB_EMAIL,
+     process.env.MYSQL_HOST
+     )
 
   return (
     !!session && session.user?.email === process.env.GITHUB_EMAIL
