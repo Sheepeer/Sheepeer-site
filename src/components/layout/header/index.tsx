@@ -72,11 +72,11 @@ const Header = ({ style = {} }: Props) => {
     <div className={styles['root']} style={style}>
       <div
         className={styles['header-wrapper']}
-      // style={isHeaderHidden ? { height: 0, border: 'none' } : {}}
+        style={isHeaderHidden ? { height: 0, border: 'none' } : {}}
       >
         <div
           className={styles['header']}
-        // style={{ visibility: isHeaderHidden ? 'hidden' : 'visible' }}
+          style={{ visibility: isHeaderHidden ? 'hidden' : 'visible' }}
         >
           <Link href={'/'}>
             <Image
@@ -99,7 +99,11 @@ const Header = ({ style = {} }: Props) => {
         className={styles['suffix']}
         onClick={clickSuffixHandler}
       >
-        {/* {suffix ? <KeyboardArrowDown className={styles['icon']} /> : <KeyboardArrowUp className={styles['icon']} />} */}
+        {/* {
+          suffix 
+          ? <KeyboardArrowDown className={styles['icon']} /> 
+          : <KeyboardArrowUp className={styles['icon']} />
+        } */}
         {JSON.stringify(suffix)}
       </div>
     </div>
