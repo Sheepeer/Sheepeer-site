@@ -7,7 +7,7 @@ const Index = () => {
   const { data: session } = useSession()
 
   return (
-    !!session && session.user?.email === process.env.GITHUB_EMAIL
+    ((!!session && session.user?.email === process.env.GITHUB_EMAIL) || process.env.NODE_ENV === 'development')
       ? <BsContainer activeLabel="posts">
         <Drafts />
       </BsContainer> : <NoAuth />

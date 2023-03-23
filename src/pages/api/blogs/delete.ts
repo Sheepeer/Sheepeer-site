@@ -5,7 +5,7 @@ import { authOptions } from '../auth/[...nextauth]'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions)
-  if (session) {
+  if (session || process.env.NODE_ENV === 'development') {
     if (req.method === 'DELETE') {
       const { id = '' } = req.query
       try {
