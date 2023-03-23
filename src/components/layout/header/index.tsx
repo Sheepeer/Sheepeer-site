@@ -50,20 +50,22 @@ interface Props {
 }
 
 const Header = ({ style = {} }: Props) => {
-  // const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
+  const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
 
   // const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
   // true: up
   const [suffix, setSuffix] = useState(true)
 
   const clickSuffixHandler = () => {
-    // if (isHeaderHidden === false) {
-    //   setIsHeaderHidden(true)
-    //   setSuffix(<KeyboardArrowDown className={styles['icon']} />)
-    // } else {
-    //   setIsHeaderHidden(false)
-    //   setSuffix(<KeyboardArrowUp className={styles['icon']} />)
-    // }
+    if (isHeaderHidden === false) {
+      setIsHeaderHidden(true)
+      // setSuffix(<KeyboardArrowDown className={styles['icon']} />)
+      setSuffix(true)
+    } else {
+      setIsHeaderHidden(false)
+      // setSuffix(<KeyboardArrowUp className={styles['icon']} />)
+      setSuffix(false)
+    }
   }
 
   return (
