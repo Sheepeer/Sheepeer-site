@@ -7,6 +7,9 @@ const nextConfig = {
   swcMinify: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+  },
+  env: {
+    GITHUB_EMAIL: process.env.GITHUB_EMAIL
   }
 }
 

@@ -8,9 +8,8 @@ const Index = () => {
   const { data: session } = useSession()
   console.log(
     session?.user?.email,
-     process.env.GITHUB_EMAIL,
-     process.env.MYSQL_HOST
-     )
+    process.env.GITHUB_EMAIL,
+  )
 
   return (
     !!session && session.user?.email === process.env.GITHUB_EMAIL

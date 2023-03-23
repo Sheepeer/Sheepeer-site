@@ -104,7 +104,10 @@ const Header = ({ style = {} }: Props) => {
           ? <KeyboardArrowDown className={styles['icon']} /> 
           : <KeyboardArrowUp className={styles['icon']} />
         } */}
-        {JSON.stringify(suffix)}
+        {/* {JSON.stringify(suffix)} */}
+        {
+          suffix ? 'show' : 'hide'
+        }
       </div>
     </div>
   )
