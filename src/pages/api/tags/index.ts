@@ -4,7 +4,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-
   if (req.method === 'GET') {
     try {
       const result = await Mysql.getTags()
@@ -33,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(500).json({ msg: 'error' })
       }
     } else {
-      res.status(401).json({ msg: 'U\'re not login' })
+      res.status(401).json({ msg: `You don't have permission` })
     }
 
   }
