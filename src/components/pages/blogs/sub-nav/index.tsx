@@ -6,9 +6,6 @@ import { TagProps } from '@/components/basic/tag'
 import styles from './style.module.scss'
 import { useHeaderContent } from 'src/context/headerContent'
 
-interface Props {
-  style?: object
-}
 
 const SubNav = () => {
 
@@ -32,7 +29,6 @@ const SubNav = () => {
       style={{
         position: 'sticky',
          top: isHeaderHidden ? '0px' : '74px' 
-        // top: '74px'
       }}
     >
       {

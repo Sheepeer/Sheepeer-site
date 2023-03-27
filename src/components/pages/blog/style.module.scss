@@ -36,7 +36,7 @@
   font-size: 14px;
   line-height: 1.7;
 
-  img{
+  img {
     display: block;
     width: 100%;
     margin: 16px auto;
@@ -46,6 +46,28 @@
 
   a {
     color: $orange;
+  }
+
+  blockquote {
+    position: relative;
+    margin: 12px 0;
+    padding: 1px 24px;
+    background-color: $orange-lighter-er-er;
+    border-radius: 4px;
+
+    &::before {
+      content: '';
+      height: 100%;
+      width: 4px;
+      background-color: $orange;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    p {
+      color: $sub-text-color;
+    }
   }
 
   code {
@@ -61,6 +83,7 @@
     padding: 12px 16px;
     border-radius: 4px;
     background-color: $blue-lighter-er-er;
+
     code {
       margin: initial;
       padding: initial;
@@ -71,9 +94,11 @@
   ol {
     li {
       padding-left: 6px;
-      &::marker{
+
+      &::marker {
         color: $orange;
       }
+
       &:not(:last-child) {
         margin-bottom: 6px;
       }
@@ -83,9 +108,11 @@
   ul {
     li {
       padding-left: 6px;
-      &::marker{
+
+      &::marker {
         color: $orange;
       }
+
       &:not(:last-child) {
         margin-bottom: 6px;
       }
