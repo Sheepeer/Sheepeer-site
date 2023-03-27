@@ -1,7 +1,4 @@
-import type { NextPage } from 'next'
 import * as THREE from 'three'
-import useDidMount from '@/hooks/useDidMount'
-import { Canvas } from '@react-three/fiber'
 
 const buildGallery = () => {
   const scene = new THREE.Scene()

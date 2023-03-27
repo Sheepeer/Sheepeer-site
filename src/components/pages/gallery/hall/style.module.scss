@@ -1,0 +1,12 @@
+@import "styles/common.scss";
+
+.hall {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  background-color: rgb(248, 244, 228);
+  border-top: 80px solid rgb(216, 209, 177);
+  border-bottom: 180px solid rgb(190, 178, 131);
+  border-left: 140px solid rgb(241, 234, 202);
+  border-right: 140px solid rgb(241, 234, 202);
+}
