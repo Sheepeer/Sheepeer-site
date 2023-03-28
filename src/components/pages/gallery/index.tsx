@@ -18,9 +18,9 @@ const GalleryPage: NextPage = () => {
       <Head>
         <title>Gallery</title>
       </Head>
-      {/* <Link href={'/'}>
+      <Link href={'/'}>
         <Button variant='contained' className={styles['btn-back']}>Back</Button>
-      </Link> */}
+      </Link>
       <Hall/>
     </>
   )
