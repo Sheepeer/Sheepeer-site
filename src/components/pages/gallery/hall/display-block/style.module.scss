@@ -1,0 +1,49 @@
+@import "styles/common.scss";
+
+.root {
+  position: relative;
+  height: 100%;
+  padding: 0 40px;
+}
+
+.root-light {
+}
+
+.root-dark {
+  background: $text-color;
+}
+
+.light-bar {
+  position: relative;
+  top: -24px;
+  width: calc(100% - 40px);
+  height: 7px;
+  margin: 0 auto;
+  background: #3c3c3c;
+
+  &::before {
+    position: absolute;
+    left: -3px;
+    top: 0;
+    content: '';
+    height: 7px;
+    width: 6px;
+    background: #3c3c3c;
+    border-radius: 50%;
+  }
+
+  &::after {
+    position: absolute;
+    right: -3px;
+    top: 0;
+    content: '';
+    height: 7px;
+    width: 6px;
+    background: #3c3c3c;
+    border-radius: 50%;
+  }
+}
+
+.wall__center {
+  display: flex;
+}

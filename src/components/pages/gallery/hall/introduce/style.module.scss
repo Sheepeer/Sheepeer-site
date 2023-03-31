@@ -1,0 +1,35 @@
+@import "styles/common.scss";
+
+.root {
+  height: 100%;
+  width: 400px;
+  padding: 40px;
+
+  .title {
+    font-size: 22px;
+  }
+
+  .content {
+    font-size: 12px;
+  }
+}
+
+.root-blue {
+  background: $blue;
+}
+
+.root-green {
+  background: $green;
+}
+
+.root-orange {
+  background: $orange;
+}
+
+.root-yellow {
+  background: $yellow;
+}
+
+.root-red {
+  background: $red;
+}
