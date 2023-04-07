@@ -1,16 +1,29 @@
 @import "styles/common.scss";
 
 .root {
+  position: relative;
   box-sizing: border-box;
   height: 180px;
   width: 150px;
   border: 9px solid rgb(165, 114, 42);
   box-shadow: 0 3px 5px $shadow-color, inset 0 0 2px $shadow-color-lighter;
-
+  transition: 1s;
+  cursor: pointer;
   .paint {
     height: 100%;
     width: 100%;
     border: 24px solid #ffffff;
     box-shadow: inset 0 0 2px $shadow-color-lighter;
+  }
+
+  .card {
+    position: absolute;
+    right: -48px;
+    bottom: -9px;
+    height: 20px;
+    width: 24px;
+    background-color: #ffffff;
+    box-shadow: 0 0 2px $shadow-color-lighter;
+    z-index: 999;
   }
 }

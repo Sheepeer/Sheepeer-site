@@ -62,16 +62,13 @@ const Hall = () => {
       />
       <DisplayBlock bgColor='dark'>
         {
-          PAINTINGS.map(item => (
+          PAINTINGS.map((item, index) => (
             <div key={item.url} className={styles['paint-area']}>
               <div className={styles['light']}>
                 <div className={styles['light-line']}></div>
               </div>
               <div className={styles['_light']} />
-              <Paint />
-              <div className={styles['card']}>
-
-              </div>
+              <Paint code={index} />
             </div>
           ))
         }
@@ -83,16 +80,13 @@ const Hall = () => {
       />
       <DisplayBlock bgColor='light'>
         {
-          PAINTINGS.map(item => (
+          PAINTINGS.map((item, index) => (
             <div key={item.url} className={styles['paint-area']}>
               <div className={styles['light']}>
                 <div className={styles['light-line']}></div>
               </div>
               <div className={styles['_light']} />
-              <Paint />
-              <div className={styles['card']}>
-
-              </div>
+              <Paint code={index} />
             </div>
           ))
         }

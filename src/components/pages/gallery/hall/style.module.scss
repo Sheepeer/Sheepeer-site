@@ -77,17 +77,6 @@
     filter: blur(4px);
     z-index: 0;
   }
-
-  .card {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 20px;
-    width: 24px;
-    background-color: #ffffff;
-    box-shadow: 0 0 2px $shadow-color-lighter;
-    z-index: 999999;
-  }
 }
 
 .direct-btns {
