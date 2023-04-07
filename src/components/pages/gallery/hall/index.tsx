@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './style.module.scss'
 import Space from '@/components/basic/space'
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
@@ -28,8 +28,34 @@ const PAINTINGS: Array<Paint> = [
 ]
 
 const Hall = () => {
+  const hall = useRef<HTMLElement | null>(null)
+  const [marginVal, setMarginVal] = useState<number>(0)
+  useEffect(() => {
+    if (!hall.current) {
+      hall.current = window.document.getElementById('hall')
+    }
+    if (hall.current) {
+      hall.current.style.marginLeft = `${marginVal}px`
+    }
+  }, [marginVal])
+
+  const walkBack = () => {
+    if (marginVal < 0) {
+      setMarginVal(v => v + 200)
+    }
+  }
+  const walkForword = () => {
+    setMarginVal(v => v - 200)
+  }
+  const walkPrevPart = () => {
+
+  }
+  const walkNextPart = () => {
+
+  }
+
   return (
-    <div className={styles['hall']}>
+    <div className={styles['hall']} id='hall'>
       <Introduce title='part1 blank'
         content='this part is not finished yet'
         bgColor='green'
@@ -41,7 +67,7 @@ const Hall = () => {
               <div className={styles['light']}>
                 <div className={styles['light-line']}></div>
               </div>
-              <div className={styles['_light']}/>
+              <div className={styles['_light']} />
               <Paint />
               <div className={styles['card']}>
 
@@ -62,7 +88,7 @@ const Hall = () => {
               <div className={styles['light']}>
                 <div className={styles['light-line']}></div>
               </div>
-              <div className={styles['_light']}/>
+              <div className={styles['_light']} />
               <Paint />
               <div className={styles['card']}>
 
@@ -73,14 +99,14 @@ const Hall = () => {
       </DisplayBlock>
 
       <Space className={styles['direct-btns']}>
-        <div>Prev Part</div>
-        <div>
+        <div onClick={walkPrevPart}>Prev Part</div>
+        <div onClick={walkBack}>
           <ChevronLeft className={styles['icon']} />
         </div>
-        <div>
+        <div onClick={walkForword}>
           <ChevronRight className={styles['icon']} />
         </div>
-        <div>Next Part</div>
+        <div onClick={walkNextPart}>Next Part</div>
       </Space>
     </div>
   )

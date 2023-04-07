@@ -2,6 +2,13 @@
 
 .btn-back {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 6px;
+  left: 6px;
+  z-index: 999;
+}
+
+.hall-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
