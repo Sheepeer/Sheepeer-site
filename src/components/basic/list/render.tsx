@@ -67,6 +67,14 @@ const ListItem = ({ item }: { item: Blog }) => {
   return (
     <Link href={`/blog/${item.id}`}>
       <div className={styles['complex-list-item']}>
+        {
+          imgSrc &&
+          <div className={styles['img']}>
+            <Str2Dom
+              str={imgSrc}
+              domId={`imgId-${item.id}`} />
+          </div>
+        }
         <div className={styles['text']}>
           <div className={styles['info']}>
             <Tag color={item.color}>{item.tag}</Tag>
@@ -81,14 +89,14 @@ const ListItem = ({ item }: { item: Blog }) => {
             </Space>
           </div>
         </div>
-        {
+        {/* {
           imgSrc &&
           <div className={styles['img']}>
             <Str2Dom
               str={imgSrc}
               domId={`imgId-${item.id}`} />
           </div>
-        }
+        } */}
       </div>
     </Link>
   )

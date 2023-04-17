@@ -7,6 +7,7 @@ import { SessionProvider } from 'next-auth/react'
 import { Session } from 'next-auth'
 import '@/styles/globals.scss'
 import HeaderContextProvider from 'src/context/headerContent'
+import { SWRConfig } from 'swr'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ session: Session }>) {
 
@@ -14,23 +15,27 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{ s
   const pathname = router.pathname
 
   return (
-    <SessionProvider session={session}>
-      <ThemeProvider theme={theme}>
-        {/* {(
-          pathname !== '/backstage/login' &&
-          pathname !== '/gallery'
-        ) && <Header style={{ position: 'sticky', top: 0 }} />}
-        <Component {...pageProps} /> */}
-
-        <HeaderContextProvider>
-          {(
+    <SWRConfig value={{
+      revalidateIfStale: false
+    }}>
+      <SessionProvider session={session}>
+        <ThemeProvider theme={theme}>
+          {/* {(
             pathname !== '/backstage/login' &&
             pathname !== '/gallery'
           ) && <Header style={{ position: 'sticky', top: 0 }} />}
-          <Component {...pageProps} />
-        </HeaderContextProvider>
-      </ThemeProvider>
-    </SessionProvider>
+          <Component {...pageProps} /> */}
+
+          <HeaderContextProvider>
+            {(
+              pathname !== '/backstage/login' &&
+              pathname !== '/gallery'
+            ) && <Header style={{ position: 'sticky', top: 0 }} />}
+            <Component {...pageProps} />
+          </HeaderContextProvider>
+        </ThemeProvider>
+      </SessionProvider>
+    </SWRConfig>
   )
 }
 

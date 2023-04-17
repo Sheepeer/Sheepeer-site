@@ -1,0 +1,31 @@
+@import "/styles/common.scss";
+
+.archive {
+  margin-top: 12px;
+  text-align: left;
+
+  .archive-title {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  .archive-item {
+    position: relative;
+    padding: 6px 0;
+    font-size: 13px;
+    cursor: pointer;
+    &:hover{
+      background-color: $green-lighter-er-er;
+      border-radius: 4px;
+    }
+  }
+
+  .archive-dot{
+    display: inline-block;
+    margin-right: 6px;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+  }
+}

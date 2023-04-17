@@ -129,10 +129,11 @@
     }
 
     .img {
-      margin-left: 24px;
+      margin-right: 24px;
       width: 180px;
       height: 150px;
       background-color: $blue-lighter-er-er;
+      border: 1px solid $border-color;
       border-radius: 4px;
       overflow: hidden;
     }

@@ -2,6 +2,13 @@ import classNames from 'classnames'
 import styles from './style.module.scss'
 
 export type TagColor = 'blue' | 'green' | 'orange' | 'yellow' | 'red'
+export const COLOR_MAP: {[key:string]:string} = {
+  'blue': '#588c7e',
+  'green': '#acbc8a',
+  'yellow': '#ecd189',
+  'orange': '#e99469',
+  'red': '#bc5952'
+}
 export type TagProps = {
   id: number,
   name: string,

@@ -9,7 +9,9 @@ import { useRouter } from 'next/router'
 import List from '@/components/basic/list'
 import Image from 'next/image'
 import Space from '@/components/basic/space'
-import { TagColor } from '@/components/basic/tag'
+import { COLOR_MAP, TagColor } from '@/components/basic/tag'
+import { useMemo } from 'react'
+import Archive from './archive'
 
 const PAGE_SIZE = 7
 
@@ -28,22 +30,39 @@ const BlogsPage: NextPage = () => {
   const router = useRouter()
   const { tag, page = 1 } = router.query
 
-  const { data, error } = useSWR({
+  const { data, error } = useSWR<{ result: Array<Blog> }>({
     url: '/api/blogs/all',
     query: { tag }
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
 
+  const archiveData = useMemo(() => {
+    const data: { [tag: string]: { count: number, color: string } } = {}
+    for (let blog of blogList) {
+      if (data[blog.tag]) {
+        data[blog.tag].count++
+      } else {
+        data[blog.tag] = { count: 1, color: blog.color }
+      }
+    }
+    return data
+  }, [blogList])
+
   const changePage = (e: any, page: number) => {
-    console.log(page)
     router.push({ query: { ...router.query, page } })
+  }
+
+  const chooseArchive = (tag: string) => {
+    router.push({
+      query: { ...router.query, tag }
+    })
   }
 
   return (
     <Container pageTitle={`Blogs${!!tag ? (' - ' + tag) : ''}`}>
       <div className={styles['root']}>
         <div className={styles['main']}>
-          <SubNav />
+          {/* <SubNav /> */}
           <div className={styles['main-content']}>
             <List
               dataList={blogList.slice((+page - 1) * PAGE_SIZE, (+page) * PAGE_SIZE)}
@@ -59,12 +78,12 @@ const BlogsPage: NextPage = () => {
           </div>
         </div>
         <div className={styles['sider']}>
-          {/* <TextField
+          <TextField
             size='small'
             variant='outlined'
             placeholder='search post about ...'
-          /> */}
-          <div className={styles['profile']}>
+          />
+          {/* <div className={styles['profile']}>
             <Space>
               <Image
                 src={'/logo-final.jpg'}
@@ -89,7 +108,9 @@ const BlogsPage: NextPage = () => {
                 <div className={styles['title']}>文章数</div>
               </div>
             </div>
-          </div>
+          </div> */}
+
+          <Archive/>
         </div>
       </div>
     </Container>
