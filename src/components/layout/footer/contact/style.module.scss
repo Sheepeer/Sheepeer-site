@@ -1,0 +1,36 @@
+@import "/styles/common.scss";
+
+.root {
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    width: 32px;
+    padding: 0 4px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    background-color: $green-lighter-er;
+    overflow: hidden;
+    transition: 0.5s;
+
+    span {
+      display: none;
+      font-size: 12px;
+    }
+
+    svg {
+      fill: $green;
+    }
+
+    &:hover {
+      width: 210px;
+      padding: 0 12px;
+      transition: 0.5s;
+
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}
