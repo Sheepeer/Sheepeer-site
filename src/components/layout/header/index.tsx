@@ -97,8 +97,10 @@ const Header = ({ style = {} }: Props) => {
       >
         {
           suffix 
-          ? <React.Fragment><KeyboardArrowDown className={styles['icon']} /> </React.Fragment>
-          : <React.Fragment><KeyboardArrowUp className={styles['icon']} /></React.Fragment>
+          ? <React.Fragment><KeyboardArrowDown /> </React.Fragment>
+          : <React.Fragment><KeyboardArrowUp  /></React.Fragment>
+          // ? <React.Fragment><KeyboardArrowDown className={styles['icon']} /> </React.Fragment>
+          // : <React.Fragment><KeyboardArrowUp className={styles['icon']} /></React.Fragment>
         }
         {/* {
           suffix ? 'show' : 'hide'
