@@ -8,6 +8,7 @@ import LanguageBtn from "./language-btn"
 import { ReactNode, useState } from "react"
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { useHeaderContent } from "src/context/headerContent"
+import React from "react"
 
 type HeaderMenu = Array<{ label: string, path: string }>
 export const MENU: HeaderMenu = [
@@ -52,18 +53,14 @@ interface Props {
 const Header = ({ style = {} }: Props) => {
   const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent()
 
-  // const [suffix, setSuffix] = useState<ReactNode>(<KeyboardArrowUp className={styles['icon']} />)
-  // true: up
-  const [suffix, setSuffix] = useState(true)
+  const [suffix, setSuffix] = useState(false)
 
   const clickSuffixHandler = () => {
     if (isHeaderHidden === false) {
       setIsHeaderHidden(true)
-      // setSuffix(<KeyboardArrowDown className={styles['icon']} />)
       setSuffix(true)
     } else {
       setIsHeaderHidden(false)
-      // setSuffix(<KeyboardArrowUp className={styles['icon']} />)
       setSuffix(false)
     }
   }
@@ -94,19 +91,18 @@ const Header = ({ style = {} }: Props) => {
         </div>
       </div>
 
-      {/* 把suffix打开 api就会报504 为什么？？？ */}
       <div
         className={styles['suffix']}
         onClick={clickSuffixHandler}
       >
-        {/* {
-          suffix 
-          ? <KeyboardArrowDown className={styles['icon']} /> 
-          : <KeyboardArrowUp className={styles['icon']} />
-        } */}
         {
-          suffix ? 'show' : 'hide'
+          suffix 
+          ? <React.Fragment><KeyboardArrowDown className={styles['icon']} /> </React.Fragment>
+          : <React.Fragment><KeyboardArrowUp className={styles['icon']} /></React.Fragment>
         }
+        {/* {
+          suffix ? 'show' : 'hide'
+        } */}
       </div>
     </div>
   )
