@@ -36,26 +36,8 @@ const BlogsPage: NextPage = () => {
   }, fetcher)
   const { result: blogList = [] } = data ?? {}
 
-  const archiveData = useMemo(() => {
-    const data: { [tag: string]: { count: number, color: string } } = {}
-    for (let blog of blogList) {
-      if (data[blog.tag]) {
-        data[blog.tag].count++
-      } else {
-        data[blog.tag] = { count: 1, color: blog.color }
-      }
-    }
-    return data
-  }, [blogList])
-
   const changePage = (e: any, page: number) => {
     router.push({ query: { ...router.query, page } })
-  }
-
-  const chooseArchive = (tag: string) => {
-    router.push({
-      query: { ...router.query, tag }
-    })
   }
 
   return (

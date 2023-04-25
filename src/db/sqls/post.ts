@@ -20,6 +20,10 @@ const MOD_POST_SQL = `
   WHERE id=?
 `
 
+const ADD_POST_PV_SQL = `
+  UPDATE posts SET pv=pv+1 WHERE id=?
+`
+
 const DEL_POST_SQL = `
   DELETE FROM posts where id = ?
 `
@@ -32,5 +36,6 @@ export {
   GET_POST_SQL,
   ADD_POST_SQL,
   MOD_POST_SQL,
+  ADD_POST_PV_SQL,
   DEL_POST_SQL
 }
