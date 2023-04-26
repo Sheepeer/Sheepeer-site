@@ -96,9 +96,9 @@ const Header = ({ style = {} }: Props) => {
         onClick={clickSuffixHandler}
       >
         {
-          suffix 
-          ? <React.Fragment><KeyboardArrowDown /> </React.Fragment>
-          : <React.Fragment><KeyboardArrowUp  /></React.Fragment>
+          suffix ? <span>A</span> : <span>B</span>
+          // ? <React.Fragment><KeyboardArrowDown /> </React.Fragment>
+          // : <React.Fragment><KeyboardArrowUp  /></React.Fragment>
           // ? <React.Fragment><KeyboardArrowDown className={styles['icon']} /> </React.Fragment>
           // : <React.Fragment><KeyboardArrowUp className={styles['icon']} /></React.Fragment>
         }
