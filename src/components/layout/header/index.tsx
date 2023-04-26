@@ -96,7 +96,7 @@ const Header = ({ style = {} }: Props) => {
       </div>
 
       <div className={styles["suffix"]} onClick={clickSuffixHandler}>
-        <KeyboardArrowDown />
+        {/* <KeyboardArrowDown /> */}
         {/* <KeyboardArrowUp /> */}
         {
           // suffix ? (
