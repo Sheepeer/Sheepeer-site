@@ -7,6 +7,8 @@ import styles from "./style.module.scss";
 import LanguageBtn from "./language-btn";
 import { ReactNode, useState } from "react";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useHeaderContent } from "src/context/headerContent";
 import React from "react";
 
@@ -94,11 +96,12 @@ const Header = ({ style = {} }: Props) => {
 
       <div className={styles["suffix"]} onClick={clickSuffixHandler}>
         {
-          suffix ? (
-            <span className={styles["icon"]}>A</span>
-          ) : (
-            <span className={styles["icon"]}>B</span>
-          )
+          suffix ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />
+          //  ? (
+          //   <span className={styles["icon"]}>A</span>
+          // ) : (
+          //   <span className={styles["icon"]}>B</span>
+          // )
           // ? <React.Fragment><KeyboardArrowDown /> </React.Fragment>
           // : <React.Fragment><KeyboardArrowUp  /></React.Fragment>
           // ? <React.Fragment><KeyboardArrowDown className={styles['icon']} /> </React.Fragment>
