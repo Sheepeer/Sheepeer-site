@@ -5,9 +5,8 @@ import { useRouter } from "next/router";
 import Space from "../../basic/space";
 import styles from "./style.module.scss";
 import LanguageBtn from "./language-btn";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material"; // this way importing mui icons will cause api 504
-import { Edit, Delete } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"; // this way won't
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useHeaderContent } from "src/context/headerContent";
@@ -55,19 +54,19 @@ interface Props {
 }
 
 const Header = ({ style = {} }: Props) => {
-  // const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent();
+  const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent();
 
-  // const [suffix, setSuffix] = useState(false);
+  const [suffix, setSuffix] = useState(false);
 
-  // const clickSuffixHandler = () => {
-  //   if (isHeaderHidden === false) {
-  //     setIsHeaderHidden(true);
-  //     setSuffix(true);
-  //   } else {
-  //     setIsHeaderHidden(false);
-  //     setSuffix(false);
-  //   }
-  // };
+  const clickSuffixHandler = () => {
+    if (isHeaderHidden === false) {
+      setIsHeaderHidden(true);
+      setSuffix(true);
+    } else {
+      setIsHeaderHidden(false);
+      setSuffix(false);
+    }
+  };
 
   return (
     <div className={styles["root"]} style={style}>
@@ -95,30 +94,20 @@ const Header = ({ style = {} }: Props) => {
         </div>
       </div>
 
-      {/* <div className={styles["suffix"]} onClick={clickSuffixHandler}> */}
-        {/* <KeyboardArrowDown /> */}
-        {/* <KeyboardArrowUp /> */}
+      <div className={styles["suffix"]} onClick={clickSuffixHandler}>
         {
-          // suffix ? (
-          //   <KeyboardArrowDownIcon className={styles["icon"]} />
-          // ) : (
-          //   <KeyboardArrowUpIcon className={styles["icon"]} />
-          // )
-          // ? (
-          //   <Edit className={styles["icon"]} />
-          // ) : (
-          //   <Delete className={styles["icon"]} />
-          // )
+          suffix ? (
+            <KeyboardArrowDownIcon className={styles["icon"]} />
+          ) : (
+            <KeyboardArrowUpIcon className={styles["icon"]} />
+          )
           //   ?(
           //   <KeyboardArrowDown className={styles["icon"]} />
           // ) : (
           //   <KeyboardArrowUp className={styles["icon"]} />
           // )
         }
-        {/* {
-          suffix ? 'show' : 'hide'
-        } */}
-      {/* </div> */}
+      </div>
     </div>
   );
 };
