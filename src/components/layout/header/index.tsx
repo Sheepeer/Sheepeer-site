@@ -99,11 +99,11 @@ const Header = ({ style = {} }: Props) => {
         <KeyboardArrowDown />
         <KeyboardArrowUp />
         {
-          suffix ? (
-            <KeyboardArrowDownIcon className={styles["icon"]} />
-          ) : (
-            <KeyboardArrowUpIcon className={styles["icon"]} />
-          )
+          // suffix ? (
+          //   <KeyboardArrowDownIcon className={styles["icon"]} />
+          // ) : (
+          //   <KeyboardArrowUpIcon className={styles["icon"]} />
+          // )
           // ? (
           //   <Edit className={styles["icon"]} />
           // ) : (
