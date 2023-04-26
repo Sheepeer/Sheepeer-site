@@ -1,8 +1,7 @@
 import { Button, Menu, MenuItem } from "@mui/material";
 import { useRouter } from "next/router";
 import { useState } from "react";
-// import LanguageIcon from '@mui/icons-material/Language';
-import { Language } from "@mui/icons-material";
+import LanguageIcon from '@mui/icons-material/Language';
 import styles from "./style.module.scss";
 
 const I18N_MENU = [
@@ -45,9 +44,7 @@ const LanguageBtn = () => {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        // startIcon={<LanguageIcon />}
-        startIcon={<Language/>}
-        // startIcon={<KeyboardArrowDown/>}
+        startIcon={<LanguageIcon />}
       >
         {language}
       </Button>

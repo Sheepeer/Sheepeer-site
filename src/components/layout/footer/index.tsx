@@ -1,4 +1,4 @@
-import { GitHub, AttachEmail, QuestionAnswer } from '@mui/icons-material';
+import { GitHub, AttachEmail, QuestionAnswer, KeyboardArrowDown } from '@mui/icons-material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Link from 'next/link';
@@ -29,6 +29,7 @@ const Footer = () => {
   return (
     <div className={styles['footer-root']}>
       <Contact list={CONTACT_LIST} />
+      <KeyboardArrowDown/>
       <div className={styles['main']}>
         <div className={styles['title']}>Menu</div>
         {
