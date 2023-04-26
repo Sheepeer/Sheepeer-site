@@ -7,6 +7,7 @@ import styles from "./style.module.scss";
 import LanguageBtn from "./language-btn";
 import { ReactNode, useState } from "react";
 // import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material"; // this way importing mui icons will cause api 504
+import {Edit, Delete} from '@mui/icons-material'
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";  // this way won't
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useHeaderContent } from "src/context/headerContent";
@@ -96,12 +97,16 @@ const Header = ({ style = {} }: Props) => {
 
       <div className={styles["suffix"]} onClick={clickSuffixHandler}>
         {suffix 
+          // ? (
+          //   <KeyboardArrowDownIcon className={styles["icon"]} />
+          // ) : (
+          //   <KeyboardArrowUpIcon className={styles["icon"]} />
+          // )
           ? (
-            <KeyboardArrowDownIcon className={styles["icon"]} />
+            <Edit className={styles["icon"]} />
           ) : (
-            <KeyboardArrowUpIcon className={styles["icon"]} />
+            <Delete className={styles["icon"]} />
           )
-
         //   ?(
         //   <KeyboardArrowDown className={styles["icon"]} />
         // ) : (
