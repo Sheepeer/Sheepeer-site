@@ -6,9 +6,9 @@ import Space from "../../basic/space";
 import styles from "./style.module.scss";
 import LanguageBtn from "./language-btn";
 import { ReactNode, useState } from "react";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material"; // this way importing mui icons will cause api 504
+// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";  // this way won't
+// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useHeaderContent } from "src/context/headerContent";
 import React from "react";
 
@@ -95,18 +95,17 @@ const Header = ({ style = {} }: Props) => {
       </div>
 
       <div className={styles["suffix"]} onClick={clickSuffixHandler}>
-        {
-          suffix ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />
-          //  ? (
-          //   <span className={styles["icon"]}>A</span>
+        {suffix ? (
+          // ? (
+          //   <KeyboardArrowDownIcon className={styles["icon"]} />
           // ) : (
-          //   <span className={styles["icon"]}>B</span>
+          //   <KeyboardArrowUpIcon className={styles["icon"]} />
           // )
-          // ? <React.Fragment><KeyboardArrowDown /> </React.Fragment>
-          // : <React.Fragment><KeyboardArrowUp  /></React.Fragment>
-          // ? <React.Fragment><KeyboardArrowDown className={styles['icon']} /> </React.Fragment>
-          // : <React.Fragment><KeyboardArrowUp className={styles['icon']} /></React.Fragment>
-        }
+
+          <KeyboardArrowDown className={styles["icon"]} />
+        ) : (
+          <KeyboardArrowUp className={styles["icon"]} />
+        )}
         {/* {
           suffix ? 'show' : 'hide'
         } */}
