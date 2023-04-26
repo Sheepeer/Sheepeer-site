@@ -55,29 +55,29 @@ interface Props {
 }
 
 const Header = ({ style = {} }: Props) => {
-  const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent();
+  // const { isHeaderHidden, setIsHeaderHidden } = useHeaderContent();
 
-  const [suffix, setSuffix] = useState(false);
+  // const [suffix, setSuffix] = useState(false);
 
-  const clickSuffixHandler = () => {
-    if (isHeaderHidden === false) {
-      setIsHeaderHidden(true);
-      setSuffix(true);
-    } else {
-      setIsHeaderHidden(false);
-      setSuffix(false);
-    }
-  };
+  // const clickSuffixHandler = () => {
+  //   if (isHeaderHidden === false) {
+  //     setIsHeaderHidden(true);
+  //     setSuffix(true);
+  //   } else {
+  //     setIsHeaderHidden(false);
+  //     setSuffix(false);
+  //   }
+  // };
 
   return (
     <div className={styles["root"]} style={style}>
       <div
         className={styles["header-wrapper"]}
-        style={isHeaderHidden ? { height: 0, border: "none" } : {}}
+        // style={isHeaderHidden ? { height: 0, border: "none" } : {}}
       >
         <div
           className={styles["header"]}
-          style={{ visibility: isHeaderHidden ? "hidden" : "visible" }}
+          // style={{ visibility: isHeaderHidden ? "hidden" : "visible" }}
         >
           <Link href={"/"}>
             <Image
@@ -95,7 +95,7 @@ const Header = ({ style = {} }: Props) => {
         </div>
       </div>
 
-      <div className={styles["suffix"]} onClick={clickSuffixHandler}>
+      {/* <div className={styles["suffix"]} onClick={clickSuffixHandler}> */}
         {/* <KeyboardArrowDown /> */}
         {/* <KeyboardArrowUp /> */}
         {
@@ -118,7 +118,7 @@ const Header = ({ style = {} }: Props) => {
         {/* {
           suffix ? 'show' : 'hide'
         } */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };
