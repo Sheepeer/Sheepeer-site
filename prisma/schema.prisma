@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Posts {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(100)
+  content      String
+  content_html String
+  tag          String   @db.VarChar(20)
+  date         DateTime @default(now()) @db.Timestamp(6)
+  isdraft      Boolean
+  pv           Int      @default(0)
+}
+
+model Tags {
+  name  String @id @db.VarChar(20)
+  color String @db.VarChar(20)
+}
