@@ -113,7 +113,7 @@ const WorkSpace = () => {
           tag,
           date: currDate,
           isdraft: isDraft,
-          pv: 0
+          pv: 0,
         })
         .then((res) => {
           if (res.data.msg === "success") {
@@ -194,8 +194,6 @@ const WorkSpace = () => {
           />
         </DialogContent>
         <DialogActions>
-          {/* <Button variant='contained' onClick={() => publishPost(0)}>发布</Button>
-          <Button variant='contained' onClick={() => publishPost(1)}>存草稿</Button> */}
           <Button variant="contained" onClick={() => publishPost(false)}>
             发布
           </Button>
