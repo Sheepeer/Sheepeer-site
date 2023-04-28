@@ -6,7 +6,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "PUT") {
         const {id=''}=req.query
         try {
-        const result = await Mysql.delPost(parseInt(id as string))
+        const result = await Mysql.increasePV(parseInt(id as string))
         if(result.msg === 'success'){
           res.status(200).json({msg: 'success'})
         }else{

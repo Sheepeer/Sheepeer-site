@@ -1,20 +1,16 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import Mysql from 'src/db/connection'
+import { getPost } from "@/db/postgres";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'GET') {
-    const { id = '' } = req.query
-    try {
-      const result = await Mysql.getPost(parseInt(id as string))
-      if (!!result.result) {
-        res.status(200).json({ result: result.result[0] })
-      } else {
-        res.status(500).json({ msg: 'error' })
-      }
-    } catch (e) {
-      res.status(500).json({ msg: e })
+  if (req.method === "GET") {
+    const { id = "" } = req.query;
+    const result = await getPost(parseInt(id as string));
+    if (result.res && !result.error) {
+      res.status(200).json({ result: result.res });
+    } else {
+      res.status(500).json({ msg: result.error });
     }
   }
-}
+};
 
-export default handler
+export default handler;
