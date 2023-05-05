@@ -99,4 +99,8 @@ const BlogsPage: NextPage = () => {
   )
 }
 
+export function getStaticProps() {
+  
+}
+
 export default BlogsPage

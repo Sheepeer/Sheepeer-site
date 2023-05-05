@@ -28,7 +28,6 @@ const getPost = async (id: any) => {
     const res = await prisma.posts.findUnique({
       where: { id },
     });
-    console.log("res:", res);
     return { res };
   } catch (error) {
     console.error(error);

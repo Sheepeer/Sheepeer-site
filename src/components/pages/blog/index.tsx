@@ -35,7 +35,7 @@ const BlogPage = () => {
               <h1 className={styles['title']}>{title}</h1>
               <div className={styles['info']}>
                 <Tag color={color}>{tag}</Tag>
-                <div className={styles['time']}>{date && moment(+date).format('YYYY-MM-DD HH:mm')}</div>
+                <div className={styles['time']}>{date && moment(date).format('YYYY-MM-DD HH:mm')}</div>
               </div>
 
               <div className={styles['content']} id='content'>
