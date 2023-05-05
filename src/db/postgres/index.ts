@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Post } from "./interfaces";
+import { Post, Tag } from "./interfaces";
 
 const prisma = new PrismaClient();
 
@@ -14,6 +14,7 @@ const getAllPosts = async (isDraft: boolean, tag?: string) => {
         : {
             isdraft: isDraft,
           },
+      orderBy: [{ date: "desc" }],
     });
     return { res };
   } catch (error) {
@@ -45,7 +46,19 @@ const addPost = async (values: Post) => {
     });
     return { res };
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    return { error };
+  }
+};
+
+const deletePost = async (id: any) => {
+  try {
+    const res = await prisma.posts.delete({
+      where: { id: Number(id) },
+    });
+    return { res };
+  } catch (error) {
+    console.error(error);
     return { error };
   }
 };
@@ -61,9 +74,38 @@ const updatePost = async (values: Post) => {
     });
     return { res };
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return { error };
   }
 };
 
-export { getAllPosts, getPost, addPost, updatePost };
+const getAllTags = async () => {
+  try {
+    const res = await prisma.tags.findMany();
+    return { res };
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+};
+
+const addTag = async (values: Tag) => {
+  try {
+    const res = await prisma.tags.create({
+      data: values,
+    });
+    return { res };
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+};
+export {
+  getAllPosts,
+  getPost,
+  addPost,
+  updatePost,
+  deletePost,
+  getAllTags,
+  addTag,
+};
