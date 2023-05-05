@@ -26,7 +26,7 @@ const SingleListItem = ({
         <div className={styles["info"]}>
           <Tag color={item.color}>{item.tag}</Tag>
           <div className={styles["date"]}>
-            {moment(+item.date).format("YYYY-MM-DD HH:mm")}
+            {moment(item.date).format("YYYY-MM-DD HH:mm")}
           </div>
         </div>
         <p className={styles["title"]}>{item.title}</p>
@@ -83,7 +83,7 @@ const ListItem = ({
           <div className={styles["info"]}>
             <Tag color={item.color}>{item.tag}</Tag>
             <div className={styles["date"]}>
-              {moment(+item.date).format("YYYY-MM-DD HH:mm")}
+              {moment(item.date).format('YYYY-MM-DD HH:mm')}
             </div>
           </div>
           <p className={styles["title"]}>{item.title}</p>

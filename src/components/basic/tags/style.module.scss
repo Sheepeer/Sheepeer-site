@@ -1,7 +1,7 @@
 @import "/styles/common.scss";
 
 .tags {
-  &>div {
+  & > div {
     margin-right: 12px;
     margin-bottom: 12px;
   }
@@ -9,17 +9,47 @@
 
 .tag-add {
   display: inline-block;
-  // padding: 2px 8px;
-  color: $bg-dark-color;
+  padding: 3px 12px;
   border: 1px solid $bg-dark-color;
-  border-radius: 4px;
+  border-radius: 11px;
   font-size: 12px;
   cursor: pointer;
   transition: 0.3s;
+
+  .icon {
+    font-size: 12px;
+  }
 
   &:hover {
     color: $text-hover-color;
     border: 1px solid $text-hover-color;
     transition: 0.3s;
+
+    .icon {
+      fill: $text-hover-color;
+    }
+  }
+}
+
+.tag:not(:last-child) {
+  margin-right: 6px;
+  margin-bottom: 12px;
+}
+
+.add-tag {
+  label {
+    top: -12px;
+    font-size: 12px;
+  }
+  > div {
+    border-radius: 11px;
+  }
+  input {
+    border-radius: 11px;
+    padding: 0 12px;
+  }
+
+  .icon {
+    font-size: 12px;
   }
 }
