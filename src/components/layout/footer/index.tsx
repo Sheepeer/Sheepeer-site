@@ -13,7 +13,12 @@ const WECHAT = "Mattina_young";
 const INS_SRC = "";
 const TWITTER_SRC = "";
 
-const FRIEND_LINKS: string[] = ["https://blog.itswincer.com"];
+const FRIEND_LINKS: Array<{ title: string; link: string }> = [
+  {
+    title: `Wincer's Blog`,
+    link: "https://blog.itswincer.com",
+  },
+];
 
 const CONTACT_LIST = [
   { icon: <GitHub />, link: GITHUB_SRC },
@@ -35,9 +40,9 @@ const Footer = () => {
       </div>
       <div className={styles["main"]}>
         <div className={styles["title"]}>Friend Links</div>
-        {FRIEND_LINKS.map((item) => (
-          <a href={item} target="blank" className={styles["item"]} key={item}>
-            {item}
+        {FRIEND_LINKS.map(({title,link}) => (
+          <a href={link} target="blank" className={styles["item"]} key={title}>
+            {title}
           </a>
         ))}
       </div>
